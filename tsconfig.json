@@ -1,0 +1,10 @@
+{
+  "extends": "@kikiutils/tsconfigs/es2022/es2022.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "resolveJsonModule": true
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "node-ciphers",
+  "version": "0.1.0",
+  "description": "Easy-to-use cipher classes such as AES, DES, etc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiki-kanri/node-ciphers.git"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "dev": "bun --watch run ./src/index.ts"
+  },
+  "devDependencies": {
+    "@kikiutils/prettierrc": "^1.2.0",
+    "@kikiutils/tsconfigs": "^1.0.0",
+    "bun-types": "latest",
+    "changelogen": "^0.5.5",
+    "typescript": "^5.2.2"
+  },
+  "prettier": "@kikiutils/prettierrc"
+}
