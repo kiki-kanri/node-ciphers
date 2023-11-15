@@ -13,14 +13,14 @@
     "./dist"
   ],
   "scripts": {
-    "dev": "bun --watch run ./src/index.ts"
+    "dev": "tsx watch ./src/dev.ts"
   },
   "devDependencies": {
     "@kikiutils/prettierrc": "^1.2.0",
     "@kikiutils/tsconfigs": "^1.0.0",
     "@types/node": "^20.9.0",
-    "bun-types": "latest",
     "changelogen": "^0.5.5",
+    "tsx": "^4.1.2",
     "typescript": "^5.2.2"
   },
   "engines": {
