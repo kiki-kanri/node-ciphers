@@ -47,11 +47,11 @@ export class BaseAESCipher {
 	}
 
 	encrypt(data: Buffer | string, encodingOptions?: AESCipherEncodingOptions.Encrypt) {
-		data = data instanceof Buffer ? data : Buffer.from(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput);
 		const iv = crypto.randomBytes(16);
 		try {
 			const cipher = crypto.createCipheriv(this.#algorithm, this.#key, iv);
-			const encryptedData = `${cipher.update(data, undefined, encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}${cipher.final(encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}`;
+			// prettier-ignore
+			const encryptedData = `${cipher.update(data instanceof Buffer ? data : Buffer.from(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput), undefined, encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}${cipher.final(encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}`;
 			return { data: encryptedData, iv: iv.toString(encodingOptions?.iv || this.#encodingOptions.iv) };
 		} catch (_) {}
 	}
