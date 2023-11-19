@@ -37,10 +37,9 @@ export class BaseAESCipher {
 		return this.#algorithm;
 	}
 
-	decrypt(encryptedData: string, iv: Buffer | null | string, encodingOptions?: AESCipherEncodingOptions.Decrypt) {
-		if (iv) iv = iv instanceof Buffer ? iv : Buffer.from(iv, encodingOptions?.iv || this.#encodingOptions.iv);
+	decrypt(encryptedData: string, iv: Buffer | string, encodingOptions?: AESCipherEncodingOptions.Decrypt) {
 		try {
-			const decipher = crypto.createDecipheriv(this.#algorithm, this.#key, iv);
+			const decipher = crypto.createDecipheriv(this.#algorithm, this.#key, iv instanceof Buffer ? iv : Buffer.from(iv, encodingOptions?.iv || this.#encodingOptions.iv));
 			// prettier-ignore
 			return `${decipher.update(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput, encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}${decipher.final(encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}`;
 		} catch (_) {}
