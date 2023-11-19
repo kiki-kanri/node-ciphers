@@ -21,6 +21,7 @@
     "@kikiutils/tsconfigs": "^2.0.0",
     "@types/node": "^20.9.2",
     "changelogen": "^0.5.5",
+    "consola": "^3.2.3",
     "ts-project-builder": "^2.0.3",
     "tslib": "^2.6.2",
     "tsx": "^4.1.4",
