@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 
-import type { AESCipherEncodingOptions, AvailableAESCipherAlgorithm, AvailableAESMode } from '@/types';
+import type { AESCipherEncodingOptions, AvailableAESCipherAlgorithm, AvailableAESCipherMode } from '@/types';
 
 const availableCiphers: Readonly<string[]> = crypto.getCiphers();
 
@@ -24,7 +24,7 @@ export abstract class BaseAESCipher {
 	#encodingOptions: Required<AESCipherEncodingOptions>;
 	#key: Buffer;
 
-	constructor(key: Buffer | string, mode: AvailableAESMode, encodingOptions?: AESCipherEncodingOptions) {
+	constructor(key: Buffer | string, mode: AvailableAESCipherMode, encodingOptions?: AESCipherEncodingOptions) {
 		this.#encodingOptions = { ...defaultEncodingOptions, ...encodingOptions };
 		const keyBuffer = key instanceof Buffer ? key : Buffer.from(key, this.#encodingOptions.key);
 		this.#algorithm = this.#checkKeyAndGetAlgorithm(keyBuffer, mode);
@@ -35,7 +35,7 @@ export abstract class BaseAESCipher {
 		return this.#algorithm;
 	}
 
-	#checkKeyAndGetAlgorithm(keyBuffer: Buffer, mode: AvailableAESMode) {
+	#checkKeyAndGetAlgorithm(keyBuffer: Buffer, mode: AvailableAESCipherMode) {
 		const modeBits = keyLengthToBitsMap[keyBuffer.length];
 		if (!modeBits) throw new Error('Invalid key length');
 		const algorithm = `aes-${modeBits}-${mode}` as const;
