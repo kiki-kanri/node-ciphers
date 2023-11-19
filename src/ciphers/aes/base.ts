@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import type { TransformOptions } from 'stream';
 
 import type { AESCipherEncodingOptions, AvailableAESCipherAlgorithm, AvailableAESCipherMode } from '@/types';
 
@@ -37,18 +38,18 @@ export class BaseAESCipher {
 		return this.#algorithm;
 	}
 
-	decrypt(encryptedData: string, iv: Buffer | string, encodingOptions?: AESCipherEncodingOptions.Decrypt) {
+	decrypt(encryptedData: string, iv: Buffer | string, encodingOptions?: AESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
 		try {
-			const decipher = crypto.createDecipheriv(this.#algorithm, this.#key, iv instanceof Buffer ? iv : Buffer.from(iv, encodingOptions?.iv || this.#encodingOptions.iv));
+			const decipher = crypto.createDecipheriv(this.#algorithm, this.#key, iv instanceof Buffer ? iv : Buffer.from(iv, encodingOptions?.iv || this.#encodingOptions.iv), decipherOptions);
 			// prettier-ignore
 			return `${decipher.update(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput, encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}${decipher.final(encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}`;
 		} catch (_) {}
 	}
 
-	encrypt(data: Buffer | string, encodingOptions?: AESCipherEncodingOptions.Encrypt) {
+	encrypt(data: Buffer | string, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
 		const iv = crypto.randomBytes(16);
 		try {
-			const cipher = crypto.createCipheriv(this.#algorithm, this.#key, iv);
+			const cipher = crypto.createCipheriv(this.#algorithm, this.#key, iv, cipherOptions);
 			// prettier-ignore
 			const encryptedData = `${cipher.update(data instanceof Buffer ? data : Buffer.from(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput), undefined, encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}${cipher.final(encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}`;
 			return { data: encryptedData, iv: iv.toString(encodingOptions?.iv || this.#encodingOptions.iv) };
