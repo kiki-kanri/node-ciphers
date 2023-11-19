@@ -26,21 +26,15 @@ export abstract class BaseAESCipher {
 
 	constructor(key: Buffer | string, mode: AvailableAESCipherMode, encodingOptions?: AESCipherEncodingOptions) {
 		this.#encodingOptions = { ...defaultEncodingOptions, ...encodingOptions };
-		const keyBuffer = key instanceof Buffer ? key : Buffer.from(key, this.#encodingOptions.key);
-		this.#algorithm = this.#checkKeyAndGetAlgorithm(keyBuffer, mode);
-		this.#key = keyBuffer;
+		this.#key = key instanceof Buffer ? key : Buffer.from(key, this.#encodingOptions.key);
+		const modeBits = keyLengthToBitsMap[this.#key.length];
+		if (!modeBits) throw new Error('Invalid key length');
+		this.#algorithm = `aes-${modeBits}-${mode}` as const;
+		if (!availableCiphers.includes(this.#algorithm)) throw new Error('Invalid algorithm');
 	}
 
 	get algorithm() {
 		return this.#algorithm;
-	}
-
-	#checkKeyAndGetAlgorithm(keyBuffer: Buffer, mode: AvailableAESCipherMode) {
-		const modeBits = keyLengthToBitsMap[keyBuffer.length];
-		if (!modeBits) throw new Error('Invalid key length');
-		const algorithm = `aes-${modeBits}-${mode}` as const;
-		if (!availableCiphers.includes(algorithm)) throw new Error('Invalid algorithm');
-		return algorithm;
 	}
 
 	decrypt(encryptedData: string, iv: Buffer | null | string, encodingOptions?: AESCipherEncodingOptions.Decrypt) {
