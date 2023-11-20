@@ -13,7 +13,6 @@ export const runAESTest = () => {
 	consola.info(`Key 128: ${key128}`);
 	consola.info(`Key 192: ${key192}`);
 	consola.info(`Key 256: ${key256}`);
-	console.log();
 	// prettier-ignore
 	const tests = [
 		[runCipherTest, AESCipher.CBC],
@@ -29,9 +28,9 @@ export const runAESTest = () => {
 
 	// prettier-ignore
 	tests.forEach(([func, cipherClass]) => {
+		console.log();
 		// @ts-ignore
 		func(cipherClass);
-		console.log();
 	});
 };
 

@@ -1,4 +1,4 @@
-import { runAESTest } from '@/tests/aes';
+import { runAESTest } from './aes';
 
 function main() {
 	runAESTest();
