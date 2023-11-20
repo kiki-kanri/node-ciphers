@@ -46,18 +46,18 @@ function runCipherTest<T extends BaseAESEncryptAndDecrypt>(cipherClass: new (key
 
 function runEncryprAndDecrypt(cipher: BaseAESEncryptAndDecrypt, length: 128 | 192 | 256) {
 	const encryptedData = cipher.encrypt(data);
-	if (!encryptedData) throw new Error(`${cipher}`);
+	if (!encryptedData) throw new Error(`Cipher: ${cipher.constructor.name} encrypt error`);
 	consola.success(`${length} - data: ${encryptedData.data}, iv: ${encryptedData.iv}`);
 	const decryptedData = cipher.decrypt(encryptedData.data, encryptedData.iv);
-	if (!decryptedData || decryptedData !== data) throw new Error(`${cipher}`);
+	if (!decryptedData || decryptedData !== data) throw new Error(`Cipher: ${cipher.constructor.name} decrypt error`);
 }
 
 function runHasAuthTagEncryprAndDecrypt(cipher: CCM | GCM, length: 128 | 192 | 256) {
 	const encryptedData = cipher.encrypt(data);
-	if (!encryptedData) throw new Error(`${cipher}`);
+	if (!encryptedData) throw new Error(`Cipher: ${cipher.constructor.name} encrypt error`);
 	consola.success(`${length} - data: ${encryptedData.data}, iv: ${encryptedData.iv}, authTag: ${encryptedData.authTag}, authTagLength: ${encryptedData.authTagLength}`);
 	const decryptedData = cipher.decrypt(encryptedData.data, encryptedData.iv, encryptedData.authTag, encryptedData.authTagLength);
-	if (!decryptedData || decryptedData !== data) throw new Error(`${cipher}`);
+	if (!decryptedData || decryptedData !== data) throw new Error(`Cipher: ${cipher.constructor.name} decrypt error`);
 }
 
 function runHasAuthTagTest<T extends CCM | GCM>(cipherClass: new (key: string) => T) {
