@@ -11,8 +11,7 @@ export class ECB extends BaseAESCipher {
 
 	decrypt(encryptedData: BinaryLike, iv: null, encodingOptions?: AESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
 		try {
-			const decipher = this.createDecipher(iv, decipherOptions);
-			return this.getDecipherResult(decipher, encryptedData, encodingOptions);
+			return this.getDecipherResult(this.createDecipher(iv, decipherOptions), encryptedData, encodingOptions);
 		} catch (error) {}
 	}
 
