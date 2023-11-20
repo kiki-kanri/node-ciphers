@@ -1,4 +1,4 @@
-import crypto, { type BinaryLike } from 'crypto';
+import { randomBytes, type BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
 import type { AESCipherEncodingOptions } from '@/types';
@@ -13,7 +13,7 @@ export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {
 	}
 
 	encrypt(data: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
-		const iv = crypto.randomBytes(16);
+		const iv = randomBytes(16);
 		try {
 			return {
 				data: this.getCipherResult(this.createCipher(iv, cipherOptions), data, encodingOptions),

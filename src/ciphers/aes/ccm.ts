@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import { randomBytes, type BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
 import type { HasAuthTagAESCipherEncodingOptions } from '@/types';
@@ -10,13 +10,13 @@ export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
 	#authTagLength: number;
 	#ivLength: AvailableIvLength;
 
-	constructor(key: crypto.BinaryLike, encodingOptions?: HasAuthTagAESCipherEncodingOptions, authTagLength: number = 16, ivLength: AvailableIvLength = 12) {
+	constructor(key: BinaryLike, encodingOptions?: HasAuthTagAESCipherEncodingOptions, authTagLength: number = 16, ivLength: AvailableIvLength = 12) {
 		super(key, 'ccm', encodingOptions);
 		this.#authTagLength = authTagLength;
 		this.#ivLength = ivLength;
 	}
 
-	decrypt(encryptedData: crypto.BinaryLike, iv: crypto.BinaryLike, authTag: crypto.BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+	decrypt(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
 		try {
 			const decipher = this.createDecipher(typeof iv === 'string' ? Buffer.from(iv, encodingOptions?.iv || this.encodingOptions.iv) : iv, { authTagLength, ...decipherOptions });
 			decipher.setAuthTag(typeof authTag === 'string' ? Buffer.from(authTag, encodingOptions?.authTag || this.encodingOptions.authTag) : authTag);
@@ -24,8 +24,8 @@ export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
 		} catch (error) {}
 	}
 
-	encrypt(data: crypto.BinaryLike, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
-		const iv = crypto.randomBytes(ivLength);
+	encrypt(data: BinaryLike, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+		const iv = randomBytes(ivLength);
 		try {
 			const cipher = this.createCipher(iv, { authTagLength, ...cipherOptions });
 			const encryptedData = this.getCipherResult(cipher, data, encodingOptions);
