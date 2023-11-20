@@ -9,7 +9,7 @@ export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {
 		try {
 			const decipher = this.createDecipher(typeof iv === 'string' ? Buffer.from(iv, encodingOptions?.iv || this.encodingOptions.iv) : iv, decipherOptions);
 			return this.getDecipherResult(decipher, encryptedData, encodingOptions);
-		} catch (_) {}
+		} catch (error) {}
 	}
 
 	encrypt(data: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
@@ -19,7 +19,7 @@ export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {
 				data: this.getCipherResult(this.createCipher(iv, cipherOptions), data, encodingOptions),
 				iv: iv.toString(encodingOptions?.iv || this.encodingOptions.iv)
 			};
-		} catch (_) {}
+		} catch (error) {}
 	}
 }
 

@@ -13,13 +13,13 @@ export class ECB extends BaseAESCipher {
 		try {
 			const decipher = this.createDecipher(iv, decipherOptions);
 			return this.getDecipherResult(decipher, encryptedData, encodingOptions);
-		} catch (_) {}
+		} catch (error) {}
 	}
 
 	encrypt(data: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
 		try {
 			return { data: this.getCipherResult(this.createCipher(null, cipherOptions), data, encodingOptions), iv: null };
-		} catch (_) {}
+		} catch (error) {}
 	}
 }
 
