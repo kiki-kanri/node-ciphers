@@ -60,13 +60,13 @@ export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherE
 	}
 
 	protected getCipherResult(cipher: Cipher, data: BinaryLike, encodingOptions?: EncodingOptions) {
-		if (typeof data === 'string') data = Buffer.from(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput);
-		return `${cipher.update(data, undefined, encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}${cipher.final(encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}`;
+		// prettier-ignore
+		return `${cipher.update(typeof data === 'string' ? Buffer.from(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput) : data, undefined, encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}${cipher.final(encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}`;
 	}
 
 	protected getDecipherResult(decipher: Decipher, encryptedData: BinaryLike, encodingOptions?: EncodingOptions) {
-		if (typeof encryptedData === 'string') encryptedData = Buffer.from(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput);
-		return `${decipher.update(encryptedData, undefined, encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}${decipher.final(encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}`;
+		// prettier-ignore
+		return `${decipher.update(typeof encryptedData === 'string' ? Buffer.from(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput) : encryptedData, undefined, encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}${decipher.final(encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}`;
 	}
 }
 
