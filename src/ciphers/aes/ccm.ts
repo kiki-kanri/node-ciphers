@@ -10,21 +10,21 @@ export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
 	#authTagLength: number;
 	#ivLength: AvailableIvLength;
 
-	constructor(key: Buffer | string, encodingOptions?: HasAuthTagAESCipherEncodingOptions, authTagLength: number = 16, ivLength: AvailableIvLength = 12) {
+	constructor(key: crypto.BinaryLike, encodingOptions?: HasAuthTagAESCipherEncodingOptions, authTagLength: number = 16, ivLength: AvailableIvLength = 12) {
 		super(key, 'ccm', encodingOptions);
 		this.#authTagLength = authTagLength;
 		this.#ivLength = ivLength;
 	}
 
-	decrypt(encryptedData: string, iv: Buffer | string, authTag: Buffer | string, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+	decrypt(encryptedData: crypto.BinaryLike, iv: crypto.BinaryLike, authTag: crypto.BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
 		try {
-			const decipher = this.createDecipher(iv instanceof Buffer ? iv : Buffer.from(iv, encodingOptions?.iv || this.encodingOptions.iv), { authTagLength, ...decipherOptions });
-			decipher.setAuthTag(authTag instanceof Buffer ? authTag : Buffer.from(authTag, encodingOptions?.authTag || this.encodingOptions.authTag));
+			const decipher = this.createDecipher(typeof iv === 'string' ? Buffer.from(iv, encodingOptions?.iv || this.encodingOptions.iv) : iv, { authTagLength, ...decipherOptions });
+			decipher.setAuthTag(typeof authTag === 'string' ? Buffer.from(authTag, encodingOptions?.authTag || this.encodingOptions.authTag) : authTag);
 			return this.getDecipherResult(decipher, encryptedData, encodingOptions);
 		} catch (error) {}
 	}
 
-	encrypt(data: Buffer | string, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+	encrypt(data: crypto.BinaryLike, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
 		const iv = crypto.randomBytes(ivLength);
 		try {
 			const cipher = this.createCipher(iv, { authTagLength, ...cipherOptions });
