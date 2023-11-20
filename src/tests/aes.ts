@@ -1,7 +1,7 @@
 import consola from 'consola';
 
 import AESCipher, { CCM, GCM } from '@/ciphers/aes';
-import BaseAESCipher from '@/ciphers/aes/base';
+import BaseAESEncryptAndDecrypt from '@/ciphers/aes/base/encryptAndDecrypt';
 
 const data = 'node-ciphers';
 const key128 = '0123456789abcdef';
@@ -35,7 +35,7 @@ export const runAESTest = () => {
 	});
 };
 
-function runCipherTest<T extends BaseAESCipher>(cipherClass: new (key: string) => T) {
+function runCipherTest<T extends BaseAESEncryptAndDecrypt>(cipherClass: new (key: string) => T) {
 	consola.info(cipherClass.name);
 	const cipher128 = new cipherClass(key128);
 	const cipher192 = new cipherClass(key192);
@@ -45,7 +45,7 @@ function runCipherTest<T extends BaseAESCipher>(cipherClass: new (key: string) =
 	runEncryprAndDecrypt(cipher256, 256);
 }
 
-function runEncryprAndDecrypt(cipher: BaseAESCipher, length: 128 | 192 | 256) {
+function runEncryprAndDecrypt(cipher: BaseAESEncryptAndDecrypt, length: 128 | 192 | 256) {
 	const encryptedData = cipher.encrypt(data);
 	if (!encryptedData) throw new Error(`${cipher}`);
 	consola.success(`${length} - data: ${encryptedData.data}, iv: ${encryptedData.iv}`);

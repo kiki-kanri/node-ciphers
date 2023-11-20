@@ -1,7 +1,7 @@
 import type { AESCipherEncodingOptions } from '@/types';
-import BaseAESCipher from './base';
+import BaseAESEncryptAndDecrypt from './base/encryptAndDecrypt';
 
-export class CFB1 extends BaseAESCipher {
+export class CFB1 extends BaseAESEncryptAndDecrypt {
 	constructor(key: Buffer | string, encodingOptions?: AESCipherEncodingOptions) {
 		super(key, 'cfb1', encodingOptions);
 	}

@@ -17,6 +17,9 @@
     "build": "ts-project-builder -c --type package",
     "dev": "tsx watch ./src/dev.ts"
   },
+  "dependencies": {
+    "type-fest": "^4.8.1"
+  },
   "devDependencies": {
     "@kikiutils/prettierrc": "^1.2.0",
     "@kikiutils/tsconfigs": "^2.0.0",

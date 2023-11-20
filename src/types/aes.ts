@@ -1,5 +1,5 @@
 export type AvailableAESCipherAlgorithm = `aes-${128 | 192 | 256}-${AvailableAESCipherMode}`;
-export type AvailableAESCipherMode = 'cbc' | 'cfb' | 'cfb1' | 'cfb8' | 'ctr' | 'ecb' | 'ofb';
+export type AvailableAESCipherMode = 'cbc' | 'ccm' | 'cfb' | 'cfb1' | 'cfb8' | 'ctr' | 'ecb' | 'gcm' | 'ofb';
 
 export interface AESCipherEncodingOptions {
 	/**
