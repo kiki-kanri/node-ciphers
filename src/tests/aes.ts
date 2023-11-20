@@ -14,42 +14,25 @@ export const runAESTest = () => {
 	consola.info(`Key 192: ${key192}`);
 	consola.info(`Key 256: ${key256}`);
 	console.log();
+	// prettier-ignore
+	const tests = [
+		[runCipherTest, AESCipher.CBC],
+		[runNeedAuthTagTest, AESCipher.CCM],
+		[runCipherTest, AESCipher.CFB],
+		[runCipherTest, AESCipher.CFB1],
+		[runCipherTest, AESCipher.CFB8],
+		[runCipherTest, AESCipher.CTR],
+		[runCipherTest, AESCipher.ECB],
+		[runNeedAuthTagTest, AESCipher.GCM],
+		[runCipherTest, AESCipher.OFB]
+	] as const;
 
-	// CBC
-	runCipherTest(AESCipher.CBC);
-	console.log();
-
-	// CCM
-	runNeedAuthTagTest(AESCipher.CCM);
-	console.log();
-
-	// CFB
-	runCipherTest(AESCipher.CFB);
-	console.log();
-
-	// CFB1
-	runCipherTest(AESCipher.CFB1);
-	console.log();
-
-	// CFB8
-	runCipherTest(AESCipher.CFB8);
-	console.log();
-
-	// CTR
-	runCipherTest(AESCipher.CFB);
-	console.log();
-
-	// ECB
-	// @ts-ignore
-	runCipherTest(AESCipher.ECB);
-	console.log();
-
-	// GCM
-	runNeedAuthTagTest(AESCipher.GCM);
-	console.log();
-
-	// OFB
-	runCipherTest(AESCipher.OFB);
+	// prettier-ignore
+	tests.forEach(([func, cipherClass]) => {
+		// @ts-ignore
+		func(cipherClass);
+		console.log();
+	});
 };
 
 function runCipherTest<T extends BaseAESCipher>(cipherClass: new (key: string) => T) {
