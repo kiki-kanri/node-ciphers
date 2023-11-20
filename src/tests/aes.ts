@@ -46,6 +46,10 @@ export const runAESTest = () => {
 
 	// GCM
 	runNeedAuthTagTest(AESCipher.GCM);
+	console.log();
+
+	// OFB
+	runCipherTest(AESCipher.OFB);
 };
 
 function runCipherTest<T extends BaseAESCipher>(cipherClass: new (key: string) => T) {
