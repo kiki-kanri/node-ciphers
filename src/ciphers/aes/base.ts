@@ -1,11 +1,12 @@
 import crypto from 'crypto';
 import type { TransformOptions } from 'stream';
 
-import type { AESCipherEncodingOptions, AvailableAESCipherAlgorithm, AvailableAESCipherMode } from '@/types';
+import type { AESCipherEncodingOptions, AvailableAESCipherAlgorithm, AvailableAESCipherMode, HasAuthTagAESCipherEncodingOptions } from '@/types';
 
 export const availableCiphers: Readonly<string[]> = crypto.getCiphers();
 
-export const defaultEncodingOptions: Readonly<Required<AESCipherEncodingOptions>> = {
+export const defaultEncodingOptions: Readonly<Required<HasAuthTagAESCipherEncodingOptions>> = {
+	authTag: 'hex',
 	decryptInput: 'hex',
 	decryptOutput: 'utf8',
 	encryptInput: 'utf8',
