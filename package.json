@@ -29,7 +29,15 @@
     "typescript": "^5.2.2"
   },
   "keywords": [
-    "aes",
+    "aes-cbc",
+    "aes-ccm",
+    "aes-cfb",
+    "aes-cfb1",
+    "aes-cfb8",
+    "aes-ctr",
+    "aes-ecb",
+    "aes-gcm",
+    "aes-ofb",
     "cipher",
     "decrypt",
     "encrypt"
