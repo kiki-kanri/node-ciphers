@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.4.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.3.0...v0.4.0)
+
+### 🚀 Enhancements
+
+- Change authTag, data, key, and iv to allow BinaryLike type ([2edecdd](https://github.com/kiki-kanri/node-ciphers/commit/2edecdd))
+
+### 💅 Refactors
+
+- Split base class and simplify ciphers implementations ([8f7a11a](https://github.com/kiki-kanri/node-ciphers/commit/8f7a11a))
+- Update import syntax ([e608dd8](https://github.com/kiki-kanri/node-ciphers/commit/e608dd8))
+- Rename catch clause variable from _ to error ([d2fbbd8](https://github.com/kiki-kanri/node-ciphers/commit/d2fbbd8))
+- Streamline aes ecb decryption code ([b1d270a](https://github.com/kiki-kanri/node-ciphers/commit/b1d270a))
+- Simplify type names ([5c67b34](https://github.com/kiki-kanri/node-ciphers/commit/5c67b34))
+- Rename test functions ([3d3f5ac](https://github.com/kiki-kanri/node-ciphers/commit/3d3f5ac))
+- Relocate tests directory and update code ([dcf2e71](https://github.com/kiki-kanri/node-ciphers/commit/dcf2e71))
+- Update error messages in tests ([9b7cbef](https://github.com/kiki-kanri/node-ciphers/commit/9b7cbef))
+- Remove reassignment of 'data' variable ([cae2856](https://github.com/kiki-kanri/node-ciphers/commit/cae2856))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.3.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.2.0...v0.3.0)
