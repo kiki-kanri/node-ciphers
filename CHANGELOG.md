@@ -1,5 +1,39 @@
 # Changelog
 
+## v0.5.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.4.0...v0.5.0)
+
+### 🚀 Enhancements
+
+- Add des base classes and types ([20bbbfe](https://github.com/kiki-kanri/node-ciphers/commit/20bbbfe))
+- Add des cbc, cfb, cfb1, cfb8, ecb, ofb ciphers ([a3ce6d6](https://github.com/kiki-kanri/node-ciphers/commit/a3ce6d6))
+- Add des tests and update data in aes tests ([3257b55](https://github.com/kiki-kanri/node-ciphers/commit/3257b55))
+- Implement export functionality for DES ciphers ([ce17d52](https://github.com/kiki-kanri/node-ciphers/commit/ce17d52))
+
+### 🩹 Fixes
+
+- Correct encodingOptions type for aes ccm and gcm encryption/decryption ([994b00f](https://github.com/kiki-kanri/node-ciphers/commit/994b00f))
+
+### 💅 Refactors
+
+- Simplify test code ([f8b32f4](https://github.com/kiki-kanri/node-ciphers/commit/f8b32f4))
+- Split options interface into smaller interfaces ([a9530d3](https://github.com/kiki-kanri/node-ciphers/commit/a9530d3))
+- Consolidate constants into a single file ([2ed5ed0](https://github.com/kiki-kanri/node-ciphers/commit/2ed5ed0))
+
+### 📖 Documentation
+
+- Update keywords list in package.json ([3e64eaa](https://github.com/kiki-kanri/node-ciphers/commit/3e64eaa))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([fbc92d4](https://github.com/kiki-kanri/node-ciphers/commit/fbc92d4))
+- Upgrade dependencies ([b773fae](https://github.com/kiki-kanri/node-ciphers/commit/b773fae))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.4.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.3.0...v0.4.0)
