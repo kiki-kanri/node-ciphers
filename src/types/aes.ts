@@ -46,6 +46,6 @@ export namespace AESCipherEncodingOptions {
 }
 
 export namespace HasAuthTagAESCipherEncodingOptions {
-	export type Decrypt = Omit<HasAuthTagAESCipherEncodingOptions, 'encryptInput' | 'encryptOutput'>;
-	export type Encrypt = Omit<HasAuthTagAESCipherEncodingOptions, 'decryptInput' | 'decryptOutput'>;
+	export type Decrypt = Omit<HasAuthTagAESCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'key'>;
+	export type Encrypt = Omit<HasAuthTagAESCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'key'>;
 }
