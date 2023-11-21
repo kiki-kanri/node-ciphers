@@ -33,6 +33,7 @@
     "typescript": "^5.3.2"
   },
   "keywords": [
+    "aes",
     "aes-cbc",
     "aes-ccm",
     "aes-cfb",
@@ -42,6 +43,13 @@
     "aes-ecb",
     "aes-gcm",
     "aes-ofb",
+    "des",
+    "des-cbc",
+    "des-cfb",
+    "des-cfb1",
+    "des-cfb8",
+    "des-ecb",
+    "des-ofb",
     "cipher",
     "decrypt",
     "encrypt"
