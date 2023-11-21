@@ -1,21 +1,10 @@
-import { createCipheriv, createDecipheriv, getCiphers } from 'crypto';
+import { createCipheriv, createDecipheriv } from 'crypto';
 import type { BinaryLike, Cipher, CipherCCM, CipherCCMOptions, CipherGCM, CipherGCMOptions, Decipher, DecipherCCM, DecipherGCM } from 'crypto';
 import type { TransformOptions } from 'stream';
 import type { RequiredDeep } from 'type-fest';
 
+import { availableCiphers, defaultEncodingOptions } from '@/constants';
 import type { AESCipherAlgorithm, AESCipherEncodingOptions, AESCipherMode, HasAuthTagAESCipherEncodingOptions } from '@/types';
-
-export const availableCiphers: Readonly<string[]> = getCiphers();
-
-export const defaultEncodingOptions = {
-	authTag: 'hex',
-	decryptInput: 'hex',
-	decryptOutput: 'utf8',
-	encryptInput: 'utf8',
-	encryptOutput: 'hex',
-	key: 'utf8',
-	iv: 'hex'
-} as const;
 
 export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
 	16: 128,
