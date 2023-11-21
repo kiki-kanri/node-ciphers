@@ -1,3 +1,31 @@
+# Changelog
+
+## v0.3.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.2.0...v0.3.0)
+
+### 🚀 Enhancements
+
+- Add author and keywords to package.json ([33df006](https://github.com/kiki-kanri/node-ciphers/commit/33df006))
+- Allow passing cipher options in encrypt and decrypt methods ([cc102ed](https://github.com/kiki-kanri/node-ciphers/commit/cc102ed))
+- Add aes ccm and gcm ciphers and types ([fd6d3a2](https://github.com/kiki-kanri/node-ciphers/commit/fd6d3a2))
+- Add aes ciphers test functions ([7732be7](https://github.com/kiki-kanri/node-ciphers/commit/7732be7))
+- Add aes ofb cipher ([40041c7](https://github.com/kiki-kanri/node-ciphers/commit/40041c7))
+
+### 💅 Refactors
+
+- Remove conversion assignment of data in encryption process ([169aca4](https://github.com/kiki-kanri/node-ciphers/commit/169aca4))
+- Remove null type from iv parameter in decrypt method ([a2693c4](https://github.com/kiki-kanri/node-ciphers/commit/a2693c4))
+- Restructure test code ([e8ca178](https://github.com/kiki-kanri/node-ciphers/commit/e8ca178))
+
+### 📖 Documentation
+
+- Update keywords list in package.json ([1e02ca6](https://github.com/kiki-kanri/node-ciphers/commit/1e02ca6))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.2.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.1.0...v0.2.0)
