@@ -6,29 +6,29 @@
 
 ### 🚀 Enhancements
 
-- Add des base classes and types ([20bbbfe](https://github.com/kiki-kanri/node-ciphers/commit/20bbbfe))
-- Add des cbc, cfb, cfb1, cfb8, ecb, ofb ciphers ([a3ce6d6](https://github.com/kiki-kanri/node-ciphers/commit/a3ce6d6))
-- Add des tests and update data in aes tests ([3257b55](https://github.com/kiki-kanri/node-ciphers/commit/3257b55))
-- Implement export functionality for DES ciphers ([ce17d52](https://github.com/kiki-kanri/node-ciphers/commit/ce17d52))
+- Add des base classes and types ([6bf7454](https://github.com/kiki-kanri/node-ciphers/commit/6bf7454))
+- Add des cbc, cfb, cfb1, cfb8, ecb, ofb ciphers ([5e35238](https://github.com/kiki-kanri/node-ciphers/commit/5e35238))
+- Add des tests and update data in aes tests ([3e3e2e6](https://github.com/kiki-kanri/node-ciphers/commit/3e3e2e6))
+- Implement export functionality for DES ciphers ([7f3b203](https://github.com/kiki-kanri/node-ciphers/commit/7f3b203))
 
 ### 🩹 Fixes
 
-- Correct encodingOptions type for aes ccm and gcm encryption/decryption ([994b00f](https://github.com/kiki-kanri/node-ciphers/commit/994b00f))
+- Correct encodingOptions type for aes ccm and gcm encryption/decryption ([fd8dd27](https://github.com/kiki-kanri/node-ciphers/commit/fd8dd27))
 
 ### 💅 Refactors
 
-- Simplify test code ([f8b32f4](https://github.com/kiki-kanri/node-ciphers/commit/f8b32f4))
-- Split options interface into smaller interfaces ([a9530d3](https://github.com/kiki-kanri/node-ciphers/commit/a9530d3))
-- Consolidate constants into a single file ([2ed5ed0](https://github.com/kiki-kanri/node-ciphers/commit/2ed5ed0))
+- Simplify test code ([60b2eb5](https://github.com/kiki-kanri/node-ciphers/commit/60b2eb5))
+- Split options interface into smaller interfaces ([ea6027c](https://github.com/kiki-kanri/node-ciphers/commit/ea6027c))
+- Consolidate constants into a single file ([7f540ca](https://github.com/kiki-kanri/node-ciphers/commit/7f540ca))
 
 ### 📖 Documentation
 
-- Update keywords list in package.json ([3e64eaa](https://github.com/kiki-kanri/node-ciphers/commit/3e64eaa))
+- Update keywords list in package.json ([7150a78](https://github.com/kiki-kanri/node-ciphers/commit/7150a78))
 
 ### 🏡 Chore
 
-- Upgrade dependencies ([fbc92d4](https://github.com/kiki-kanri/node-ciphers/commit/fbc92d4))
-- Upgrade dependencies ([b773fae](https://github.com/kiki-kanri/node-ciphers/commit/b773fae))
+- Upgrade dependencies ([855fe04](https://github.com/kiki-kanri/node-ciphers/commit/855fe04))
+- Upgrade dependencies ([95d76a4](https://github.com/kiki-kanri/node-ciphers/commit/95d76a4))
 
 ### ❤️ Contributors
 
@@ -40,19 +40,19 @@
 
 ### 🚀 Enhancements
 
-- Change authTag, data, key, and iv to allow BinaryLike type ([2edecdd](https://github.com/kiki-kanri/node-ciphers/commit/2edecdd))
+- Change authTag, data, key, and iv to allow BinaryLike type ([e7bb3db](https://github.com/kiki-kanri/node-ciphers/commit/e7bb3db))
 
 ### 💅 Refactors
 
-- Split base class and simplify ciphers implementations ([8f7a11a](https://github.com/kiki-kanri/node-ciphers/commit/8f7a11a))
-- Update import syntax ([e608dd8](https://github.com/kiki-kanri/node-ciphers/commit/e608dd8))
-- Rename catch clause variable from _ to error ([d2fbbd8](https://github.com/kiki-kanri/node-ciphers/commit/d2fbbd8))
-- Streamline aes ecb decryption code ([b1d270a](https://github.com/kiki-kanri/node-ciphers/commit/b1d270a))
-- Simplify type names ([5c67b34](https://github.com/kiki-kanri/node-ciphers/commit/5c67b34))
-- Rename test functions ([3d3f5ac](https://github.com/kiki-kanri/node-ciphers/commit/3d3f5ac))
-- Relocate tests directory and update code ([dcf2e71](https://github.com/kiki-kanri/node-ciphers/commit/dcf2e71))
-- Update error messages in tests ([9b7cbef](https://github.com/kiki-kanri/node-ciphers/commit/9b7cbef))
-- Remove reassignment of 'data' variable ([cae2856](https://github.com/kiki-kanri/node-ciphers/commit/cae2856))
+- Split base class and simplify ciphers implementations ([e2d89a5](https://github.com/kiki-kanri/node-ciphers/commit/e2d89a5))
+- Update import syntax ([e568e32](https://github.com/kiki-kanri/node-ciphers/commit/e568e32))
+- Rename catch clause variable from _ to error ([be1ef4f](https://github.com/kiki-kanri/node-ciphers/commit/be1ef4f))
+- Streamline aes ecb decryption code ([0a148fd](https://github.com/kiki-kanri/node-ciphers/commit/0a148fd))
+- Simplify type names ([4aad310](https://github.com/kiki-kanri/node-ciphers/commit/4aad310))
+- Rename test functions ([345848d](https://github.com/kiki-kanri/node-ciphers/commit/345848d))
+- Relocate tests directory and update code ([f8d42b5](https://github.com/kiki-kanri/node-ciphers/commit/f8d42b5))
+- Update error messages in tests ([6b483c0](https://github.com/kiki-kanri/node-ciphers/commit/6b483c0))
+- Remove reassignment of 'data' variable ([df385f6](https://github.com/kiki-kanri/node-ciphers/commit/df385f6))
 
 ### ❤️ Contributors
 
@@ -64,21 +64,21 @@
 
 ### 🚀 Enhancements
 
-- Add author and keywords to package.json ([33df006](https://github.com/kiki-kanri/node-ciphers/commit/33df006))
-- Allow passing cipher options in encrypt and decrypt methods ([cc102ed](https://github.com/kiki-kanri/node-ciphers/commit/cc102ed))
-- Add aes ccm and gcm ciphers and types ([fd6d3a2](https://github.com/kiki-kanri/node-ciphers/commit/fd6d3a2))
-- Add aes ciphers test functions ([7732be7](https://github.com/kiki-kanri/node-ciphers/commit/7732be7))
-- Add aes ofb cipher ([40041c7](https://github.com/kiki-kanri/node-ciphers/commit/40041c7))
+- Add author and keywords to package.json ([7b89178](https://github.com/kiki-kanri/node-ciphers/commit/7b89178))
+- Allow passing cipher options in encrypt and decrypt methods ([388c2ea](https://github.com/kiki-kanri/node-ciphers/commit/388c2ea))
+- Add aes ccm and gcm ciphers and types ([3543a13](https://github.com/kiki-kanri/node-ciphers/commit/3543a13))
+- Add aes ciphers test functions ([1c4d4be](https://github.com/kiki-kanri/node-ciphers/commit/1c4d4be))
+- Add aes ofb cipher ([1ee6f9e](https://github.com/kiki-kanri/node-ciphers/commit/1ee6f9e))
 
 ### 💅 Refactors
 
-- Remove conversion assignment of data in encryption process ([169aca4](https://github.com/kiki-kanri/node-ciphers/commit/169aca4))
-- Remove null type from iv parameter in decrypt method ([a2693c4](https://github.com/kiki-kanri/node-ciphers/commit/a2693c4))
-- Restructure test code ([e8ca178](https://github.com/kiki-kanri/node-ciphers/commit/e8ca178))
+- Remove conversion assignment of data in encryption process ([f1b6e5c](https://github.com/kiki-kanri/node-ciphers/commit/f1b6e5c))
+- Remove null type from iv parameter in decrypt method ([13c1885](https://github.com/kiki-kanri/node-ciphers/commit/13c1885))
+- Restructure test code ([e274b0d](https://github.com/kiki-kanri/node-ciphers/commit/e274b0d))
 
 ### 📖 Documentation
 
-- Update keywords list in package.json ([1e02ca6](https://github.com/kiki-kanri/node-ciphers/commit/1e02ca6))
+- Update keywords list in package.json ([54bce09](https://github.com/kiki-kanri/node-ciphers/commit/54bce09))
 
 ### ❤️ Contributors
 
@@ -90,31 +90,31 @@
 
 ### 🚀 Enhancements
 
-- Add base aes cipher class and types ([946c478](https://github.com/kiki-kanri/node-ciphers/commit/946c478))
-- Add algorithm getter to BaseAESCipher class ([12f8aeb](https://github.com/kiki-kanri/node-ciphers/commit/12f8aeb))
-- Add aes cbc, cfb, cfb1, cfb8 and ctr ciphers ([2465dbe](https://github.com/kiki-kanri/node-ciphers/commit/2465dbe))
-- Set index export aes ciphers ([10e61f2](https://github.com/kiki-kanri/node-ciphers/commit/10e61f2))
-- Add consola package ([1f403d1](https://github.com/kiki-kanri/node-ciphers/commit/1f403d1))
-- Add ecb cipher ([d9fe239](https://github.com/kiki-kanri/node-ciphers/commit/d9fe239))
+- Add base aes cipher class and types ([748d595](https://github.com/kiki-kanri/node-ciphers/commit/748d595))
+- Add algorithm getter to BaseAESCipher class ([d996f11](https://github.com/kiki-kanri/node-ciphers/commit/d996f11))
+- Add aes cbc, cfb, cfb1, cfb8 and ctr ciphers ([d07da79](https://github.com/kiki-kanri/node-ciphers/commit/d07da79))
+- Set index export aes ciphers ([1d4b1c8](https://github.com/kiki-kanri/node-ciphers/commit/1d4b1c8))
+- Add consola package ([f61b2fa](https://github.com/kiki-kanri/node-ciphers/commit/f61b2fa))
+- Add ecb cipher ([ef66e0d](https://github.com/kiki-kanri/node-ciphers/commit/ef66e0d))
 
 ### 💅 Refactors
 
-- Remove bun files and use tsx to run dev ([a116598](https://github.com/kiki-kanri/node-ciphers/commit/a116598))
-- Rename AvailableAESMode to AvailableAESCipherMode ([f6ab061](https://github.com/kiki-kanri/node-ciphers/commit/f6ab061))
-- Move check key and get algorithm into constructor block ([0924aa3](https://github.com/kiki-kanri/node-ciphers/commit/0924aa3))
+- Remove bun files and use tsx to run dev ([ca42704](https://github.com/kiki-kanri/node-ciphers/commit/ca42704))
+- Rename AvailableAESMode to AvailableAESCipherMode ([c8ffb2b](https://github.com/kiki-kanri/node-ciphers/commit/c8ffb2b))
+- Move check key and get algorithm into constructor block ([cbd5696](https://github.com/kiki-kanri/node-ciphers/commit/cbd5696))
 
 ### 🏡 Chore
 
-- Add node types ([affcb81](https://github.com/kiki-kanri/node-ciphers/commit/affcb81))
-- Set engines and type in package.json ([b1ea979](https://github.com/kiki-kanri/node-ciphers/commit/b1ea979))
-- Add build tool and script ([a195c3e](https://github.com/kiki-kanri/node-ciphers/commit/a195c3e))
-- Upgrade dependencies ([cb342d0](https://github.com/kiki-kanri/node-ciphers/commit/cb342d0))
+- Add node types ([5f41b4b](https://github.com/kiki-kanri/node-ciphers/commit/5f41b4b))
+- Set engines and type in package.json ([778405f](https://github.com/kiki-kanri/node-ciphers/commit/778405f))
+- Add build tool and script ([0abfc9b](https://github.com/kiki-kanri/node-ciphers/commit/0abfc9b))
+- Upgrade dependencies ([34de2ac](https://github.com/kiki-kanri/node-ciphers/commit/34de2ac))
 
 ### ❤️ Contributors
 
 - kiki-kanri
 
-## v0.1.1
+## v0.1.0
 
 ### 📖 Documentation
 
