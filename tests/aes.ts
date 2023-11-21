@@ -3,7 +3,7 @@ import consola from 'consola';
 import AESCipher, { CCM, GCM } from '@/ciphers/aes';
 import BaseAESEncryptAndDecrypt from '@/ciphers/aes/base/encryptAndDecrypt';
 
-const data = 'node-ciphers';
+const data = 'aes-ciphers';
 const keys = {
 	128: '0123456789abcdef',
 	192: '0123456789abcdef01234567',
@@ -36,6 +36,8 @@ export const runAESTest = () => {
 			(runEncryprAndDecryptFunction || runEncryprAndDecrypt)(new cipherClass(key), Number(length) as 128 | 192 | 256);
 		});
 	});
+
+	consola.success('AES test success');
 };
 
 function runEncryprAndDecrypt(cipher: BaseAESEncryptAndDecrypt, length: 128 | 192 | 256) {
