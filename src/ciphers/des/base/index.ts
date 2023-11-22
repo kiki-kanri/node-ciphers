@@ -6,6 +6,12 @@ import type { RequiredDeep } from 'type-fest';
 import { availableCiphers, defaultEncodingOptions } from '@/constants';
 import type { DESCipherAlgorithm, DESCipherEncodingOptions, DESCipherMode } from '@/types';
 
+const keyLengthToModePrefixMap: Record<number, '' | '-ede' | '-ede3'> = {
+	8: '',
+	16: '-ede',
+	24: '-ede3'
+};
+
 export abstract class BaseDESCipher {
 	#algorithm: DESCipherAlgorithm;
 	#encodingOptions: Readonly<RequiredDeep<DESCipherEncodingOptions>>;
@@ -14,8 +20,9 @@ export abstract class BaseDESCipher {
 	constructor(key: BinaryLike, mode: DESCipherMode, encodingOptions?: DESCipherEncodingOptions) {
 		this.#encodingOptions = <Readonly<RequiredDeep<DESCipherEncodingOptions>>>{ ...defaultEncodingOptions, ...encodingOptions };
 		this.#key = typeof key === 'string' ? Buffer.from(key, this.#encodingOptions.key) : key;
-		if (this.#key.byteLength !== 8) throw new Error('Invalid key length');
-		this.#algorithm = `des-${mode}`;
+		const desModePrefix = keyLengthToModePrefixMap[this.#key.byteLength];
+		if (desModePrefix === undefined) throw new Error('Invalid key length');
+		this.#algorithm = `des${desModePrefix}-${mode}`;
 		if (!availableCiphers.includes(this.#algorithm)) throw new Error('Invalid algorithm');
 	}
 
