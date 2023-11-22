@@ -1,5 +1,34 @@
 # Changelog
 
+## v0.6.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.5.0...v0.6.0)
+
+### 🚀 Enhancements
+
+- Add initial files for playground setup ([09d64e3](https://github.com/kiki-kanri/node-ciphers/commit/09d64e3))
+- Add support for DES-EDE and DES-EDE3 modes ([298f724](https://github.com/kiki-kanri/node-ciphers/commit/298f724))
+
+### 🩹 Fixes
+
+- Resolve issue where IV is mandatory in ECB mode ([99f4428](https://github.com/kiki-kanri/node-ciphers/commit/99f4428))
+
+### 📖 Documentation
+
+- Update CHANGELOG with recent changes and fixes ([4d1ec15](https://github.com/kiki-kanri/node-ciphers/commit/4d1ec15))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([6fe4f8c](https://github.com/kiki-kanri/node-ciphers/commit/6fe4f8c))
+
+### ✅ Tests
+
+- Update DES test cases for enhanced coverage and reliability ([4ea19ed](https://github.com/kiki-kanri/node-ciphers/commit/4ea19ed))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.5.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.4.0...v0.5.0)
