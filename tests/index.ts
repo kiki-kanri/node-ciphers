@@ -3,7 +3,7 @@ import { runDESTest } from './des';
 
 function main() {
 	runAESTest();
-	console.log();
+	console.log('-'.repeat(32));
 	runDESTest();
 }
 
