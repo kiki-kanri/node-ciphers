@@ -12,6 +12,14 @@ export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {
 		} catch (error) {}
 	}
 
+	decryptToJSON<T = any>(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+		const decryptedData = this.decrypt(encryptedData, iv, encodingOptions, decipherOptions);
+		if (!decryptedData) return;
+		try {
+			return JSON.parse(decryptedData) as T;
+		} catch (error) {}
+	}
+
 	encrypt(data: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
 		const iv = randomBytes(16);
 		try {
@@ -20,6 +28,10 @@ export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {
 				iv: iv.toString(encodingOptions?.iv || this.encodingOptions.iv)
 			};
 		} catch (error) {}
+	}
+
+	encryptJSON(data: any, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+		return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
 	}
 }
 

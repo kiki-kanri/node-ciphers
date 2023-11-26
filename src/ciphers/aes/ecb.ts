@@ -16,10 +16,22 @@ export class ECB extends BaseAESCipher {
 		} catch (error) {}
 	}
 
+	decryptToJSON<T = any>(encryptedData: BinaryLike, iv?: null, encodingOptions?: AESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+		const decryptedData = this.decrypt(encryptedData, iv, encodingOptions, decipherOptions);
+		if (!decryptedData) return;
+		try {
+			return JSON.parse(decryptedData) as T;
+		} catch (error) {}
+	}
+
 	encrypt(data: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
 		try {
 			return { data: this.getCipherResult(this.createCipher(null, cipherOptions), data, encodingOptions), iv: null };
 		} catch (error) {}
+	}
+
+	encryptJSON(data: any, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+		return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
 	}
 }
 

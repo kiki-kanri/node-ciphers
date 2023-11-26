@@ -20,6 +20,14 @@ export class GCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
 		} catch (error) {}
 	}
 
+	decryptToJSON<T = any>(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength?: number, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+		const decryptedData = this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions);
+		if (!decryptedData) return;
+		try {
+			return JSON.parse(decryptedData) as T;
+		} catch (error) {}
+	}
+
 	encrypt(data: BinaryLike, authTagLength?: number, ivLength: number = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
 		const iv = randomBytes(ivLength);
 		try {
@@ -32,6 +40,10 @@ export class GCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
 				iv: iv.toString(encodingOptions?.iv || this.encodingOptions.iv)
 			};
 		} catch (error) {}
+	}
+
+	encryptJSON(data: any, authTagLength?: number, ivLength: number = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+		return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
 	}
 }
 
