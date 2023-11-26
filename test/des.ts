@@ -3,12 +3,16 @@ import consola from 'consola';
 import DESCipher from '@/ciphers/des';
 import BaseDESEncryptAndDecrypt from '@/ciphers/des/base/encryptAndDecrypt';
 
+type JSONTestData = typeof jsonData;
+
 const data = 'des-ciphers';
 const keys = {
 	64: '01234567',
 	128: '0123456789abcdef',
 	192: '0123456789abcdef01234567'
 };
+
+const jsonData = { value: data } as const;
 
 export const runDESTest = () => {
 	consola.info('DES');
@@ -40,8 +44,11 @@ export const runDESTest = () => {
 
 function runEncryprAndDecrypt(cipher: BaseDESEncryptAndDecrypt, length: 64 | 128 | 192) {
 	const encryptedData = cipher.encrypt(data);
-	if (!encryptedData) throw new Error(`Cipher: ${cipher.constructor.name} encrypt error`);
+	const encryptedJSONData = cipher.encryptJSON(jsonData);
+	if (!encryptedData || !encryptedJSONData) throw new Error(`Cipher: ${cipher.constructor.name} encrypt error`);
 	consola.success(`${length} - data: ${encryptedData.data}, iv: ${encryptedData.iv}`);
+	consola.success(`${length} - json data: ${encryptedJSONData.data}, iv: ${encryptedJSONData.iv}`);
 	const decryptedData = cipher.decrypt(encryptedData.data, encryptedData.iv);
-	if (!decryptedData || decryptedData !== data) throw new Error(`Cipher: ${cipher.constructor.name} decrypt error`);
+	const decryptedJSONData = cipher.decryptToJSON<JSONTestData>(encryptedJSONData.data, encryptedJSONData.iv);
+	if (!decryptedData || decryptedData !== data || !decryptedJSONData || decryptedJSONData.value !== jsonData.value) throw new Error(`Cipher: ${cipher.constructor.name} decrypt error`);
 }
