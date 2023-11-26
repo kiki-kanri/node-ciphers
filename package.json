@@ -15,8 +15,8 @@
   ],
   "scripts": {
     "build": "ts-project-builder -c --type package",
-    "test": "tsx ./tests/index.ts",
-    "test:watch": "tsx watch ./tests/index.ts"
+    "test": "tsx ./test/index.ts",
+    "test:watch": "tsx watch ./test/index.ts"
   },
   "dependencies": {
     "type-fest": "^4.8.2"
