@@ -17,8 +17,8 @@ devDependencies:
     specifier: ^2.0.0
     version: 2.0.0
   '@types/node':
-    specifier: ^20.9.4
-    version: 20.9.4
+    specifier: ^20.10.0
+    version: 20.10.0
   changelogen:
     specifier: ^0.5.5
     version: 0.5.5
@@ -32,16 +32,16 @@ devDependencies:
     specifier: ^2.6.2
     version: 2.6.2
   tsx:
-    specifier: ^4.2.0
-    version: 4.2.0
+    specifier: ^4.5.0
+    version: 4.5.0
   typescript:
     specifier: ^5.3.2
     version: 5.3.2
 
 packages:
 
-  /@augment-vir/common@22.0.0:
-    resolution: {integrity: sha512-0Y9EoZTVmwOOGO/D9aqFXdMj7qihyP3EbROTuA+N4GRNZicOKmEA5yGuL0V7qR3egZDlvkF8m1ka27VUbVyDzg==}
+  /@augment-vir/common@22.0.1:
+    resolution: {integrity: sha512-4aYQAobKfenNwUMn1iU0jRkhIYdy0//CgS6j4cRRRbQAfblvn5yTuXgYtvhF0+GkkGqeHnTgPNXnw4pXxqNQjw==}
     dependencies:
       browser-or-node: 2.1.1
       run-time-assertions: 0.2.1
@@ -459,8 +459,8 @@ packages:
     resolution: {integrity: sha512-2NprJ2oQZ+OVyoY9LaCbfdRX5T2UiUSmEDjc56o2Y8hCX7r3uqC4g0gq0+XeybX2YDXrzBLFs5Yoewm2Iu9Eig==}
     dev: true
 
-  /@mdn/browser-compat-data@5.4.0:
-    resolution: {integrity: sha512-FrVirpbyDueB9IPP2sDS3G4vil0XWQuJhqsoWuBiqvojtr/+nfIQmpmkztyuWGUWmRJC0MMa1xK26LP2RQPtOQ==}
+  /@mdn/browser-compat-data@5.4.1:
+    resolution: {integrity: sha512-rD1yrH+vrinzmdgtLjj7qeE4FmYh0VezWQaB3DqVrLSBcGtz61pqV/yCO7piJQc8XmgOIKQIF9Go3LUdS9ORHg==}
     dev: true
 
   /@rollup/plugin-commonjs@25.0.7(rollup@4.4.1):
@@ -646,8 +646,8 @@ packages:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
     dev: true
 
-  /@types/node@20.9.4:
-    resolution: {integrity: sha512-wmyg8HUhcn6ACjsn8oKYjkN/zUzQeNtMy44weTJSM6p4MMzEOuKbA3OjJ267uPCOW7Xex9dyrNTful8XTQYoDA==}
+  /@types/node@20.10.0:
+    resolution: {integrity: sha512-D0WfRmU9TQ8I9PFx9Yc+EBHw+vSpIub4IDvQivcp26PtPrdMGAq5SDcpXEo/epqa/DXotVpekHiLNTg3iaKXBQ==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -743,7 +743,7 @@ packages:
     resolution: {integrity: sha512-ZFz4mAOgqm0cbwKaZsfJbYDbTXGoPANlte7qRsRJOfjB9KmmISQrXJxAVrnXG8C8v/QHNzXyeJt0Cfcks6zZvQ==}
     engines: {node: '>=16.15.1', npm: '>=7.0.0', pnpm: '>=3.2.0', yarn: '>=1.13'}
     dependencies:
-      '@mdn/browser-compat-data': 5.4.0
+      '@mdn/browser-compat-data': 5.4.1
       '@types/object-path': 0.11.4
       '@types/semver': 7.5.6
       '@types/ua-parser-js': 0.7.39
@@ -761,13 +761,9 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001564
-      electron-to-chromium: 1.4.590
+      electron-to-chromium: 1.4.594
       node-releases: 2.0.13
       update-browserslist-db: 1.0.13(browserslist@4.22.1)
-    dev: true
-
-  /buffer-from@1.1.2:
-    resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
     dev: true
 
   /builtin-modules@3.3.0:
@@ -950,8 +946,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /electron-to-chromium@1.4.590:
-    resolution: {integrity: sha512-hohItzsQcG7/FBsviCYMtQwUSWvVF7NVqPOnJCErWsAshsP/CR2LAXdmq276RbESNdhxiAq5/vRo1g2pxGXVww==}
+  /electron-to-chromium@1.4.594:
+    resolution: {integrity: sha512-xT1HVAu5xFn7bDfkjGQi9dNpMqGchUkebwf1GL7cZN32NSwwlHRPMSDJ1KN6HkS0bWUtndbSQZqvpQftKG2uFQ==}
     dev: true
 
   /es-module-lexer@1.4.1:
@@ -1512,7 +1508,7 @@ packages:
     peerDependencies:
       prettier: ^3.0.0
     dependencies:
-      '@augment-vir/common': 22.0.0
+      '@augment-vir/common': 22.0.1
       prettier: 3.1.0
       proxy-vir: 0.0.2
     dev: true
@@ -1533,7 +1529,7 @@ packages:
   /proxy-vir@0.0.2:
     resolution: {integrity: sha512-4yP9ol7cFb1lUwYyj0B1+M+EpQz7tAu7PTgHCqOQenn0abXOJ3epfS3d2e+9zTgpBfYFzutL5tD2hyFz/smXyw==}
     dependencies:
-      '@augment-vir/common': 22.0.0
+      '@augment-vir/common': 22.0.1
     dev: true
 
   /rc9@2.1.1:
@@ -1663,7 +1659,7 @@ packages:
   /run-time-assertions@0.2.1:
     resolution: {integrity: sha512-nJrck8ekwrfilGPgGREZlNDR8US7Q+aVMWAWGKxyeeEf0X8TrPM9x5aGvHiPPsGszteUfZrABepByxgHCSWbag==}
     dependencies:
-      '@augment-vir/common': 22.0.0
+      '@augment-vir/common': 22.0.1
       expect-type: 0.15.0
       type-fest: 4.8.2
     dev: true
@@ -1699,18 +1695,6 @@ packages:
   /signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
-    dev: true
-
-  /source-map-support@0.5.21:
-    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
-    dependencies:
-      buffer-from: 1.1.2
-      source-map: 0.6.1
-    dev: true
-
-  /source-map@0.6.1:
-    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
-    engines: {node: '>=0.10.0'}
     dev: true
 
   /std-env@3.5.0:
@@ -1804,14 +1788,13 @@ packages:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: true
 
-  /tsx@4.2.0:
-    resolution: {integrity: sha512-hvAXAz4KUYNyjXOjJJgyjT7YOGFUNLC8jnODI6Omc/wGKaZ7z0FvW5d2haqg1GLfX49H3nZOpLYRlHMYGI8Wbw==}
+  /tsx@4.5.0:
+    resolution: {integrity: sha512-hgxdziy9KLaHh9KE+a6tIZFP6kb0MLq/1D0sJVifbGP4QVEYhy6+2FNn7MyCm1pMc63p9CW/L1OzdqTNPxs6rg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
     dependencies:
       esbuild: 0.18.20
       get-tsconfig: 4.7.2
-      source-map-support: 0.5.21
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
