@@ -1,5 +1,34 @@
 # Changelog
 
+## v0.7.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.6.0...v0.7.0)
+
+### 🚀 Enhancements
+
+- Add methods for encrypting and decrypting JSON data ([2744eb1](https://github.com/kiki-kanri/node-ciphers/commit/2744eb1))
+
+### 💅 Refactors
+
+- Rename 'tests' folder to 'test' ([ee32ad0](https://github.com/kiki-kanri/node-ciphers/commit/ee32ad0))
+
+### 📖 Documentation
+
+- Update README ([b79f824](https://github.com/kiki-kanri/node-ciphers/commit/b79f824))
+- Update keywords list in package.json ([1c2569a](https://github.com/kiki-kanri/node-ciphers/commit/1c2569a))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([2e70b3f](https://github.com/kiki-kanri/node-ciphers/commit/2e70b3f))
+
+### ✅ Tests
+
+- Add tests for JSON encryption and decryption ([b199ee9](https://github.com/kiki-kanri/node-ciphers/commit/b199ee9))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.6.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.5.0...v0.6.0)
