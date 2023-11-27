@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.8.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.7.0...v0.8.0)
+
+### 🚀 Enhancements
+
+- Add base cipher class and refactor repeated code into it ([326615e](https://github.com/kiki-kanri/node-ciphers/commit/326615e))
+- Add export of types ([f5590fc](https://github.com/kiki-kanri/node-ciphers/commit/f5590fc))
+
+### 💅 Refactors
+
+- Move duplicate code to base cipher class ([01219eb](https://github.com/kiki-kanri/node-ciphers/commit/01219eb))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.7.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.6.0...v0.7.0)
