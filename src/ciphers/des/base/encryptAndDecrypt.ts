@@ -13,11 +13,7 @@ export abstract class BaseDESEncryptAndDecrypt extends BaseDESCipher {
 	}
 
 	decryptToJSON<T = any>(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: DESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
-		const decryptedData = this.decrypt(encryptedData, iv, encodingOptions, decipherOptions);
-		if (!decryptedData) return;
-		try {
-			return JSON.parse(decryptedData) as T;
-		} catch (error) {}
+		return this.parseJSON<T>(this.decrypt(encryptedData, iv, encodingOptions, decipherOptions));
 	}
 
 	encrypt(data: BinaryLike, encodingOptions?: DESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {

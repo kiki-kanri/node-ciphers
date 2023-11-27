@@ -13,11 +13,7 @@ export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {
 	}
 
 	decryptToJSON<T = any>(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
-		const decryptedData = this.decrypt(encryptedData, iv, encodingOptions, decipherOptions);
-		if (!decryptedData) return;
-		try {
-			return JSON.parse(decryptedData) as T;
-		} catch (error) {}
+		return this.parseJSON<T>(this.decrypt(encryptedData, iv, encodingOptions, decipherOptions));
 	}
 
 	encrypt(data: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {

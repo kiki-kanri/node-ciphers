@@ -4,6 +4,7 @@ import type { TransformOptions } from 'stream';
 import type { RequiredDeep } from 'type-fest';
 
 import { availableCiphers, defaultEncodingOptions } from '@/constants';
+import BaseCipher from '../../base';
 import type { AESCipherAlgorithm, AESCipherEncodingOptions, AESCipherMode, HasAuthTagAESCipherEncodingOptions } from '@/types';
 
 export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
@@ -12,12 +13,13 @@ export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
 	32: 256
 };
 
-export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = AESCipherEncodingOptions> {
+export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = AESCipherEncodingOptions> extends BaseCipher {
 	#algorithm: AESCipherAlgorithm;
 	#encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;
 	#key: NodeJS.ArrayBufferView;
 
 	constructor(key: BinaryLike, mode: AESCipherMode, encodingOptions?: EncodingOptions) {
+		super();
 		this.#encodingOptions = <Readonly<RequiredDeep<EncodingOptions>>>{ ...defaultEncodingOptions, ...encodingOptions };
 		this.#key = typeof key === 'string' ? Buffer.from(key, this.#encodingOptions.key) : key;
 		const modeBits = keyLengthToBitsMap[this.#key.byteLength];

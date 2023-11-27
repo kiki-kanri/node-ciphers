@@ -4,6 +4,7 @@ import type { TransformOptions } from 'stream';
 import type { RequiredDeep } from 'type-fest';
 
 import { availableCiphers, defaultEncodingOptions } from '@/constants';
+import BaseCipher from '../../base';
 import type { DESCipherAlgorithm, DESCipherEncodingOptions, DESCipherMode } from '@/types';
 
 const keyLengthToModePrefixMap: Record<number, '' | '-ede' | '-ede3'> = {
@@ -12,12 +13,13 @@ const keyLengthToModePrefixMap: Record<number, '' | '-ede' | '-ede3'> = {
 	24: '-ede3'
 };
 
-export abstract class BaseDESCipher {
+export abstract class BaseDESCipher extends BaseCipher {
 	#algorithm: DESCipherAlgorithm;
 	#encodingOptions: Readonly<RequiredDeep<DESCipherEncodingOptions>>;
 	#key: NodeJS.ArrayBufferView;
 
 	constructor(key: BinaryLike, mode: DESCipherMode, encodingOptions?: DESCipherEncodingOptions) {
+		super();
 		this.#encodingOptions = <Readonly<RequiredDeep<DESCipherEncodingOptions>>>{ ...defaultEncodingOptions, ...encodingOptions };
 		this.#key = typeof key === 'string' ? Buffer.from(key, this.#encodingOptions.key) : key;
 		const desModePrefix = keyLengthToModePrefixMap[this.#key.byteLength];

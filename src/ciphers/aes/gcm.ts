@@ -21,11 +21,7 @@ export class GCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
 	}
 
 	decryptToJSON<T = any>(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength?: number, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
-		const decryptedData = this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions);
-		if (!decryptedData) return;
-		try {
-			return JSON.parse(decryptedData) as T;
-		} catch (error) {}
+		return this.parseJSON<T>(this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions));
 	}
 
 	encrypt(data: BinaryLike, authTagLength?: number, ivLength: number = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
