@@ -3,8 +3,8 @@ import type { BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
 import { availableCiphers } from '@/constants';
-import BaseCipher from '../../base';
 import type { DESCipherAlgorithm, DESCipherEncodingOptions, DESCipherMode } from '@/types';
+import BaseCipher from '../../base';
 
 const keyLengthToModePrefixMap: Record<number, '' | '-ede' | '-ede3'> = {
 	8: '',

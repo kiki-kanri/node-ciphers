@@ -3,8 +3,8 @@ import type { BinaryLike, Cipher, CipherCCM, CipherCCMOptions, CipherGCM, Cipher
 import type { TransformOptions } from 'stream';
 
 import { availableCiphers } from '@/constants';
-import BaseCipher from '../../base';
 import type { AESCipherAlgorithm, AESCipherEncodingOptions, AESCipherMode, HasAuthTagAESCipherEncodingOptions } from '@/types';
+import BaseCipher from '../../base';
 
 export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
 	16: 128,

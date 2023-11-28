@@ -1,4 +1,5 @@
-import { randomBytes, type BinaryLike } from 'crypto';
+import { randomBytes } from 'crypto';
+import type { BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
 import type { AESCipherEncodingOptions } from '@/types';
