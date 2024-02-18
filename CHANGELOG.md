@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.8.1
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.8.0...v0.8.1)
+
+### 💅 Refactors
+
+- Modify import type method and structure ([d3179e3](https://github.com/kiki-kanri/node-ciphers/commit/d3179e3))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([30bb321](https://github.com/kiki-kanri/node-ciphers/commit/30bb321))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.8.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.7.0...v0.8.0)
