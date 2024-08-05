@@ -2,7 +2,7 @@ import { randomBytes } from 'crypto';
 import type { BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
-import type { AESCipherEncodingOptions } from '@/types';
+import type { AESCipherEncodingOptions } from '../../../types';
 import BaseAESCipher from '.';
 
 export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {

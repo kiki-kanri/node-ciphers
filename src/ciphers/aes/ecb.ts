@@ -1,7 +1,7 @@
 import type { BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
-import type { AESCipherEncodingOptions } from '@/types';
+import type { AESCipherEncodingOptions } from '../../types';
 import BaseAESCipher from './base';
 
 export class ECB extends BaseAESCipher {

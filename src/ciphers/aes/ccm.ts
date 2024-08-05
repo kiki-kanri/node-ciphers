@@ -2,7 +2,7 @@ import { randomBytes } from 'crypto';
 import type { BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
-import type { HasAuthTagAESCipherEncodingOptions } from '@/types';
+import type { HasAuthTagAESCipherEncodingOptions } from '../../types';
 import BaseAESCipher from './base';
 
 type AvailableIvLength = 7 | 8 | 9 | 10 | 11 | 12 | 13;

@@ -2,7 +2,7 @@ import { randomBytes } from 'crypto';
 import type { BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
-import type { DESCipherEncodingOptions } from '@/types';
+import type { DESCipherEncodingOptions } from '../../../types';
 import BaseDESCipher from '.';
 
 export abstract class BaseDESEncryptAndDecrypt extends BaseDESCipher {

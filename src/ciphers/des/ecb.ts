@@ -1,7 +1,7 @@
 import type { BinaryLike } from 'crypto';
 import type { TransformOptions } from 'stream';
 
-import type { DESCipherEncodingOptions } from '@/types';
+import type { DESCipherEncodingOptions } from '../../types';
 import BaseDESCipher from './base';
 
 export class ECB extends BaseDESCipher {

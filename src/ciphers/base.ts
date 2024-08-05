@@ -1,8 +1,8 @@
 import type { RequiredDeep } from 'type-fest';
 import type { BinaryLike, Cipher, Decipher } from 'crypto';
 
-import { defaultEncodingOptions } from '@/constants';
-import type { BaseCipherEncodingOptions, HasAuthTagAESCipherEncodingOptions } from '@/types';
+import { defaultEncodingOptions } from '../constants';
+import type { BaseCipherEncodingOptions, HasAuthTagAESCipherEncodingOptions } from '../types';
 
 export class BaseCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = BaseCipherEncodingOptions> {
 	#encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;

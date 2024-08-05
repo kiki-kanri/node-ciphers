@@ -2,8 +2,8 @@ import { createCipheriv, createDecipheriv } from 'crypto';
 import type { BinaryLike, Cipher, CipherCCM, CipherCCMOptions, CipherGCM, CipherGCMOptions, Decipher, DecipherCCM, DecipherGCM } from 'crypto';
 import type { TransformOptions } from 'stream';
 
-import { availableCiphers } from '@/constants';
-import type { AESCipherAlgorithm, AESCipherEncodingOptions, AESCipherMode, HasAuthTagAESCipherEncodingOptions } from '@/types';
+import { availableCiphers } from '../../../constants';
+import type { AESCipherAlgorithm, AESCipherEncodingOptions, AESCipherMode, HasAuthTagAESCipherEncodingOptions } from '../../../types';
 import BaseCipher from '../../base';
 
 export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
