@@ -1,7 +1,7 @@
 import type { BinaryLike } from 'crypto';
 
 import type { AESCipherEncodingOptions } from '../../types';
-import BaseAESEncryptAndDecrypt from './base/encryptAndDecrypt';
+import BaseAESEncryptAndDecrypt from './base/encrypt-and-decrypt';
 
 export class CFB8 extends BaseAESEncryptAndDecrypt {
 	constructor(key: BinaryLike, encodingOptions?: AESCipherEncodingOptions) {
