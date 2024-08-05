@@ -15,8 +15,8 @@
   ],
   "scripts": {
     "build": "ts-project-builder ./src/index.ts --clean --preserve-modules",
-    "test": "tsx ./test/index.ts",
-    "test:watch": "tsx watch ./test/index.ts"
+    "test": "tsx ./tests/index.ts",
+    "test:watch": "tsx watch ./tests/index.ts"
   },
   "dependencies": {
     "type-fest": "^4.23.0"

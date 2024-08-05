@@ -1,7 +1,7 @@
 import consola from 'consola';
 
-import AESCipher, { CCM, GCM } from '@/ciphers/aes';
-import BaseAESEncryptAndDecrypt from '@/ciphers/aes/base/encryptAndDecrypt';
+import AESCipher, { CCM, GCM } from '../src/ciphers/aes';
+import BaseAESEncryptAndDecrypt from '../src/ciphers/aes/base/encrypt-and-decrypt';
 
 type JSONTestData = typeof jsonData;
 

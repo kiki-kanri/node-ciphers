@@ -1,7 +1,7 @@
 import consola from 'consola';
 
-import DESCipher from '@/ciphers/des';
-import BaseDESEncryptAndDecrypt from '@/ciphers/des/base/encryptAndDecrypt';
+import DESCipher from '../src/ciphers/des';
+import BaseDESEncryptAndDecrypt from '../src/ciphers/des/base/encrypt-and-decrypt';
 
 type JSONTestData = typeof jsonData;
 
