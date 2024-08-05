@@ -14,7 +14,7 @@
     "./dist"
   ],
   "scripts": {
-    "build": "ts-project-builder -c --type package",
+    "build": "ts-project-builder ./src/index.ts --clean --preserve-modules",
     "test": "tsx ./test/index.ts",
     "test:watch": "tsx watch ./test/index.ts"
   },
@@ -29,8 +29,7 @@
     "consola": "^3.2.3",
     "ts-project-builder": "^3.0.1",
     "tslib": "^2.6.3",
-    "tsx": "^4.16.5",
-    "typescript": "^5.5.4"
+    "tsx": "^4.16.5"
   },
   "keywords": [
     "3des",
