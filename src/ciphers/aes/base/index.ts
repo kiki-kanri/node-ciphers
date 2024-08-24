@@ -6,11 +6,11 @@ import { availableCiphers } from '../../../constants';
 import type { AESCipherAlgorithm, AESCipherEncodingOptions, AESCipherMode, HasAuthTagAESCipherEncodingOptions } from '../../../types';
 import BaseCipher from '../../base';
 
-export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
+export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = Object.freeze({
 	16: 128,
 	24: 192,
 	32: 256
-};
+});
 
 export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = AESCipherEncodingOptions> extends BaseCipher<EncodingOptions> {
 	#algorithm: AESCipherAlgorithm;

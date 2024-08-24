@@ -8,7 +8,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptio
 	#encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;
 
 	constructor(encodingOptions?: EncodingOptions) {
-		this.#encodingOptions = <Readonly<RequiredDeep<EncodingOptions>>>{ ...defaultEncodingOptions, ...encodingOptions };
+		this.#encodingOptions = Object.freeze({ ...defaultEncodingOptions, ...encodingOptions } as RequiredDeep<EncodingOptions>);
 	}
 
 	get encodingOptions() {
