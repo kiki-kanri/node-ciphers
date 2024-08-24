@@ -15,14 +15,18 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptio
 		return this.#encodingOptions;
 	}
 
+	protected dataToBuffer(data: BinaryLike, encoding: BufferEncoding) {
+		return typeof data === 'string' ? Buffer.from(data, encoding) : data;
+	}
+
 	protected getCipherResult(cipher: Cipher, data: BinaryLike, encodingOptions?: EncodingOptions) {
-		// prettier-ignore
-		return `${cipher.update(typeof data === 'string' ? Buffer.from(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput) : data, undefined, encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}${cipher.final(encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput)}`;
+		const outputEncoding = encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput;
+		return `${cipher.update(this.dataToBuffer(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput), undefined, outputEncoding)}${cipher.final(outputEncoding)}`;
 	}
 
 	protected getDecipherResult(decipher: Decipher, encryptedData: BinaryLike, encodingOptions?: EncodingOptions) {
-		// prettier-ignore
-		return `${decipher.update(typeof encryptedData === 'string' ? Buffer.from(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput) : encryptedData, undefined, encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}${decipher.final(encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput)}`;
+		const outputEncoding = encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput;
+		return `${decipher.update(this.dataToBuffer(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput), undefined, outputEncoding)}${decipher.final(outputEncoding)}`;
 	}
 
 	protected parseJSON<T>(data?: string) {
