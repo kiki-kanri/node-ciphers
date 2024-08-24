@@ -1,5 +1,5 @@
-import type { RequiredDeep } from 'type-fest';
 import type { BinaryLike, Cipher, Decipher } from 'crypto';
+import type { RequiredDeep } from 'type-fest';
 
 import { defaultEncodingOptions } from '../constants';
 import type { BaseCipherEncodingOptions, HasAuthTagAESCipherEncodingOptions } from '../types';
