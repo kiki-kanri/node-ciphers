@@ -18,7 +18,7 @@ export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherE
 
 	constructor(key: BinaryLike, mode: AESCipherMode, encodingOptions?: EncodingOptions) {
 		super(encodingOptions);
-		this.#key = typeof key === 'string' ? Buffer.from(key, this.encodingOptions.key) : key;
+		this.#key = this.dataToBuffer(key, this.encodingOptions.key);
 		const modeBits = keyLengthToBitsMap[this.#key.byteLength];
 		if (!modeBits) throw new Error('Invalid key length');
 		this.#algorithm = `aes-${modeBits}-${mode}`;

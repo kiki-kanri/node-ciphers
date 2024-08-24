@@ -8,7 +8,7 @@ import BaseDESCipher from '.';
 export abstract class BaseDESEncryptAndDecrypt extends BaseDESCipher {
 	decrypt(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: DESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
 		try {
-			const decipher = this.createDecipher(typeof iv === 'string' ? Buffer.from(iv, encodingOptions?.iv || this.encodingOptions.iv) : iv, decipherOptions);
+			const decipher = this.createDecipher(this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv), decipherOptions);
 			return this.getDecipherResult(decipher, encryptedData, encodingOptions);
 		} catch (error) {}
 	}

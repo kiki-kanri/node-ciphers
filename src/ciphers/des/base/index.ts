@@ -18,7 +18,7 @@ export abstract class BaseDESCipher extends BaseCipher {
 
 	constructor(key: BinaryLike, mode: DESCipherMode, encodingOptions?: DESCipherEncodingOptions) {
 		super(encodingOptions);
-		this.#key = typeof key === 'string' ? Buffer.from(key, this.encodingOptions.key) : key;
+		this.#key = this.dataToBuffer(key, this.encodingOptions.key);
 		const desModePrefix = keyLengthToModePrefixMap[this.#key.byteLength];
 		if (desModePrefix === undefined) throw new Error('Invalid key length');
 		this.#algorithm = `des${desModePrefix}-${mode}`;

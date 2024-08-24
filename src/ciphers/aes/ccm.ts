@@ -19,8 +19,8 @@ export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
 
 	decrypt(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
 		try {
-			const decipher = this.createDecipher(typeof iv === 'string' ? Buffer.from(iv, encodingOptions?.iv || this.encodingOptions.iv) : iv, { authTagLength, ...decipherOptions });
-			decipher.setAuthTag(typeof authTag === 'string' ? Buffer.from(authTag, encodingOptions?.authTag || this.encodingOptions.authTag) : authTag);
+			const decipher = this.createDecipher(this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv), { authTagLength, ...decipherOptions });
+			decipher.setAuthTag(this.dataToBuffer(authTag, encodingOptions?.authTag || this.encodingOptions.authTag));
 			return this.getDecipherResult(decipher, encryptedData, encodingOptions);
 		} catch (error) {}
 	}
