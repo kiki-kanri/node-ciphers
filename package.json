@@ -1,6 +1,6 @@
 {
   "name": "node-ciphers",
-  "version": "0.8.1",
+  "version": "1.0.0-rc.0",
   "description": "Easy-to-use cipher classes such as AES, DES, etc.",
   "license": "MIT",
   "author": "kiki-kanri",

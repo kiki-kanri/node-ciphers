@@ -1,5 +1,48 @@
 # Changelog
 
+## v1.0.0-rc.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.8.1...v1.0.0-rc.0)
+
+### 🚀 Enhancements
+
+- Add `dataToBuffer` method to `BaseCipher` class and update `getCipherResult` and `getDecipherResult` ([feec52b](https://github.com/kiki-kanri/node-ciphers/commit/feec52b))
+
+### 💅 Refactors
+
+- Change all @/ imports to relative paths ([8c8f304](https://github.com/kiki-kanri/node-ciphers/commit/8c8f304))
+- Rename selected files ([d33994a](https://github.com/kiki-kanri/node-ciphers/commit/d33994a))
+- Rename test folder to tests ([9102ac8](https://github.com/kiki-kanri/node-ciphers/commit/9102ac8))
+- Update type export method ([c2563a6](https://github.com/kiki-kanri/node-ciphers/commit/c2563a6))
+- Freeze constants using Object.freeze ([d644ed7](https://github.com/kiki-kanri/node-ciphers/commit/d644ed7))
+- Replace ternary expressions with `dataToBuffer` for data conversion to buffer ([7fda460](https://github.com/kiki-kanri/node-ciphers/commit/7fda460))
+
+### 📦 Build
+
+- Update build process and tsconfig ([b4270af](https://github.com/kiki-kanri/node-ciphers/commit/b4270af))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([4fc1ea7](https://github.com/kiki-kanri/node-ciphers/commit/4fc1ea7))
+- Update .gitignore ([75bbfcf](https://github.com/kiki-kanri/node-ciphers/commit/75bbfcf))
+- Upgrade dependencies ([c89c3e9](https://github.com/kiki-kanri/node-ciphers/commit/c89c3e9))
+- Upgrade dependencies ([99825ac](https://github.com/kiki-kanri/node-ciphers/commit/99825ac))
+- Update package.json ([f613821](https://github.com/kiki-kanri/node-ciphers/commit/f613821))
+- Remove playground ([879ae28](https://github.com/kiki-kanri/node-ciphers/commit/879ae28))
+- Add bumplog script ([339745c](https://github.com/kiki-kanri/node-ciphers/commit/339745c))
+
+### ✅ Tests
+
+- Update error messages ([321b208](https://github.com/kiki-kanri/node-ciphers/commit/321b208))
+
+### 🎨 Styles
+
+- Reorder imports ([efcf39f](https://github.com/kiki-kanri/node-ciphers/commit/efcf39f))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v0.8.1
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.8.0...v0.8.1)
