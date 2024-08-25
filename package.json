@@ -16,7 +16,7 @@
   "scripts": {
     "build": "ts-project-builder ./src/index.ts --clean --preserve-modules",
     "bumplog": "changelogen --bump",
-    "test": "jest --coverage"
+    "test": "NODE_OPTIONS=--openssl-legacy-provider jest --coverage"
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
