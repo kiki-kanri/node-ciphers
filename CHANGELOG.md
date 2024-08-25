@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.0.2
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.0.1...v1.0.2)
+
+### 🏡 Chore
+
+- Remove tsx dependency ([b2a1679](https://github.com/kiki-kanri/node-ciphers/commit/b2a1679))
+- Update keywords in package.json ([e69cd41](https://github.com/kiki-kanri/node-ciphers/commit/e69cd41))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.0.1
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.0.0...v1.0.1)
