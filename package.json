@@ -38,9 +38,9 @@
   "keywords": [
     "3des",
     "aes",
-    "aes-ccm",
-    "aes-ctr",
-    "aes-gcm",
+    "aes ccm",
+    "aes ctr",
+    "aes gcm",
     "cbc",
     "cfb",
     "cfb1",
@@ -50,8 +50,8 @@
     "des",
     "ecb",
     "encrypt",
-    "json-decrypt",
-    "json-encrypt",
+    "json decrypt",
+    "json encrypt",
     "ofb"
   ],
   "engines": {
