@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.0.1
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.0.0...v1.0.1)
+
+### 🩹 Fixes
+
+- Correct usage error of JSON data decryption in README example ([67d7465](https://github.com/kiki-kanri/node-ciphers/commit/67d7465))
+
+### 🏡 Chore
+
+- Add Jest dependencies and configuration files ([7a3793c](https://github.com/kiki-kanri/node-ciphers/commit/7a3793c))
+
+### ✅ Tests
+
+- Rewrite tests using Jest ([24f2027](https://github.com/kiki-kanri/node-ciphers/commit/24f2027))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.0.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.0.0-rc.0...v1.0.0)
