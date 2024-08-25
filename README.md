@@ -78,7 +78,7 @@ console.log(cbcEncryptResult);
 console.log(cbcEncryptJsonResult);
 if (!cbcEncryptResult || !cbcEncryptJsonResult) throw new Error('Encrypt failed');
 console.log(cbcCipher.decrypt(cbcEncryptResult.data, cbcEncryptResult.iv));
-console.log(cbcCipher.decrypt(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
+console.log(cbcCipher.decryptToJSON(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
 
 // 128 bits ecb (16 bytes length key)
 const ecbCipher = new AESCipher.ECB('0123456789abcdef');
@@ -89,7 +89,7 @@ console.log(ecbEncryptResult);
 console.log(ecbEncryptJsonResult);
 if (!ecbEncryptResult || !ecbEncryptJsonResult) throw new Error('Encrypt failed');
 console.log(ecbCipher.decrypt(ecbEncryptResult.data));
-console.log(ecbCipher.decrypt(ecbEncryptJsonResult.data));
+console.log(ecbCipher.decryptToJSON(ecbEncryptJsonResult.data));
 ```
 
 The cipher's encryption and decryption methods can be reused; there's no need to create a new one each time.
@@ -140,7 +140,7 @@ console.log(cbcEncryptResult);
 console.log(cbcEncryptJsonResult);
 if (!cbcEncryptResult || !cbcEncryptJsonResult) throw new Error('Encrypt failed');
 console.log(cbcCipher.decrypt(cbcEncryptResult.data, cbcEncryptResult.iv));
-console.log(cbcCipher.decrypt(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
+console.log(cbcCipher.decryptToJSON(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
 
 // des-ede3, 3des (24 bytes length key)
 const ecbCipher = new DESCipher.ECB('0123456789abcdef01234567');
@@ -151,7 +151,7 @@ console.log(ecbEncryptResult);
 console.log(ecbEncryptJsonResult);
 if (!ecbEncryptResult || !ecbEncryptJsonResult) throw new Error('Encrypt failed');
 console.log(ecbCipher.decrypt(ecbEncryptResult.data));
-console.log(ecbCipher.decrypt(ecbEncryptJsonResult.data));
+console.log(ecbCipher.decryptToJSON(ecbEncryptJsonResult.data));
 ```
 
 > [!IMPORTANT]
