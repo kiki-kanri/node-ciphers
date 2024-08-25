@@ -1,5 +1,25 @@
 # Changelog
 
+## v1.0.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.0.0-rc.0...v1.0.0)
+
+### 💅 Refactors
+
+- Freeze constants using Object.freeze ([07b2932](https://github.com/kiki-kanri/node-ciphers/commit/07b2932))
+
+### 📖 Documentation
+
+- Update package.json and README ([f0233ac](https://github.com/kiki-kanri/node-ciphers/commit/f0233ac))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([a706e4e](https://github.com/kiki-kanri/node-ciphers/commit/a706e4e))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.0.0-rc.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v0.8.1...v1.0.0-rc.0)
