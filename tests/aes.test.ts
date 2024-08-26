@@ -24,9 +24,8 @@ const keys = {
 
 function commonCipherTest(cipherClass: new (key: string) => BaseAESEncryptAndDecrypt, key: string, bits: string) {
 	describe(`${cipherClass.name} Mode with ${bits} bits key`, () => {
-		let cipher: BaseAESEncryptAndDecrypt;
-		beforeEach(() => (cipher = new cipherClass(key)));
 		it('should correctly encrypt and decrypt data', () => {
+			const cipher = new cipherClass(key);
 			const encryptResult = cipher.encrypt(data);
 			expect(encryptResult).toHaveProperty('data');
 			expect(encryptResult).toHaveProperty('iv');
@@ -35,6 +34,7 @@ function commonCipherTest(cipherClass: new (key: string) => BaseAESEncryptAndDec
 		});
 
 		it('should correctly encrypt and decrypt JSON data', () => {
+			const cipher = new cipherClass(key);
 			const encryptResult = cipher.encryptJSON(jsonData);
 			expect(encryptResult).toHaveProperty('data');
 			expect(encryptResult).toHaveProperty('iv');
@@ -43,6 +43,7 @@ function commonCipherTest(cipherClass: new (key: string) => BaseAESEncryptAndDec
 		});
 
 		it('should return undefined when decrypting invalid data and iv', () => {
+			const cipher = new cipherClass(key);
 			const decryptedData = cipher.decrypt('test test', 'test test');
 			expect(decryptedData).toBeUndefined();
 			const decryptedJsonData = cipher.decryptToJSON('test test', 'test test');
@@ -53,9 +54,8 @@ function commonCipherTest(cipherClass: new (key: string) => BaseAESEncryptAndDec
 
 function hasAuthTagCipherTest(cipherClass: new (key: string) => CCM | GCM, key: string, bits: string) {
 	describe(`${cipherClass.name} Mode with ${bits} bits key`, () => {
-		let cipher: CCM | GCM;
-		beforeEach(() => (cipher = new cipherClass(key)));
 		it('should correctly encrypt and decrypt data', () => {
+			const cipher = new cipherClass(key);
 			const encryptResult = cipher.encrypt(data);
 			expect(encryptResult).toHaveProperty('data');
 			expect(encryptResult).toHaveProperty('iv');
@@ -64,6 +64,7 @@ function hasAuthTagCipherTest(cipherClass: new (key: string) => CCM | GCM, key: 
 		});
 
 		it('should correctly encrypt and decrypt JSON data', () => {
+			const cipher = new cipherClass(key);
 			const encryptResult = cipher.encryptJSON(jsonData);
 			expect(encryptResult).toHaveProperty('data');
 			expect(encryptResult).toHaveProperty('iv');
@@ -72,6 +73,7 @@ function hasAuthTagCipherTest(cipherClass: new (key: string) => CCM | GCM, key: 
 		});
 
 		it('should return undefined when decrypting invalid data and iv', () => {
+			const cipher = new cipherClass(key);
 			const decryptedData = cipher.decrypt('test test', 'test test', 'test test');
 			expect(decryptedData).toBeUndefined();
 			const decryptedJsonData = cipher.decryptToJSON('test test', 'test test', 'test test');
