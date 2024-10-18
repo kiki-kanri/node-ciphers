@@ -13,8 +13,8 @@ importers:
         version: 4.26.1
     devDependencies:
       '@kikiutils/changelogen':
-        specifier: ^0.6.0
-        version: 0.6.0
+        specifier: ^0.7.0
+        version: 0.7.0
       '@kikiutils/prettierrc':
         specifier: ^1.3.2
         version: 1.3.2
@@ -467,8 +467,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
 
-  '@kikiutils/changelogen@0.6.0':
-    resolution: {integrity: sha512-VYFooGwYIjnkWnzK62BZcp9/k+jF5qB9t4kiv/lrrREuUVBzOLTHVcdzRTeJg7sfyFWpNrdOgolVv5+tRxIpNA==}
+  '@kikiutils/changelogen@0.7.0':
+    resolution: {integrity: sha512-eGf5owO3OnT4GaR3/ydbPuPjA8TwKN1vE1G3ImveVzENLTZXnD7L3S20iZjsiQuKF68d2UwQ6ng3nefc+dYPMQ==}
     hasBin: true
 
   '@kikiutils/prettierrc@1.3.2':
@@ -2413,7 +2413,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@kikiutils/changelogen@0.6.0':
+  '@kikiutils/changelogen@0.7.0':
     dependencies:
       c12: 2.0.1
       colorette: 2.0.20
