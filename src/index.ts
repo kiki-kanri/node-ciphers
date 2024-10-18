@@ -1,3 +1,3 @@
-export * as AESCipher from './ciphers/aes';
-export * as DESCipher from './ciphers/des';
+export * as default from './_index';
+export * from './_index';
 export type * from './types';
