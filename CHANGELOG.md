@@ -1,5 +1,27 @@
 # Changelog
 
+## v1.1.2
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.1...v1.1.2)
+
+### 🩹 Fixes
+
+- Resolve import errors with ES modules ([ea87241](https://github.com/kiki-kanri/node-ciphers/commit/ea87241))
+
+### 💅 Refactors
+
+- **cipher:** Set `BaseCipher.#encodingOptions` to readonly ([1e2d2e1](https://github.com/kiki-kanri/node-ciphers/commit/1e2d2e1))
+- **constants:** Change constant type definition method ([b44da60](https://github.com/kiki-kanri/node-ciphers/commit/b44da60))
+
+### 🏡 Chore
+
+- Modify tsconfig.json ([21172f7](https://github.com/kiki-kanri/node-ciphers/commit/21172f7))
+- Upgrade dependencies and modify release script ([4463e13](https://github.com/kiki-kanri/node-ciphers/commit/4463e13))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.1
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.0...v1.1.1)
