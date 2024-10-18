@@ -6,7 +6,7 @@ import { availableCiphers } from '../../../constants';
 import type { AESCipherAlgorithm, AESCipherEncodingOptions, AESCipherMode, HasAuthTagAESCipherEncodingOptions } from '../../../types';
 import BaseCipher from '../../base';
 
-export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = Object.freeze({
+export const keyLengthToBitsMap = Object.freeze<Record<number, 128 | 192 | 256>>({
 	16: 128,
 	24: 192,
 	32: 256
