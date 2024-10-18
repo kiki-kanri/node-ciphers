@@ -16,7 +16,7 @@
     "bumplog": "changelogen --bump",
     "prepack": "pnpm run build",
     "release": "pnpm run build && pnpm run test && changelogen --push --release && pnpm publish",
-    "test": "NODE_OPTIONS=--openssl-legacy-provider jest --coverage"
+    "test": "cross-env NODE_OPTIONS=--openssl-legacy-provider jest --coverage"
   },
   "types": "./dist/index.d.ts",
   "dependencies": {
@@ -29,6 +29,7 @@
     "@types/jest": "^29.5.13",
     "@types/node": "^22.7.6",
     "consola": "^3.2.3",
+    "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "ts-jest": "^29.2.5",
     "ts-project-builder": "^3.2.4",
