@@ -18,6 +18,7 @@
     "release": "pnpm run build && pnpm run test && changelogen --release && pnpm publish",
     "test": "NODE_OPTIONS=--openssl-legacy-provider jest --coverage"
   },
+  "types": "./dist/index.d.ts",
   "dependencies": {
     "type-fest": "^4.26.1"
   },
