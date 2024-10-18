@@ -1,0 +1,38 @@
+name: Test Suite
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18.12.1, 20, 22]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install pnpm
+        run: npm i pnpm@latest -g
+
+      - name: Install dependencies
+        run: pnpm i
+
+      - name: Run tests with coverage
+        run: pnpm run test --coverage
+
+      - name: Upload coverage to Codecov
+        if: ${{ success() }}
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
