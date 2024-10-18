@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.1.3
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.2...v1.1.3)
+
+### 📖 Documentation
+
+- Add codecov badge to README ([e7db65b](https://github.com/kiki-kanri/node-ciphers/commit/e7db65b))
+
+### 🏡 Chore
+
+- **ci:** Add test.yaml for version-tag-based CI trigger ([88e04ae](https://github.com/kiki-kanri/node-ciphers/commit/88e04ae))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.2
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.1...v1.1.2)
