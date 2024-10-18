@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.1.1
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.0...v1.1.1)
+
+### 🩹 Fixes
+
+- Add missing types field in package.json ([3cf4d8c](https://github.com/kiki-kanri/node-ciphers/commit/3cf4d8c))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([1c739af](https://github.com/kiki-kanri/node-ciphers/commit/1c739af))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.0.2...v1.1.0)
