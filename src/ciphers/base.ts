@@ -5,7 +5,7 @@ import { defaultEncodingOptions } from '../constants';
 import type { BaseCipherEncodingOptions, HasAuthTagAESCipherEncodingOptions } from '../types';
 
 export class BaseCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = BaseCipherEncodingOptions> {
-	#encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;
+	readonly #encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;
 
 	constructor(encodingOptions?: EncodingOptions) {
 		this.#encodingOptions = Object.freeze({ ...defaultEncodingOptions, ...encodingOptions } as RequiredDeep<EncodingOptions>);
