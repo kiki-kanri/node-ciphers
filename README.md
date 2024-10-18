@@ -2,6 +2,7 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
 A lightweight Node.js library for AES and DES encryption, offering flexible encoding options, support for various cipher modes, and seamless integration with streams.
@@ -182,11 +183,14 @@ If the encrypted data cannot be decrypted, it may be due to not specifying the c
 [MIT License](./LICENSE)
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/node-ciphers/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-version-href]: https://npmjs.com/package/node-ciphers
+[npm-version-src]: https://img.shields.io/npm/v/node-ciphers/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
 [npm-downloads-href]: https://npmjs.com/package/node-ciphers
+[npm-downloads-src]: https://img.shields.io/npm/dm/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
 
-[license-src]: https://img.shields.io/npm/l/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
+[codecov-href]: https://codecov.io/gh/kiki-kanri/node-ciphers
+[codecov-src]: https://codecov.io/gh/kiki-kanri/node-ciphers/graph/badge.svg?token=RNU7FNG8HD
+
 [license-href]: https://github.com/kiki-kanri/kikiutils-node-classes/blob/main/LICENSE
+[license-src]: https://img.shields.io/npm/l/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
