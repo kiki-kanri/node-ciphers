@@ -1,5 +1,27 @@
 # Changelog
 
+## v1.1.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.0.2...v1.1.0)
+
+### 🚀 Enhancements
+
+- Add release script to package.json ([b37a70f](https://github.com/kiki-kanri/node-ciphers/commit/b37a70f))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([340aec2](https://github.com/kiki-kanri/node-ciphers/commit/340aec2))
+- Switch changelog generation package ([d2234f6](https://github.com/kiki-kanri/node-ciphers/commit/d2234f6))
+- Remove main, module, and types fields from package.json and add exports configuration ([8f32911](https://github.com/kiki-kanri/node-ciphers/commit/8f32911))
+
+### ✅ Tests
+
+- Update test cases ([8865b3c](https://github.com/kiki-kanri/node-ciphers/commit/8865b3c))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.0.2
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.0.1...v1.0.2)
