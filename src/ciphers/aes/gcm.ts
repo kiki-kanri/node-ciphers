@@ -6,7 +6,7 @@ import type { HasAuthTagAESCipherEncodingOptions } from '../../types';
 import BaseAESCipher from './base';
 
 export class GCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
-	#ivLength: number;
+	readonly #ivLength: number;
 
 	constructor(key: BinaryLike, encodingOptions?: HasAuthTagAESCipherEncodingOptions, ivLength: number = 12) {
 		super(key, 'gcm', encodingOptions);

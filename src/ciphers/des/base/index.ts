@@ -13,8 +13,8 @@ const keyLengthToModePrefixMap: Record<number, '' | '-ede' | '-ede3'> = Object.f
 });
 
 export abstract class BaseDESCipher extends BaseCipher {
-	#algorithm: DESCipherAlgorithm;
-	#key: NodeJS.ArrayBufferView;
+	readonly #algorithm: DESCipherAlgorithm;
+	readonly #key: NodeJS.ArrayBufferView;
 
 	constructor(key: BinaryLike, mode: DESCipherMode, encodingOptions?: DESCipherEncodingOptions) {
 		super(encodingOptions);

@@ -8,8 +8,8 @@ import BaseAESCipher from './base';
 type AvailableIvLength = 7 | 8 | 9 | 10 | 11 | 12 | 13;
 
 export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
-	#authTagLength: number;
-	#ivLength: AvailableIvLength;
+	readonly #authTagLength: number;
+	readonly #ivLength: AvailableIvLength;
 
 	constructor(key: BinaryLike, encodingOptions?: HasAuthTagAESCipherEncodingOptions, authTagLength: number = 16, ivLength: AvailableIvLength = 12) {
 		super(key, 'ccm', encodingOptions);

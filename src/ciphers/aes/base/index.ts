@@ -13,8 +13,8 @@ export const keyLengthToBitsMap = Object.freeze<Record<number, 128 | 192 | 256>>
 });
 
 export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = AESCipherEncodingOptions> extends BaseCipher<EncodingOptions> {
-	#algorithm: AESCipherAlgorithm;
-	#key: NodeJS.ArrayBufferView;
+	readonly #algorithm: AESCipherAlgorithm;
+	readonly #key: NodeJS.ArrayBufferView;
 
 	constructor(key: BinaryLike, mode: AESCipherMode, encodingOptions?: EncodingOptions) {
 		super(encodingOptions);
