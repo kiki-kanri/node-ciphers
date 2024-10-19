@@ -9,7 +9,7 @@ export class ECB extends BaseDESCipher {
 		super(key, 'ecb', encodingOptions);
 	}
 
-	// @ts-ignore
+	// @ts-expect-error
 	decrypt(encryptedData: BinaryLike, iv?: null, encodingOptions?: DESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
 		try {
 			return this.getDecipherResult(this.createDecipher(null, decipherOptions), encryptedData, encodingOptions);

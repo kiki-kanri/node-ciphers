@@ -9,7 +9,7 @@ export class ECB extends BaseAESCipher {
 		super(key, 'ecb', encodingOptions);
 	}
 
-	// @ts-ignore
+	// @ts-expect-error
 	decrypt(encryptedData: BinaryLike, iv?: null, encodingOptions?: AESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
 		try {
 			return this.getDecipherResult(this.createDecipher(null, decipherOptions), encryptedData, encodingOptions);
