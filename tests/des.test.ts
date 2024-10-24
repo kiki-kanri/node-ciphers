@@ -15,7 +15,7 @@ const jsonData = { value: data };
 const keys = {
 	64: '01234567',
 	128: '0123456789abcdef',
-	192: '0123456789abcdef01234567'
+	192: Buffer.from('0123456789abcdef01234567')
 };
 
 describe('DESCipher', () => {

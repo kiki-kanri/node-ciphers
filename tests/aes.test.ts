@@ -19,7 +19,7 @@ const jsonData = { value: data };
 const keys = {
 	128: '0123456789abcdef',
 	192: '0123456789abcdef01234567',
-	256: '0123456789abcdef0123456789abcdef'
+	256: Buffer.from('0123456789abcdef0123456789abcdef')
 };
 
 function commonCipherTest(cipherClass: new (key: string) => BaseAESEncryptAndDecrypt, key: string, bits: string) {
