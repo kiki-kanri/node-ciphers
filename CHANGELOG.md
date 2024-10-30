@@ -1,5 +1,39 @@
 # Changelog
 
+## v1.1.4
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.3...v1.1.4)
+
+### 💅 Refactors
+
+- Change certain class properties to readonly ([bdf9292](https://github.com/kiki-kanri/node-ciphers/commit/bdf9292))
+- Replace `@ts-ignore` with `@ts-expect-error` ([f154b2d](https://github.com/kiki-kanri/node-ciphers/commit/f154b2d))
+
+### 📖 Documentation
+
+- Update README ([c59ca76](https://github.com/kiki-kanri/node-ciphers/commit/c59ca76))
+
+### 🏡 Chore
+
+- Update test CI configuration file ([a0ee706](https://github.com/kiki-kanri/node-ciphers/commit/a0ee706))
+- Upgrade dependencies ([15e2774](https://github.com/kiki-kanri/node-ciphers/commit/15e2774))
+- Remove consola dependency ([9706fb7](https://github.com/kiki-kanri/node-ciphers/commit/9706fb7))
+- Upgrade dependencies ([9912b43](https://github.com/kiki-kanri/node-ciphers/commit/9912b43))
+
+### ✅ Tests
+
+- Use cross-env for setting env in test script ([0aa6c86](https://github.com/kiki-kanri/node-ciphers/commit/0aa6c86))
+- Change some test keys to use buffer ([065b13f](https://github.com/kiki-kanri/node-ciphers/commit/065b13f))
+
+### 🤖 CI
+
+- Allow manual triggering of test CI ([1a470fb](https://github.com/kiki-kanri/node-ciphers/commit/1a470fb))
+- Update node version list in CI file ([ad70a6f](https://github.com/kiki-kanri/node-ciphers/commit/ad70a6f))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.3
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.2...v1.1.3)
