@@ -4,6 +4,7 @@
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers?ref=badge_shield)
 
 A lightweight Node.js library for AES and DES encryption, offering flexible encoding options, support for various cipher modes, and seamless integration with streams.
 
@@ -194,3 +195,6 @@ If the encrypted data cannot be decrypted, it may be due to not specifying the c
 
 [license-href]: https://github.com/kiki-kanri/kikiutils-node-classes/blob/main/LICENSE
 [license-src]: https://img.shields.io/npm/l/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers?ref=badge_large)
