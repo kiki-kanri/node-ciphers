@@ -15,7 +15,7 @@
     "build": "ts-project-builder ./src/index.ts --clean --preserve-modules",
     "bumplog": "changelogen --bump",
     "prepack": "pnpm run build",
-    "release": "pnpm run build && pnpm run test && changelogen --push --release && pnpm publish",
+    "release": "pnpm run build && pnpm run test && changelogen --push --release && npm publish",
     "test": "cross-env NODE_OPTIONS=--openssl-legacy-provider jest --coverage"
   },
   "types": "./dist/index.d.ts",
