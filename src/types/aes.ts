@@ -1,3 +1,5 @@
+import type { Except } from 'type-fest';
+
 import type { BaseCipherEncodingOptions } from './options';
 
 export type { BaseCipherEncodingOptions as AESCipherEncodingOptions } from './options';
@@ -13,6 +15,6 @@ export interface HasAuthTagAESCipherEncodingOptions extends BaseCipherEncodingOp
 }
 
 export namespace HasAuthTagAESCipherEncodingOptions {
-	export type Decrypt = Omit<HasAuthTagAESCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'key'>;
-	export type Encrypt = Omit<HasAuthTagAESCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'key'>;
+	export type Decrypt = Except<HasAuthTagAESCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'key'>;
+	export type Encrypt = Except<HasAuthTagAESCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'key'>;
 }
