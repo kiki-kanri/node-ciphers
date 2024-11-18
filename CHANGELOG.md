@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.1.5
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.4...v1.1.5)
+
+### 💅 Refactors
+
+- Replace `Omit` type with type-fest's `Except` type ([c327c4d](https://github.com/kiki-kanri/node-ciphers/commit/c327c4d))
+
+### 🏡 Chore
+
+- Modify release script in package.json ([9dd2ae8](https://github.com/kiki-kanri/node-ciphers/commit/9dd2ae8))
+- Upgrade dependencies ([eba4320](https://github.com/kiki-kanri/node-ciphers/commit/eba4320))
+- Replace Prettier with ESLint, add related files, and update VSCode settings ([85b7c74](https://github.com/kiki-kanri/node-ciphers/commit/85b7c74))
+- Modify scripts in package.json ([9109e30](https://github.com/kiki-kanri/node-ciphers/commit/9109e30))
+
+### 🎨 Styles
+
+- Format and lint all files ([6fd68f5](https://github.com/kiki-kanri/node-ciphers/commit/6fd68f5))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.4
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.3...v1.1.4)
