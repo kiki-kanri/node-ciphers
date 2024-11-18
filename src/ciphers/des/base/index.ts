@@ -7,9 +7,9 @@ import type { DESCipherAlgorithm, DESCipherEncodingOptions, DESCipherMode } from
 import BaseCipher from '../../base';
 
 const keyLengthToModePrefixMap: Record<number, '' | '-ede' | '-ede3'> = Object.freeze({
+	8: '',
 	16: '-ede',
 	24: '-ede3',
-	8: '',
 });
 
 export abstract class BaseDESCipher extends BaseCipher {
