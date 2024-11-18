@@ -1,3 +1,5 @@
+import { Buffer } from 'node:buffer';
+
 import { DESCipher } from '../src';
 import type BaseDESEncryptAndDecrypt from '../src/ciphers/des/base/encrypt-and-decrypt';
 
@@ -7,24 +9,24 @@ const cipherClasses = [
 	DESCipher.CFB1,
 	DESCipher.CFB8,
 	DESCipher.ECB,
-	DESCipher.OFB
+	DESCipher.OFB,
 ] as const;
 
 const data = 'test';
 const jsonData = { value: data };
 const keys = {
-	64: '01234567',
 	128: '0123456789abcdef',
-	192: Buffer.from('0123456789abcdef01234567')
+	192: Buffer.from('0123456789abcdef01234567'),
+	64: '01234567',
 };
 
-describe('DESCipher', () => {
-	cipherClasses.forEach((cipherClass) => {
+describe('des cipher', () => {
+	cipherClasses.forEach((CipherClass) => {
 		Object.entries(keys).forEach(([bits, key]) => {
-			if (bits === '128' && cipherClass.name.match(/cfb(1|8)/i)) return;
-			describe(`${cipherClass.name} Mode with ${bits} bits key`, () => {
+			if (bits === '128' && CipherClass.name.match(/cfb(1|8)/i)) return;
+			describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
 				let cipher: BaseDESEncryptAndDecrypt;
-				beforeEach(() => (cipher = new cipherClass(key) as BaseDESEncryptAndDecrypt));
+				beforeEach(() => (cipher = new CipherClass(key) as BaseDESEncryptAndDecrypt));
 				it('should correctly encrypt and decrypt data', () => {
 					const encryptResult = cipher.encrypt(data);
 					expect(encryptResult).toHaveProperty('data');

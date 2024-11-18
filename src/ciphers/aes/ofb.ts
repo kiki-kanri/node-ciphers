@@ -1,6 +1,7 @@
-import type { BinaryLike } from 'crypto';
+import type { BinaryLike } from 'node:crypto';
 
 import type { AESCipherEncodingOptions } from '../../types';
+
 import BaseAESEncryptAndDecrypt from './base/encrypt-and-decrypt';
 
 export class OFB extends BaseAESEncryptAndDecrypt {

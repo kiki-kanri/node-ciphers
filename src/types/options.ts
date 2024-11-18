@@ -30,6 +30,7 @@ export interface BaseCipherEncodingOptions {
 	iv?: BufferEncoding;
 }
 
+/* eslint-disable ts/no-namespace */
 export namespace BaseCipherEncodingOptions {
 	export type Decrypt = Pick<BaseCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'iv'>;
 	export type Encrypt = Pick<BaseCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'iv'>;

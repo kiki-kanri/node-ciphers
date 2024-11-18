@@ -1,6 +1,6 @@
-import { createCipheriv, createDecipheriv } from 'crypto';
-import type { BinaryLike, Cipher, CipherCCM, CipherCCMOptions, CipherGCM, CipherGCMOptions, Decipher, DecipherCCM, DecipherGCM } from 'crypto';
-import type { TransformOptions } from 'stream';
+import { createCipheriv, createDecipheriv } from 'node:crypto';
+import type { BinaryLike, Cipher, CipherCCM, CipherCCMOptions, CipherGCM, CipherGCMOptions, Decipher, DecipherCCM, DecipherGCM } from 'node:crypto';
+import type { TransformOptions } from 'node:stream';
 
 import { availableCiphers } from '../../../constants';
 import type { AESCipherAlgorithm, AESCipherEncodingOptions, AESCipherMode, HasAuthTagAESCipherEncodingOptions } from '../../../types';
@@ -9,7 +9,7 @@ import BaseCipher from '../../base';
 export const keyLengthToBitsMap = Object.freeze<Record<number, 128 | 192 | 256>>({
 	16: 128,
 	24: 192,
-	32: 256
+	32: 256,
 });
 
 export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = AESCipherEncodingOptions> extends BaseCipher<EncodingOptions> {

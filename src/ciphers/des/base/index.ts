@@ -1,15 +1,15 @@
-import { createCipheriv, createDecipheriv } from 'crypto';
-import type { BinaryLike } from 'crypto';
-import type { TransformOptions } from 'stream';
+import { createCipheriv, createDecipheriv } from 'node:crypto';
+import type { BinaryLike } from 'node:crypto';
+import type { TransformOptions } from 'node:stream';
 
 import { availableCiphers } from '../../../constants';
 import type { DESCipherAlgorithm, DESCipherEncodingOptions, DESCipherMode } from '../../../types';
 import BaseCipher from '../../base';
 
 const keyLengthToModePrefixMap: Record<number, '' | '-ede' | '-ede3'> = Object.freeze({
-	8: '',
 	16: '-ede',
-	24: '-ede3'
+	24: '-ede3',
+	8: '',
 });
 
 export abstract class BaseDESCipher extends BaseCipher {

@@ -103,6 +103,8 @@ AES encryption supports three key lengths: 128-bit, 192-bit, and 256-bit. These 
 When the provided key for creating a cipher is a string, it will be internally converted into a buffer and its byte length will be checked. The default encoding used for converting to a buffer is UTF-8, which may cause a difference between the character length and the byte length. To avoid errors, you can directly provide a key of the `Buffer` type when creating the cipher, or set the `key` option in the options parameter.
 
 ```typescript
+import { Buffer } from 'node:buffer';
+
 // 192 bits cbc (24 bytes length key)
 const cbcCipher192 = new AESCipher.CBC('😊😊😊😊😊😊😊😊😊😊😊😊', { key: 'ascii' });
 console.log(cbcCipher192.algorithm); // aes-192-cbc
@@ -168,7 +170,7 @@ You can customize the data transformation encoding for encryption and decryption
 
 ```typescript
 // Create a cipher that outputs encryption results in Base64 and accepts encryption input in Base64 format
-const cbcCipher = new AESCipher.CBC('0123456789abcdef', { encryptOutput: 'base64', decryptInput: 'base64' });
+const cbcCipher = new AESCipher.CBC('0123456789abcdef', { decryptInput: 'base64', encryptOutput: 'base64' });
 
 // Use hex output for this encryption only
 cbcCipher.encrypt('test', { encryptOutput: 'hex' });

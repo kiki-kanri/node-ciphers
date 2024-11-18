@@ -1,4 +1,5 @@
-import type { BinaryLike, Cipher, Decipher } from 'crypto';
+import { Buffer } from 'node:buffer';
+import type { BinaryLike, Cipher, Decipher } from 'node:crypto';
 import type { RequiredDeep } from 'type-fest';
 
 import { defaultEncodingOptions } from '../constants';
@@ -33,7 +34,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptio
 		if (data === undefined) return;
 		try {
 			return JSON.parse(data) as T;
-		} catch (error) {}
+		} catch {}
 	}
 }
 
