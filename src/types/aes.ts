@@ -14,7 +14,7 @@ export interface HasAuthTagAESCipherEncodingOptions extends BaseCipherEncodingOp
 	authTag?: BufferEncoding;
 }
 
-/* eslint-disable ts/no-namespace */
+// eslint-disable-next-line ts/no-namespace
 export namespace HasAuthTagAESCipherEncodingOptions {
 	export type Decrypt = Except<HasAuthTagAESCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'key'>;
 	export type Encrypt = Except<HasAuthTagAESCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'key'>;
