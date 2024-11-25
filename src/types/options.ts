@@ -1,37 +1,37 @@
 export interface BaseCipherEncodingOptions {
-	/**
-	 * @default 'hex'
-	 */
-	decryptInput?: BufferEncoding;
+    /**
+     * @default 'hex'
+     */
+    decryptInput?: BufferEncoding;
 
-	/**
-	 * @default 'utf8'
-	 */
-	decryptOutput?: BufferEncoding;
+    /**
+     * @default 'utf8'
+     */
+    decryptOutput?: BufferEncoding;
 
-	/**
-	 * @default 'utf8'
-	 */
-	encryptInput?: BufferEncoding;
+    /**
+     * @default 'utf8'
+     */
+    encryptInput?: BufferEncoding;
 
-	/**
-	 * @default 'hex'
-	 */
-	encryptOutput?: BufferEncoding;
+    /**
+     * @default 'hex'
+     */
+    encryptOutput?: BufferEncoding;
 
-	/**
-	 * @default 'utf8'
-	 */
-	key?: BufferEncoding;
+    /**
+     * @default 'utf8'
+     */
+    key?: BufferEncoding;
 
-	/**
-	 * @default 'hex'
-	 */
-	iv?: BufferEncoding;
+    /**
+     * @default 'hex'
+     */
+    iv?: BufferEncoding;
 }
 
 // eslint-disable-next-line ts/no-namespace
 export namespace BaseCipherEncodingOptions {
-	export type Decrypt = Pick<BaseCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'iv'>;
-	export type Encrypt = Pick<BaseCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'iv'>;
+    export type Decrypt = Pick<BaseCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'iv'>;
+    export type Encrypt = Pick<BaseCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'iv'>;
 }
