@@ -26,7 +26,7 @@ describe('des cipher', () => {
             if (bits === '128' && CipherClass.name.match(/cfb(1|8)/i)) return;
             describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
                 let cipher: BaseDESEncryptAndDecrypt;
-                beforeEach(() => (cipher = new CipherClass(key) as BaseDESEncryptAndDecrypt));
+                beforeEach(() => cipher = new CipherClass(key) as BaseDESEncryptAndDecrypt);
                 it('should correctly encrypt and decrypt data', () => {
                     const encryptResult = cipher.encrypt(data);
                     expect(encryptResult).toHaveProperty('data');

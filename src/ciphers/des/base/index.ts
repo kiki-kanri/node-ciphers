@@ -6,7 +6,7 @@ import { availableCiphers } from '../../../constants';
 import type { DESCipherAlgorithm, DESCipherEncodingOptions, DESCipherMode } from '../../../types';
 import BaseCipher from '../../base';
 
-const keyLengthToModePrefixMap: Record<number, '' | '-ede' | '-ede3'> = Object.freeze({
+const keyLengthToModePrefixMap: Record<number, '' | '-ede3' | '-ede'> = Object.freeze({
     8: '',
     16: '-ede',
     24: '-ede3',
