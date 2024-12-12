@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.1.6
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.5...v1.1.6)
+
+### 🏡 Chore
+
+- Upgrade dependencies ([b6b2263](https://github.com/kiki-kanri/node-ciphers/commit/b6b2263))
+- Modify `eslint-disable-next-line` comment style ([dd03fe4](https://github.com/kiki-kanri/node-ciphers/commit/dd03fe4))
+- Upgrade dependencies ([ee9c5c3](https://github.com/kiki-kanri/node-ciphers/commit/ee9c5c3))
+- Upgrade dependencies ([2ab5718](https://github.com/kiki-kanri/node-ciphers/commit/2ab5718))
+
+### 🎨 Styles
+
+- Format codes ([b478fa1](https://github.com/kiki-kanri/node-ciphers/commit/b478fa1))
+- Change all indentation to 4 spaces ([c459250](https://github.com/kiki-kanri/node-ciphers/commit/c459250))
+- Format and lint files ([484d32d](https://github.com/kiki-kanri/node-ciphers/commit/484d32d))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.5
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.4...v1.1.5)
