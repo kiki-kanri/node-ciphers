@@ -23,7 +23,10 @@ export class ECB extends BaseAESCipher {
 
     encrypt(data: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
         try {
-            return { data: this.getCipherResult(this.createCipher(null, cipherOptions), data, encodingOptions), iv: null };
+            return {
+                data: this.getCipherResult(this.createCipher(null, cipherOptions), data, encodingOptions),
+                iv: null,
+            };
         } catch {}
     }
 

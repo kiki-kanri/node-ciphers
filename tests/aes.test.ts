@@ -1,18 +1,27 @@
 import { Buffer } from 'node:buffer';
 
 import { AESCipher } from '../src';
-import type { CCM, GCM } from '../src/ciphers/aes';
+import type {
+    CCM,
+    GCM,
+} from '../src/ciphers/aes';
 import type BaseAESEncryptAndDecrypt from '../src/ciphers/aes/base/encrypt-and-decrypt';
 
 const cipherClassesAndTestFunctions = [
     [AESCipher.CBC],
-    [AESCipher.CCM, hasAuthTagCipherTest],
+    [
+        AESCipher.CCM,
+        hasAuthTagCipherTest,
+    ],
     [AESCipher.CFB],
     [AESCipher.CFB1],
     [AESCipher.CFB8],
     [AESCipher.CTR],
     [AESCipher.ECB],
-    [AESCipher.GCM, hasAuthTagCipherTest],
+    [
+        AESCipher.GCM,
+        hasAuthTagCipherTest,
+    ],
     [AESCipher.OFB],
 ] as const;
 
@@ -24,7 +33,7 @@ const keys = {
     256: Buffer.from('0123456789abcdef0123456789abcdef'),
 };
 
-function commonCipherTest(CipherClass: new (key: string) => BaseAESEncryptAndDecrypt, key: string, bits: string) {
+function commonCipherTest(CipherClass: new (key: Buffer | string) => BaseAESEncryptAndDecrypt, key: Buffer | string, bits: string) {
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data', () => {
             const cipher = new CipherClass(key);
@@ -54,7 +63,7 @@ function commonCipherTest(CipherClass: new (key: string) => BaseAESEncryptAndDec
     });
 }
 
-function hasAuthTagCipherTest(CipherClass: new (key: string) => CCM | GCM, key: string, bits: string) {
+function hasAuthTagCipherTest(CipherClass: new (key: Buffer | string) => CCM | GCM, key: Buffer | string, bits: string) {
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data', () => {
             const cipher = new CipherClass(key);
@@ -84,5 +93,14 @@ function hasAuthTagCipherTest(CipherClass: new (key: string) => CCM | GCM, key: 
     });
 }
 
-// @ts-expect-error Ignore this error.
-describe('aes cipher', () => cipherClassesAndTestFunctions.forEach(([cipherClass, testFunction]) => Object.entries(keys).forEach(([bits, key]) => (testFunction || commonCipherTest)(cipherClass, key, bits))));
+describe('aes cipher', () => {
+    cipherClassesAndTestFunctions.forEach(([
+        cipherClass,
+        testFunction,
+    ]) => {
+        Object.entries(keys).forEach(([
+            bits,
+            key,
+        ]) => (testFunction || commonCipherTest)(cipherClass as any, key, bits));
+    });
+});

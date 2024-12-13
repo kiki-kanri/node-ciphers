@@ -1,12 +1,19 @@
-import { createCipheriv, createDecipheriv } from 'node:crypto';
+import {
+    createCipheriv,
+    createDecipheriv,
+} from 'node:crypto';
 import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
 import { availableCiphers } from '../../../constants';
-import type { DESCipherAlgorithm, DESCipherEncodingOptions, DESCipherMode } from '../../../types';
+import type {
+    DESCipherAlgorithm,
+    DESCipherEncodingOptions,
+    DESCipherMode,
+} from '../../../types';
 import BaseCipher from '../../base';
 
-const keyLengthToModePrefixMap: Record<number, '' | '-ede3' | '-ede'> = Object.freeze({
+const keyLengthToModePrefixMap = Object.freeze<Record<number, '' | '-ede3' | '-ede'>>({
     8: '',
     16: '-ede',
     24: '-ede3',

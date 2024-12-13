@@ -1,15 +1,25 @@
 import { Buffer } from 'node:buffer';
-import type { BinaryLike, Cipher, Decipher } from 'node:crypto';
+import type {
+    BinaryLike,
+    Cipher,
+    Decipher,
+} from 'node:crypto';
 import type { RequiredDeep } from 'type-fest';
 
 import { defaultEncodingOptions } from '../constants';
-import type { BaseCipherEncodingOptions, HasAuthTagAESCipherEncodingOptions } from '../types';
+import type {
+    BaseCipherEncodingOptions,
+    HasAuthTagAESCipherEncodingOptions,
+} from '../types';
 
 export class BaseCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = BaseCipherEncodingOptions> {
     readonly #encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;
 
     constructor(encodingOptions?: EncodingOptions) {
-        this.#encodingOptions = Object.freeze({ ...defaultEncodingOptions, ...encodingOptions } as RequiredDeep<EncodingOptions>);
+        this.#encodingOptions = Object.freeze({
+            ...defaultEncodingOptions,
+            ...encodingOptions,
+        } as RequiredDeep<EncodingOptions>);
     }
 
     get encodingOptions() {

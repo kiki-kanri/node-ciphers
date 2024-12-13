@@ -8,5 +8,26 @@ import ECB from './ecb';
 import GCM from './gcm';
 import OFB from './ofb';
 
-export { CBC, CCM, CFB, CFB1, CFB8, CTR, ECB, GCM, OFB };
-export default { CBC, CCM, CFB, CFB1, CFB8, CTR, ECB, GCM, OFB };
+export {
+    CBC,
+    CCM,
+    CFB,
+    CFB1,
+    CFB8,
+    CTR,
+    ECB,
+    GCM,
+    OFB,
+};
+
+export default {
+    CBC,
+    CCM,
+    CFB,
+    CFB1,
+    CFB8,
+    CTR,
+    ECB,
+    GCM,
+    OFB,
+};

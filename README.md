@@ -170,7 +170,10 @@ You can customize the data transformation encoding for encryption and decryption
 
 ```typescript
 // Create a cipher that outputs encryption results in Base64 and accepts encryption input in Base64 format
-const cbcCipher = new AESCipher.CBC('0123456789abcdef', { decryptInput: 'base64', encryptOutput: 'base64' });
+const cbcCipher = new AESCipher.CBC('0123456789abcdef', {
+    decryptInput: 'base64',
+    encryptOutput: 'base64'
+});
 
 // Use hex output for this encryption only
 cbcCipher.encrypt('test', { encryptOutput: 'hex' });

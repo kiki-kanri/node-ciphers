@@ -20,7 +20,14 @@ export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
 
     decrypt(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
         try {
-            const decipher = this.createDecipher(this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv), { authTagLength, ...decipherOptions });
+            const decipher = this.createDecipher(
+                this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv),
+                {
+                    authTagLength,
+                    ...decipherOptions,
+                },
+            );
+
             decipher.setAuthTag(this.dataToBuffer(authTag, encodingOptions?.authTag || this.encodingOptions.authTag));
             return this.getDecipherResult(decipher, encryptedData, encodingOptions);
         } catch {}
@@ -33,7 +40,14 @@ export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
     encrypt(data: BinaryLike, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
         const iv = randomBytes(ivLength);
         try {
-            const cipher = this.createCipher(iv, { authTagLength, ...cipherOptions });
+            const cipher = this.createCipher(
+                iv,
+                {
+                    authTagLength,
+                    ...cipherOptions,
+                },
+            );
+
             const encryptedData = this.getCipherResult(cipher, data, encodingOptions);
             return {
                 authTag: cipher.getAuthTag().toString(encodingOptions?.authTag || this.encodingOptions.authTag),

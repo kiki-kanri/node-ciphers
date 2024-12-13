@@ -22,7 +22,10 @@ const keys = {
 
 describe('des cipher', () => {
     cipherClasses.forEach((CipherClass) => {
-        Object.entries(keys).forEach(([bits, key]) => {
+        Object.entries(keys).forEach(([
+            bits,
+            key,
+        ]) => {
             if (bits === '128' && CipherClass.name.match(/cfb(1|8)/i)) return;
             describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
                 let cipher: BaseDESEncryptAndDecrypt;
