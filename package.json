@@ -42,7 +42,7 @@
     "node": ">=18.12.1"
   },
   "scripts": {
-    "build": "ts-project-builder ./src/index.ts --clean --preserve-modules",
+    "build": "ts-project-builder ./src/index.ts --clean --preserve-modules --sourcemaps",
     "bumplog": "changelogen --bump",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
