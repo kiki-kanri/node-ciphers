@@ -1,5 +1,28 @@
 # Changelog
 
+## v1.1.7
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.6...v1.1.7)
+
+### 📦 Build
+
+- Enable sourcemap output in build process ([b5c29ce](https://github.com/kiki-kanri/node-ciphers/commit/b5c29ce))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([9dcabe1](https://github.com/kiki-kanri/node-ciphers/commit/9dcabe1))
+- Upgrade dependencies ([aba3c7d](https://github.com/kiki-kanri/node-ciphers/commit/aba3c7d))
+- Include src folder in the package published to npm ([fb0c541](https://github.com/kiki-kanri/node-ciphers/commit/fb0c541))
+
+### 🎨 Styles
+
+- Format and lint all files ([5a95a50](https://github.com/kiki-kanri/node-ciphers/commit/5a95a50))
+- Format code block in README ([521e99f](https://github.com/kiki-kanri/node-ciphers/commit/521e99f))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.6
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.5...v1.1.6)
