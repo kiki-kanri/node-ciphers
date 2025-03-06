@@ -1,5 +1,25 @@
 # Changelog
 
+## v2.0.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.7...v2.0.0)
+
+### 💅 Refactors
+
+- ⚠️ Enforce camelCase naming for all variables, classes, methods, types, etc., ignoring abbreviations ([5353c5e](https://github.com/kiki-kanri/node-ciphers/commit/5353c5e))
+
+### 🏡 Chore
+
+- Upgrade dependencies and add `pnpm.onlyBuiltDependencies` setting to package.json ([dab63ad](https://github.com/kiki-kanri/node-ciphers/commit/dab63ad))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️ Enforce camelCase naming for all variables, classes, methods, types, etc., ignoring abbreviations ([5353c5e](https://github.com/kiki-kanri/node-ciphers/commit/5353c5e))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v1.1.7
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.6...v1.1.7)
