@@ -9,10 +9,10 @@ import type { RequiredDeep } from 'type-fest';
 import { defaultEncodingOptions } from '../constants';
 import type {
     BaseCipherEncodingOptions,
-    HasAuthTagAESCipherEncodingOptions,
+    HasAuthTagAesCipherEncodingOptions,
 } from '../types';
 
-export class BaseCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = BaseCipherEncodingOptions> {
+export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptions = BaseCipherEncodingOptions> {
     readonly #encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;
 
     constructor(encodingOptions?: EncodingOptions) {
@@ -40,7 +40,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptio
         return `${decipher.update(this.dataToBuffer(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput), undefined, outputEncoding)}${decipher.final(outputEncoding)}`;
     }
 
-    protected parseJSON<T>(data?: string) {
+    protected parseJson<T>(data?: string) {
         if (data === undefined) return;
         try {
             return JSON.parse(data) as T;

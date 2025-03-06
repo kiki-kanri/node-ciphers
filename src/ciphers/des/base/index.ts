@@ -7,9 +7,9 @@ import type { TransformOptions } from 'node:stream';
 
 import { availableCiphers } from '../../../constants';
 import type {
-    DESCipherAlgorithm,
-    DESCipherEncodingOptions,
-    DESCipherMode,
+    DesCipherAlgorithm,
+    DesCipherEncodingOptions,
+    DesCipherMode,
 } from '../../../types';
 import BaseCipher from '../../base';
 
@@ -19,11 +19,11 @@ const keyLengthToModePrefixMap = Object.freeze<Record<number, '' | '-ede3' | '-e
     24: '-ede3',
 });
 
-export abstract class BaseDESCipher extends BaseCipher {
-    readonly #algorithm: DESCipherAlgorithm;
+export abstract class BaseDesCipher extends BaseCipher {
+    readonly #algorithm: DesCipherAlgorithm;
     readonly #key: NodeJS.ArrayBufferView;
 
-    constructor(key: BinaryLike, mode: DESCipherMode, encodingOptions?: DESCipherEncodingOptions) {
+    constructor(key: BinaryLike, mode: DesCipherMode, encodingOptions?: DesCipherEncodingOptions) {
         super(encodingOptions);
         this.#key = this.dataToBuffer(key, this.encodingOptions.key);
         const desModePrefix = keyLengthToModePrefixMap[this.#key.byteLength];
@@ -45,4 +45,4 @@ export abstract class BaseDESCipher extends BaseCipher {
     }
 }
 
-export default BaseDESCipher;
+export default BaseDesCipher;

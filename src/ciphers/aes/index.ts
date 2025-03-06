@@ -1,33 +1,33 @@
-import CBC from './cbc';
-import CCM from './ccm';
-import CFB from './cfb';
-import CFB1 from './cfb1';
-import CFB8 from './cfb8';
-import CTR from './ctr';
-import ECB from './ecb';
-import GCM from './gcm';
-import OFB from './ofb';
+import Cbc from './cbc';
+import Ccm from './ccm';
+import Cfb from './cfb';
+import Cfb1 from './cfb1';
+import Cfb8 from './cfb8';
+import Ctr from './ctr';
+import Ecb from './ecb';
+import Gcm from './gcm';
+import Ofb from './ofb';
 
 export {
-    CBC,
-    CCM,
-    CFB,
-    CFB1,
-    CFB8,
-    CTR,
-    ECB,
-    GCM,
-    OFB,
+    Cbc,
+    Ccm,
+    Cfb,
+    Cfb1,
+    Cfb8,
+    Ctr,
+    Ecb,
+    Gcm,
+    Ofb,
 };
 
 export default {
-    CBC,
-    CCM,
-    CFB,
-    CFB1,
-    CFB8,
-    CTR,
-    ECB,
-    GCM,
-    OFB,
+    Cbc,
+    Ccm,
+    Cfb,
+    Cfb1,
+    Cfb8,
+    Ctr,
+    Ecb,
+    Gcm,
+    Ofb,
 };

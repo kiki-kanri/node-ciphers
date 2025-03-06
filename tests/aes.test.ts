@@ -1,28 +1,28 @@
 import { Buffer } from 'node:buffer';
 
-import { AESCipher } from '../src';
+import { AesCipher } from '../src';
 import type {
-    CCM,
-    GCM,
+    Ccm,
+    Gcm,
 } from '../src/ciphers/aes';
-import type BaseAESEncryptAndDecrypt from '../src/ciphers/aes/base/encrypt-and-decrypt';
+import type BaseAesEncryptAndDecrypt from '../src/ciphers/aes/base/encrypt-and-decrypt';
 
 const cipherClassesAndTestFunctions = [
-    [AESCipher.CBC],
+    [AesCipher.Cbc],
     [
-        AESCipher.CCM,
+        AesCipher.Ccm,
         hasAuthTagCipherTest,
     ],
-    [AESCipher.CFB],
-    [AESCipher.CFB1],
-    [AESCipher.CFB8],
-    [AESCipher.CTR],
-    [AESCipher.ECB],
+    [AesCipher.Cfb],
+    [AesCipher.Cfb1],
+    [AesCipher.Cfb8],
+    [AesCipher.Ctr],
+    [AesCipher.Ecb],
     [
-        AESCipher.GCM,
+        AesCipher.Gcm,
         hasAuthTagCipherTest,
     ],
-    [AESCipher.OFB],
+    [AesCipher.Ofb],
 ] as const;
 
 const data = 'test';
@@ -33,7 +33,7 @@ const keys = {
     256: Buffer.from('0123456789abcdef0123456789abcdef'),
 };
 
-function commonCipherTest(CipherClass: new (key: Buffer | string) => BaseAESEncryptAndDecrypt, key: Buffer | string, bits: string) {
+function commonCipherTest(CipherClass: new (key: Buffer | string) => BaseAesEncryptAndDecrypt, key: Buffer | string, bits: string) {
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data', () => {
             const cipher = new CipherClass(key);
@@ -46,10 +46,10 @@ function commonCipherTest(CipherClass: new (key: Buffer | string) => BaseAESEncr
 
         it('should correctly encrypt and decrypt JSON data', () => {
             const cipher = new CipherClass(key);
-            const encryptResult = cipher.encryptJSON(jsonData);
+            const encryptResult = cipher.encryptJson(jsonData);
             expect(encryptResult).toHaveProperty('data');
             expect(encryptResult).toHaveProperty('iv');
-            const decryptedData = cipher.decryptToJSON(encryptResult!.data, encryptResult!.iv);
+            const decryptedData = cipher.decryptToJson(encryptResult!.data, encryptResult!.iv);
             expect(decryptedData).toEqual(jsonData);
         });
 
@@ -57,13 +57,13 @@ function commonCipherTest(CipherClass: new (key: Buffer | string) => BaseAESEncr
             const cipher = new CipherClass(key);
             const decryptedData = cipher.decrypt('test test', 'test test');
             expect(decryptedData).toBeUndefined();
-            const decryptedJsonData = cipher.decryptToJSON('test test', 'test test');
+            const decryptedJsonData = cipher.decryptToJson('test test', 'test test');
             expect(decryptedJsonData).toBeUndefined();
         });
     });
 }
 
-function hasAuthTagCipherTest(CipherClass: new (key: Buffer | string) => CCM | GCM, key: Buffer | string, bits: string) {
+function hasAuthTagCipherTest(CipherClass: new (key: Buffer | string) => Ccm | Gcm, key: Buffer | string, bits: string) {
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data', () => {
             const cipher = new CipherClass(key);
@@ -76,10 +76,10 @@ function hasAuthTagCipherTest(CipherClass: new (key: Buffer | string) => CCM | G
 
         it('should correctly encrypt and decrypt JSON data', () => {
             const cipher = new CipherClass(key);
-            const encryptResult = cipher.encryptJSON(jsonData);
+            const encryptResult = cipher.encryptJson(jsonData);
             expect(encryptResult).toHaveProperty('data');
             expect(encryptResult).toHaveProperty('iv');
-            const decryptedData = cipher.decryptToJSON(encryptResult!.data, encryptResult!.iv, encryptResult!.authTag);
+            const decryptedData = cipher.decryptToJson(encryptResult!.data, encryptResult!.iv, encryptResult!.authTag);
             expect(decryptedData).toEqual(jsonData);
         });
 
@@ -87,7 +87,7 @@ function hasAuthTagCipherTest(CipherClass: new (key: Buffer | string) => CCM | G
             const cipher = new CipherClass(key);
             const decryptedData = cipher.decrypt('test test', 'test test', 'test test');
             expect(decryptedData).toBeUndefined();
-            const decryptedJsonData = cipher.decryptToJSON('test test', 'test test', 'test test');
+            const decryptedJsonData = cipher.decryptToJson('test test', 'test test', 'test test');
             expect(decryptedJsonData).toBeUndefined();
         });
     });

@@ -1,13 +1,13 @@
 import type { BinaryLike } from 'node:crypto';
 
-import type { AESCipherEncodingOptions } from '../../types';
+import type { AesCipherEncodingOptions } from '../../types';
 
-import BaseAESEncryptAndDecrypt from './base/encrypt-and-decrypt';
+import BaseAesEncryptAndDecrypt from './base/encrypt-and-decrypt';
 
-export class CTR extends BaseAESEncryptAndDecrypt {
-    constructor(key: BinaryLike, encodingOptions?: AESCipherEncodingOptions) {
+export class Ctr extends BaseAesEncryptAndDecrypt {
+    constructor(key: BinaryLike, encodingOptions?: AesCipherEncodingOptions) {
         super(key, 'ctr', encodingOptions);
     }
 }
 
-export default CTR;
+export default Ctr;

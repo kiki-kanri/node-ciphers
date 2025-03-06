@@ -66,32 +66,32 @@ That's it! You're ready to use this package in your project. Check out the [avai
 Below are examples of AES CBC and ECB encryption and decryption:
 
 ```typescript
-import { AESCipher } from 'node-ciphers';
+import { AesCipher } from 'node-ciphers';
 
 const data = 'test';
 const jsonData = { value: data };
 
 // 128 bits cbc (16 bytes length key)
-const cbcCipher = new AESCipher.CBC('0123456789abcdef');
+const cbcCipher = new AesCipher.Cbc('0123456789abcdef');
 console.log(cbcCipher.algorithm);
 const cbcEncryptResult = cbcCipher.encrypt(data);
-const cbcEncryptJsonResult = cbcCipher.encryptJSON(jsonData);
+const cbcEncryptJsonResult = cbcCipher.encryptJson(jsonData);
 console.log(cbcEncryptResult);
 console.log(cbcEncryptJsonResult);
 if (!cbcEncryptResult || !cbcEncryptJsonResult) throw new Error('Encrypt failed');
 console.log(cbcCipher.decrypt(cbcEncryptResult.data, cbcEncryptResult.iv));
-console.log(cbcCipher.decryptToJSON(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
+console.log(cbcCipher.decryptToJson(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
 
 // 128 bits ecb (16 bytes length key)
-const ecbCipher = new AESCipher.ECB('0123456789abcdef');
+const ecbCipher = new AesCipher.Ecb('0123456789abcdef');
 console.log(ecbCipher.algorithm);
 const ecbEncryptResult = ecbCipher.encrypt(data);
-const ecbEncryptJsonResult = ecbCipher.encryptJSON(jsonData);
+const ecbEncryptJsonResult = ecbCipher.encryptJson(jsonData);
 console.log(ecbEncryptResult);
 console.log(ecbEncryptJsonResult);
 if (!ecbEncryptResult || !ecbEncryptJsonResult) throw new Error('Encrypt failed');
 console.log(ecbCipher.decrypt(ecbEncryptResult.data));
-console.log(ecbCipher.decryptToJSON(ecbEncryptJsonResult.data));
+console.log(ecbCipher.decryptToJson(ecbEncryptJsonResult.data));
 ```
 
 The cipher's encryption and decryption methods can be reused; there's no need to create a new one each time.
@@ -106,12 +106,12 @@ When the provided key for creating a cipher is a string, it will be internally c
 import { Buffer } from 'node:buffer';
 
 // 192 bits cbc (24 bytes length key)
-const cbcCipher192 = new AESCipher.CBC('😊😊😊😊😊😊😊😊😊😊😊😊', { key: 'ascii' });
+const cbcCipher192 = new AesCipher.Cbc('😊😊😊😊😊😊😊😊😊😊😊😊', { key: 'ascii' });
 console.log(cbcCipher192.algorithm); // aes-192-cbc
 
 // 256 bits ecb (32 bytes length key)
 const key = Buffer.from('😊😊😊😊😊😊😊😊', 'utf8');
-const ecbCipher256 = new AESCipher.ECB(key);
+const ecbCipher256 = new AesCipher.Ecb(key);
 console.log(ecbCipher256.algorithm); // aes-256-cbc
 ```
 
@@ -130,32 +130,32 @@ Some AES ciphers, such as CCM and GCM, require additional parameters during encr
 The usage is similar to AES, but the key's byte length corresponds to the following modes: 8 bytes (DES), 16 bytes (DES-EDE), and 24 bytes (DES-EDE3).
 
 ```typescript
-import { DESCipher } from 'node-ciphers';
+import { DesCipher } from 'node-ciphers';
 
 const data = 'test';
 const jsonData = { value: data };
 
 // des-ede (16 bytes length key)
-const cbcCipher = new DESCipher.CBC('0123456789abcdef');
+const cbcCipher = new DesCipher.Cbc('0123456789abcdef');
 console.log(cbcCipher.algorithm);
 const cbcEncryptResult = cbcCipher.encrypt(data);
-const cbcEncryptJsonResult = cbcCipher.encryptJSON(jsonData);
+const cbcEncryptJsonResult = cbcCipher.encryptJson(jsonData);
 console.log(cbcEncryptResult);
 console.log(cbcEncryptJsonResult);
 if (!cbcEncryptResult || !cbcEncryptJsonResult) throw new Error('Encrypt failed');
 console.log(cbcCipher.decrypt(cbcEncryptResult.data, cbcEncryptResult.iv));
-console.log(cbcCipher.decryptToJSON(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
+console.log(cbcCipher.decryptToJson(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
 
 // des-ede3, 3des (24 bytes length key)
-const ecbCipher = new DESCipher.ECB('0123456789abcdef01234567');
+const ecbCipher = new DesCipher.Ecb('0123456789abcdef01234567');
 console.log(ecbCipher.algorithm);
 const ecbEncryptResult = ecbCipher.encrypt(data);
-const ecbEncryptJsonResult = ecbCipher.encryptJSON(jsonData);
+const ecbEncryptJsonResult = ecbCipher.encryptJson(jsonData);
 console.log(ecbEncryptResult);
 console.log(ecbEncryptJsonResult);
 if (!ecbEncryptResult || !ecbEncryptJsonResult) throw new Error('Encrypt failed');
 console.log(ecbCipher.decrypt(ecbEncryptResult.data));
-console.log(ecbCipher.decryptToJSON(ecbEncryptJsonResult.data));
+console.log(ecbCipher.decryptToJson(ecbEncryptJsonResult.data));
 ```
 
 > [!IMPORTANT]
@@ -170,7 +170,7 @@ You can customize the data transformation encoding for encryption and decryption
 
 ```typescript
 // Create a cipher that outputs encryption results in Base64 and accepts encryption input in Base64 format
-const cbcCipher = new AESCipher.CBC(
+const cbcCipher = new AesCipher.Cbc(
     '0123456789abcdef',
     {
         decryptInput: 'base64',

@@ -2,12 +2,12 @@ import type { Except } from 'type-fest';
 
 import type { BaseCipherEncodingOptions } from './options';
 
-export type { BaseCipherEncodingOptions as AESCipherEncodingOptions } from './options';
+export type { BaseCipherEncodingOptions as AesCipherEncodingOptions } from './options';
 
-export type AESCipherAlgorithm = `aes-${128 | 192 | 256}-${AESCipherMode}`;
-export type AESCipherMode = 'cbc' | 'ccm' | 'cfb1' | 'cfb8' | 'cfb' | 'ctr' | 'ecb' | 'gcm' | 'ofb';
+export type AesCipherAlgorithm = `aes-${128 | 192 | 256}-${AesCipherMode}`;
+export type AesCipherMode = 'cbc' | 'ccm' | 'cfb1' | 'cfb8' | 'cfb' | 'ctr' | 'ecb' | 'gcm' | 'ofb';
 
-export interface HasAuthTagAESCipherEncodingOptions extends BaseCipherEncodingOptions {
+export interface HasAuthTagAesCipherEncodingOptions extends BaseCipherEncodingOptions {
     /**
      * @default 'hex'
      */
@@ -15,7 +15,7 @@ export interface HasAuthTagAESCipherEncodingOptions extends BaseCipherEncodingOp
 }
 
 // eslint-disable-next-line ts/no-namespace
-export namespace HasAuthTagAESCipherEncodingOptions {
-    export type Decrypt = Except<HasAuthTagAESCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'key'>;
-    export type Encrypt = Except<HasAuthTagAESCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'key'>;
+export namespace HasAuthTagAesCipherEncodingOptions {
+    export type Decrypt = Except<HasAuthTagAesCipherEncodingOptions, 'encryptInput' | 'encryptOutput' | 'key'>;
+    export type Encrypt = Except<HasAuthTagAesCipherEncodingOptions, 'decryptInput' | 'decryptOutput' | 'key'>;
 }

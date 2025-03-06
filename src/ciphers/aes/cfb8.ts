@@ -1,13 +1,13 @@
 import type { BinaryLike } from 'node:crypto';
 
-import type { AESCipherEncodingOptions } from '../../types';
+import type { AesCipherEncodingOptions } from '../../types';
 
-import BaseAESEncryptAndDecrypt from './base/encrypt-and-decrypt';
+import BaseAesEncryptAndDecrypt from './base/encrypt-and-decrypt';
 
-export class CFB8 extends BaseAESEncryptAndDecrypt {
-    constructor(key: BinaryLike, encodingOptions?: AESCipherEncodingOptions) {
+export class Cfb8 extends BaseAesEncryptAndDecrypt {
+    constructor(key: BinaryLike, encodingOptions?: AesCipherEncodingOptions) {
         super(key, 'cfb8', encodingOptions);
     }
 }
 
-export default CFB8;
+export default Cfb8;

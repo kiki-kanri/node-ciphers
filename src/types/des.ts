@@ -1,4 +1,4 @@
-export type { BaseCipherEncodingOptions as DESCipherEncodingOptions } from './options';
+export type { BaseCipherEncodingOptions as DesCipherEncodingOptions } from './options';
 
-export type DESCipherAlgorithm = `des${'' | '-ede3' | '-ede'}-${DESCipherMode}`;
-export type DESCipherMode = 'cbc' | 'cfb1' | 'cfb8' | 'cfb' | 'ecb' | 'ofb';
+export type DesCipherAlgorithm = `des${'' | '-ede3' | '-ede'}-${DesCipherMode}`;
+export type DesCipherMode = 'cbc' | 'cfb1' | 'cfb8' | 'cfb' | 'ecb' | 'ofb';

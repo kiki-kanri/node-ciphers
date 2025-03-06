@@ -2,23 +2,23 @@ import { randomBytes } from 'node:crypto';
 import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
-import type { HasAuthTagAESCipherEncodingOptions } from '../../types';
+import type { HasAuthTagAesCipherEncodingOptions } from '../../types';
 
-import BaseAESCipher from './base';
+import BaseAesCipher from './base';
 
 type AvailableIvLength = 7 | 8 | 9 | 10 | 11 | 12 | 13;
 
-export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
+export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
     readonly #authTagLength: number;
     readonly #ivLength: AvailableIvLength;
 
-    constructor(key: BinaryLike, encodingOptions?: HasAuthTagAESCipherEncodingOptions, authTagLength: number = 16, ivLength: AvailableIvLength = 12) {
+    constructor(key: BinaryLike, encodingOptions?: HasAuthTagAesCipherEncodingOptions, authTagLength: number = 16, ivLength: AvailableIvLength = 12) {
         super(key, 'ccm', encodingOptions);
         this.#authTagLength = authTagLength;
         this.#ivLength = ivLength;
     }
 
-    decrypt(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+    decrypt(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
         try {
             const decipher = this.createDecipher(
                 this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv),
@@ -33,11 +33,11 @@ export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
         } catch {}
     }
 
-    decryptToJSON<T = any>(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
-        return this.parseJSON<T>(this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions));
+    decryptToJson<T = any>(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength: number = this.#authTagLength, encodingOptions?: HasAuthTagAesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+        return this.parseJson<T>(this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions));
     }
 
-    encrypt(data: BinaryLike, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encrypt(data: BinaryLike, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
         const iv = randomBytes(ivLength);
         try {
             const cipher = this.createCipher(
@@ -58,9 +58,9 @@ export class CCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
         } catch {}
     }
 
-    encryptJSON(data: any, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encryptJson(data: any, authTagLength: number = this.#authTagLength, ivLength: AvailableIvLength = this.#ivLength, encodingOptions?: HasAuthTagAesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
         return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
     }
 }
 
-export default CCM;
+export default Ccm;

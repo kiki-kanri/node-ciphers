@@ -1,13 +1,13 @@
 import type { BinaryLike } from 'node:crypto';
 
-import type { AESCipherEncodingOptions } from '../../types';
+import type { AesCipherEncodingOptions } from '../../types';
 
-import BaseAESEncryptAndDecrypt from './base/encrypt-and-decrypt';
+import BaseAesEncryptAndDecrypt from './base/encrypt-and-decrypt';
 
-export class OFB extends BaseAESEncryptAndDecrypt {
-    constructor(key: BinaryLike, encodingOptions?: AESCipherEncodingOptions) {
+export class Ofb extends BaseAesEncryptAndDecrypt {
+    constructor(key: BinaryLike, encodingOptions?: AesCipherEncodingOptions) {
         super(key, 'ofb', encodingOptions);
     }
 }
 
-export default OFB;
+export default Ofb;

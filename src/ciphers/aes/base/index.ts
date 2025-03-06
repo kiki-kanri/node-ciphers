@@ -17,10 +17,10 @@ import type { TransformOptions } from 'node:stream';
 
 import { availableCiphers } from '../../../constants';
 import type {
-    AESCipherAlgorithm,
-    AESCipherEncodingOptions,
-    AESCipherMode,
-    HasAuthTagAESCipherEncodingOptions,
+    AesCipherAlgorithm,
+    AesCipherEncodingOptions,
+    AesCipherMode,
+    HasAuthTagAesCipherEncodingOptions,
 } from '../../../types';
 import BaseCipher from '../../base';
 
@@ -30,11 +30,11 @@ export const keyLengthToBitsMap = Object.freeze<Record<number, 128 | 192 | 256>>
     32: 256,
 });
 
-export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherEncodingOptions = AESCipherEncodingOptions> extends BaseCipher<EncodingOptions> {
-    readonly #algorithm: AESCipherAlgorithm;
+export abstract class BaseAesCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptions = AesCipherEncodingOptions> extends BaseCipher<EncodingOptions> {
+    readonly #algorithm: AesCipherAlgorithm;
     readonly #key: NodeJS.ArrayBufferView;
 
-    constructor(key: BinaryLike, mode: AESCipherMode, encodingOptions?: EncodingOptions) {
+    constructor(key: BinaryLike, mode: AesCipherMode, encodingOptions?: EncodingOptions) {
         super(encodingOptions);
         this.#key = this.dataToBuffer(key, this.encodingOptions.key);
         const modeBits = keyLengthToBitsMap[this.#key.byteLength];
@@ -62,4 +62,4 @@ export abstract class BaseAESCipher<EncodingOptions extends HasAuthTagAESCipherE
     }
 }
 
-export default BaseAESCipher;
+export default BaseAesCipher;

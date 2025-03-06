@@ -2,19 +2,19 @@ import { randomBytes } from 'node:crypto';
 import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
-import type { HasAuthTagAESCipherEncodingOptions } from '../../types';
+import type { HasAuthTagAesCipherEncodingOptions } from '../../types';
 
-import BaseAESCipher from './base';
+import BaseAesCipher from './base';
 
-export class GCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
+export class Gcm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
     readonly #ivLength: number;
 
-    constructor(key: BinaryLike, encodingOptions?: HasAuthTagAESCipherEncodingOptions, ivLength: number = 12) {
+    constructor(key: BinaryLike, encodingOptions?: HasAuthTagAesCipherEncodingOptions, ivLength: number = 12) {
         super(key, 'gcm', encodingOptions);
         this.#ivLength = ivLength;
     }
 
-    decrypt(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength?: number, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+    decrypt(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength?: number, encodingOptions?: HasAuthTagAesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
         try {
             const decipher = this.createDecipher(
                 this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv),
@@ -29,11 +29,11 @@ export class GCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
         } catch {}
     }
 
-    decryptToJSON<T = any>(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength?: number, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
-        return this.parseJSON<T>(this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions));
+    decryptToJson<T = any>(encryptedData: BinaryLike, iv: BinaryLike, authTag: BinaryLike, authTagLength?: number, encodingOptions?: HasAuthTagAesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+        return this.parseJson<T>(this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions));
     }
 
-    encrypt(data: BinaryLike, authTagLength?: number, ivLength: number = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encrypt(data: BinaryLike, authTagLength?: number, ivLength: number = this.#ivLength, encodingOptions?: HasAuthTagAesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
         const iv = randomBytes(ivLength);
         try {
             const cipher = this.createCipher(
@@ -54,9 +54,9 @@ export class GCM extends BaseAESCipher<HasAuthTagAESCipherEncodingOptions> {
         } catch {}
     }
 
-    encryptJSON(data: any, authTagLength?: number, ivLength: number = this.#ivLength, encodingOptions?: HasAuthTagAESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encryptJson(data: any, authTagLength?: number, ivLength: number = this.#ivLength, encodingOptions?: HasAuthTagAesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
         return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
     }
 }
 
-export default GCM;
+export default Gcm;

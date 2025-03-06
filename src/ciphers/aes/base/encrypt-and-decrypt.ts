@@ -2,23 +2,23 @@ import { randomBytes } from 'node:crypto';
 import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
-import type { AESCipherEncodingOptions } from '../../../types';
+import type { AesCipherEncodingOptions } from '../../../types';
 
-import BaseAESCipher from '.';
+import BaseAesCipher from '.';
 
-export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {
-    decrypt(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+export abstract class BaseAesEncryptAndDecrypt extends BaseAesCipher {
+    decrypt(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: AesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
         try {
             const decipher = this.createDecipher(this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv), decipherOptions);
             return this.getDecipherResult(decipher, encryptedData, encodingOptions);
         } catch {}
     }
 
-    decryptToJSON<T = any>(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
-        return this.parseJSON<T>(this.decrypt(encryptedData, iv, encodingOptions, decipherOptions));
+    decryptToJson<T = any>(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: AesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+        return this.parseJson<T>(this.decrypt(encryptedData, iv, encodingOptions, decipherOptions));
     }
 
-    encrypt(data: BinaryLike, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encrypt(data: BinaryLike, encodingOptions?: AesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
         const iv = randomBytes(16);
         try {
             return {
@@ -28,9 +28,9 @@ export abstract class BaseAESEncryptAndDecrypt extends BaseAESCipher {
         } catch {}
     }
 
-    encryptJSON(data: any, encodingOptions?: AESCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encryptJson(data: any, encodingOptions?: AesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
         return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
     }
 }
 
-export default BaseAESEncryptAndDecrypt;
+export default BaseAesEncryptAndDecrypt;

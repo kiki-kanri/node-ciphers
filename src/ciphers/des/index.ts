@@ -1,24 +1,24 @@
-import CBC from './cbc';
-import CFB from './cfb';
-import CFB1 from './cfb1';
-import CFB8 from './cfb8';
-import ECB from './ecb';
-import OFB from './ofb';
+import Cbc from './cbc';
+import Cfb from './cfb';
+import Cfb1 from './cfb1';
+import Cfb8 from './cfb8';
+import Ecb from './ecb';
+import Ofb from './ofb';
 
 export {
-    CBC,
-    CFB,
-    CFB1,
-    CFB8,
-    ECB,
-    OFB,
+    Cbc,
+    Cfb,
+    Cfb1,
+    Cfb8,
+    Ecb,
+    Ofb,
 };
 
 export default {
-    CBC,
-    CFB,
-    CFB1,
-    CFB8,
-    ECB,
-    OFB,
+    Cbc,
+    Cfb,
+    Cfb1,
+    Cfb8,
+    Ecb,
+    Ofb,
 };

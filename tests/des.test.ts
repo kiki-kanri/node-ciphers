@@ -1,15 +1,15 @@
 import { Buffer } from 'node:buffer';
 
-import { DESCipher } from '../src';
-import type BaseDESEncryptAndDecrypt from '../src/ciphers/des/base/encrypt-and-decrypt';
+import { DesCipher } from '../src';
+import type BaseDesEncryptAndDecrypt from '../src/ciphers/des/base/encrypt-and-decrypt';
 
 const cipherClasses = [
-    DESCipher.CBC,
-    DESCipher.CFB,
-    DESCipher.CFB1,
-    DESCipher.CFB8,
-    DESCipher.ECB,
-    DESCipher.OFB,
+    DesCipher.Cbc,
+    DesCipher.Cfb,
+    DesCipher.Cfb1,
+    DesCipher.Cfb8,
+    DesCipher.Ecb,
+    DesCipher.Ofb,
 ] as const;
 
 const data = 'test';
@@ -28,8 +28,8 @@ describe('des cipher', () => {
         ]) => {
             if (bits === '128' && CipherClass.name.match(/cfb(1|8)/i)) return;
             describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
-                let cipher: BaseDESEncryptAndDecrypt;
-                beforeEach(() => cipher = new CipherClass(key) as BaseDESEncryptAndDecrypt);
+                let cipher: BaseDesEncryptAndDecrypt;
+                beforeEach(() => cipher = new CipherClass(key) as BaseDesEncryptAndDecrypt);
                 it('should correctly encrypt and decrypt data', () => {
                     const encryptResult = cipher.encrypt(data);
                     expect(encryptResult).toHaveProperty('data');
@@ -39,17 +39,17 @@ describe('des cipher', () => {
                 });
 
                 it('should correctly encrypt and decrypt JSON data', () => {
-                    const encryptResult = cipher.encryptJSON(jsonData);
+                    const encryptResult = cipher.encryptJson(jsonData);
                     expect(encryptResult).toHaveProperty('data');
                     expect(encryptResult).toHaveProperty('iv');
-                    const decryptedData = cipher.decryptToJSON(encryptResult!.data, encryptResult!.iv);
+                    const decryptedData = cipher.decryptToJson(encryptResult!.data, encryptResult!.iv);
                     expect(decryptedData).toEqual(jsonData);
                 });
 
                 it('should return undefined when decrypting invalid data and iv', () => {
                     const decryptedData = cipher.decrypt('test test', 'test test');
                     expect(decryptedData).toBeUndefined();
-                    const decryptedJsonData = cipher.decryptToJSON('test test', 'test test');
+                    const decryptedJsonData = cipher.decryptToJson('test test', 'test test');
                     expect(decryptedJsonData).toBeUndefined();
                 });
             });
