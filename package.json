@@ -52,18 +52,23 @@
     "test": "cross-env NODE_OPTIONS=--openssl-legacy-provider jest --coverage"
   },
   "dependencies": {
-    "type-fest": "^4.31.0"
+    "type-fest": "^4.37.0"
   },
   "devDependencies": {
-    "@kikiutils/changelogen": "^0.7.0",
-    "@kikiutils/eslint-config": "^0.7.3",
+    "@kikiutils/changelogen": "^0.7.1",
+    "@kikiutils/eslint-config": "^0.8.2",
     "@kikiutils/tsconfigs": "^3.0.2",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.5",
+    "@types/node": "^22.13.9",
     "cross-env": "^7.0.3",
     "jest": "^29.7.0",
-    "ts-jest": "^29.2.5",
-    "ts-project-builder": "^3.4.0",
+    "ts-jest": "^29.2.6",
+    "ts-project-builder": "^3.4.1",
     "tslib": "^2.8.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
