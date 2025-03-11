@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.0.1
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v2.0.0...v2.0.1)
+
+### 🩹 Fixes
+
+- Correct incorrect `LICENSE` link in README ([e8df54d](https://github.com/kiki-kanri/node-ciphers/commit/e8df54d))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([0ab7c9a](https://github.com/kiki-kanri/node-ciphers/commit/0ab7c9a))
+
+### ❤️ Contributors
+
+- kiki-kanri <a470666@gmail.com>
+
 ## v2.0.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v1.1.7...v2.0.0)
