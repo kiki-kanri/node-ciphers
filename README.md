@@ -206,5 +206,5 @@ If the encrypted data cannot be decrypted, it may be due to not specifying the c
 [codecov-href]: https://codecov.io/gh/kiki-kanri/node-ciphers
 [codecov-src]: https://codecov.io/gh/kiki-kanri/node-ciphers/graph/badge.svg?token=RNU7FNG8HD
 
-[license-href]: https://github.com/kiki-kanri/kikiutils-node-classes/blob/main/LICENSE
+[license-href]: https://github.com/kiki-kanri/node-ciphers/blob/main/LICENSE
 [license-src]: https://img.shields.io/npm/l/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
