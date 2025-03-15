@@ -1,5 +1,18 @@
 # Changelog
 
+## v2.0.2
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v2.0.1...v2.0.2)
+
+### 🏡 Chore
+
+- Upgrade dependencies ([feac3b5](https://github.com/kiki-kanri/node-ciphers/commit/feac3b5))
+- Format and lint codes ([e412186](https://github.com/kiki-kanri/node-ciphers/commit/e412186))
+
+### ❤️ Contributors
+
+- kiki-kanri <a470666@gmail.com>
+
 ## v2.0.1
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v2.0.0...v2.0.1)
