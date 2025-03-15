@@ -4,6 +4,7 @@ import type {
     Cipher,
     Decipher,
 } from 'node:crypto';
+
 import type { RequiredDeep } from 'type-fest';
 
 import { defaultEncodingOptions } from '../constants';
@@ -32,12 +33,20 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
 
     protected getCipherResult(cipher: Cipher, data: BinaryLike, encodingOptions?: EncodingOptions) {
         const outputEncoding = encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput;
-        return `${cipher.update(this.dataToBuffer(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput), undefined, outputEncoding)}${cipher.final(outputEncoding)}`;
+        return cipher.update(
+            this.dataToBuffer(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput),
+            undefined,
+            outputEncoding,
+        ) + cipher.final(outputEncoding);
     }
 
     protected getDecipherResult(decipher: Decipher, encryptedData: BinaryLike, encodingOptions?: EncodingOptions) {
         const outputEncoding = encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput;
-        return `${decipher.update(this.dataToBuffer(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput), undefined, outputEncoding)}${decipher.final(outputEncoding)}`;
+        return decipher.update(
+            this.dataToBuffer(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput),
+            undefined,
+            outputEncoding,
+        ) + decipher.final(outputEncoding);
     }
 
     protected parseJson<T>(data?: string) {

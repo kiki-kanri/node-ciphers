@@ -7,14 +7,28 @@ import type { AesCipherEncodingOptions } from '../../../types';
 import BaseAesCipher from '.';
 
 export abstract class BaseAesEncryptAndDecrypt extends BaseAesCipher {
-    decrypt(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: AesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+    decrypt(
+        encryptedData: BinaryLike,
+        iv: BinaryLike,
+        encodingOptions?: AesCipherEncodingOptions.Decrypt,
+        decipherOptions?: TransformOptions,
+    ) {
         try {
-            const decipher = this.createDecipher(this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv), decipherOptions);
+            const decipher = this.createDecipher(
+                this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv),
+                decipherOptions,
+            );
+
             return this.getDecipherResult(decipher, encryptedData, encodingOptions);
         } catch {}
     }
 
-    decryptToJson<T = any>(encryptedData: BinaryLike, iv: BinaryLike, encodingOptions?: AesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+    decryptToJson<T = any>(
+        encryptedData: BinaryLike,
+        iv: BinaryLike,
+        encodingOptions?: AesCipherEncodingOptions.Decrypt,
+        decipherOptions?: TransformOptions,
+    ) {
         return this.parseJson<T>(this.decrypt(encryptedData, iv, encodingOptions, decipherOptions));
     }
 

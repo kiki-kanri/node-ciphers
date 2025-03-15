@@ -33,7 +33,11 @@ const keys = {
     256: Buffer.from('0123456789abcdef0123456789abcdef'),
 };
 
-function commonCipherTest(CipherClass: new (key: Buffer | string) => BaseAesEncryptAndDecrypt, key: Buffer | string, bits: string) {
+function commonCipherTest(
+    CipherClass: new (key: Buffer | string) => BaseAesEncryptAndDecrypt,
+    key: Buffer | string,
+    bits: string,
+) {
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data', () => {
             const cipher = new CipherClass(key);
@@ -63,7 +67,11 @@ function commonCipherTest(CipherClass: new (key: Buffer | string) => BaseAesEncr
     });
 }
 
-function hasAuthTagCipherTest(CipherClass: new (key: Buffer | string) => Ccm | Gcm, key: Buffer | string, bits: string) {
+function hasAuthTagCipherTest(
+    CipherClass: new (key: Buffer | string) => Ccm | Gcm,
+    key: Buffer | string,
+    bits: string,
+) {
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data', () => {
             const cipher = new CipherClass(key);

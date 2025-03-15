@@ -30,7 +30,9 @@ export const keyLengthToBitsMap = Object.freeze<Record<number, 128 | 192 | 256>>
     32: 256,
 });
 
-export abstract class BaseAesCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptions = AesCipherEncodingOptions> extends BaseCipher<EncodingOptions> {
+export abstract class BaseAesCipher<
+    EncodingOptions extends HasAuthTagAesCipherEncodingOptions = AesCipherEncodingOptions,
+> extends BaseCipher<EncodingOptions> {
     readonly #algorithm: AesCipherAlgorithm;
     readonly #key: NodeJS.ArrayBufferView;
 

@@ -10,14 +10,24 @@ export class Ecb extends BaseAesCipher {
         super(key, 'ecb', encodingOptions);
     }
 
-    // @ts-expect-error Allow iv to be null.
-    decrypt(encryptedData: BinaryLike, iv?: null, encodingOptions?: AesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+    decrypt(
+        encryptedData: BinaryLike,
+        // @ts-expect-error Allow iv to be null.
+        iv?: null,
+        encodingOptions?: AesCipherEncodingOptions.Decrypt,
+        decipherOptions?: TransformOptions,
+    ) {
         try {
             return this.getDecipherResult(this.createDecipher(null, decipherOptions), encryptedData, encodingOptions);
         } catch {}
     }
 
-    decryptToJson<T = any>(encryptedData: BinaryLike, iv?: null, encodingOptions?: AesCipherEncodingOptions.Decrypt, decipherOptions?: TransformOptions) {
+    decryptToJson<T = any>(
+        encryptedData: BinaryLike,
+        iv?: null,
+        encodingOptions?: AesCipherEncodingOptions.Decrypt,
+        decipherOptions?: TransformOptions,
+    ) {
         return this.parseJson<T>(this.decrypt(encryptedData, iv, encodingOptions, decipherOptions));
     }
 
