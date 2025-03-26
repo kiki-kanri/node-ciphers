@@ -73,12 +73,30 @@ function hasAuthTagCipherTest(
     bits: string,
 ) {
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
-        it('should correctly encrypt and decrypt data', () => {
+        it('should correctly encrypt and decrypt data with default authTagLength', () => {
             const cipher = new CipherClass(key);
             const encryptResult = cipher.encrypt(data);
+            expect(encryptResult).toHaveProperty('authTag');
             expect(encryptResult).toHaveProperty('data');
             expect(encryptResult).toHaveProperty('iv');
             const decryptedData = cipher.decrypt(encryptResult!.data, encryptResult!.iv, encryptResult!.authTag);
+            expect(decryptedData).toBe(data);
+        });
+
+        it('should correctly encrypt and decrypt data with custom authTagLength', () => {
+            const cipher = new CipherClass(key);
+            const authTagLength = 12;
+            const encryptResult = cipher.encrypt(data, authTagLength);
+            expect(encryptResult).toHaveProperty('authTag');
+            expect(encryptResult).toHaveProperty('data');
+            expect(encryptResult).toHaveProperty('iv');
+            const decryptedData = cipher.decrypt(
+                encryptResult!.data,
+                encryptResult!.iv,
+                encryptResult!.authTag,
+                authTagLength,
+            );
+
             expect(decryptedData).toBe(data);
         });
 
