@@ -4,9 +4,9 @@ export const availableCiphers = Object.freeze<string[]>(getCiphers());
 export const defaultEncodingOptions = Object.freeze({
     authTag: 'hex',
     decryptInput: 'hex',
-    decryptOutput: 'utf8',
-    encryptInput: 'utf8',
+    decryptOutput: 'utf-8',
+    encryptInput: 'utf-8',
     encryptOutput: 'hex',
     iv: 'hex',
-    key: 'utf8',
+    key: 'utf-8',
 } as const);

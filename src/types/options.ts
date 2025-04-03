@@ -5,12 +5,12 @@ export interface BaseCipherEncodingOptions {
     decryptInput?: BufferEncoding;
 
     /**
-     * @default 'utf8'
+     * @default 'utf-8'
      */
     decryptOutput?: BufferEncoding;
 
     /**
-     * @default 'utf8'
+     * @default 'utf-8'
      */
     encryptInput?: BufferEncoding;
 
@@ -20,7 +20,7 @@ export interface BaseCipherEncodingOptions {
     encryptOutput?: BufferEncoding;
 
     /**
-     * @default 'utf8'
+     * @default 'utf-8'
      */
     key?: BufferEncoding;
 

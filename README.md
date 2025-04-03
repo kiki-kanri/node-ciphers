@@ -110,7 +110,7 @@ const cbcCipher192 = new AesCipher.Cbc('😊😊😊😊😊😊😊😊😊😊
 console.log(cbcCipher192.algorithm); // aes-192-cbc
 
 // 256 bits ecb (32 bytes length key)
-const key = Buffer.from('😊😊😊😊😊😊😊😊', 'utf8');
+const key = Buffer.from('😊😊😊😊😊😊😊😊', 'utf-8');
 const ecbCipher256 = new AesCipher.Ecb(key);
 console.log(ecbCipher256.algorithm); // aes-256-cbc
 ```
