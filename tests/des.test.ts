@@ -1,15 +1,15 @@
 import { Buffer } from 'node:buffer';
 
-import { DesCipher } from '../src';
+import { DesCiphers } from '../src';
 import type BaseDesEncryptAndDecrypt from '../src/ciphers/des/base/encrypt-and-decrypt';
 
 const cipherClasses = [
-    DesCipher.Cbc,
-    DesCipher.Cfb,
-    DesCipher.Cfb1,
-    DesCipher.Cfb8,
-    DesCipher.Ecb,
-    DesCipher.Ofb,
+    DesCiphers.Cbc,
+    DesCiphers.Cfb,
+    DesCiphers.Cfb1,
+    DesCiphers.Cfb8,
+    DesCiphers.Ecb,
+    DesCiphers.Ofb,
 ] as const;
 
 const data = 'test';

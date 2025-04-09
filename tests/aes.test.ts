@@ -1,6 +1,6 @@
 import { Buffer } from 'node:buffer';
 
-import { AesCipher } from '../src';
+import { AesCiphers } from '../src';
 import type {
     Ccm,
     Gcm,
@@ -8,21 +8,21 @@ import type {
 import type BaseAesEncryptAndDecrypt from '../src/ciphers/aes/base/encrypt-and-decrypt';
 
 const cipherClassesAndTestFunctions = [
-    [AesCipher.Cbc],
+    [AesCiphers.Cbc],
     [
-        AesCipher.Ccm,
+        AesCiphers.Ccm,
         hasAuthTagCipherTest,
     ],
-    [AesCipher.Cfb],
-    [AesCipher.Cfb1],
-    [AesCipher.Cfb8],
-    [AesCipher.Ctr],
-    [AesCipher.Ecb],
+    [AesCiphers.Cfb],
+    [AesCiphers.Cfb1],
+    [AesCiphers.Cfb8],
+    [AesCiphers.Ctr],
+    [AesCiphers.Ecb],
     [
-        AesCipher.Gcm,
+        AesCiphers.Gcm,
         hasAuthTagCipherTest,
     ],
-    [AesCipher.Ofb],
+    [AesCiphers.Ofb],
 ] as const;
 
 const data = 'test';
