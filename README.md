@@ -66,13 +66,15 @@ That's it! You're ready to use this package in your project. Check out the [avai
 Below are examples of AES CBC and ECB encryption and decryption:
 
 ```typescript
-import { AesCipher } from 'node-ciphers';
+import { AesCiphers } from 'node-ciphers';
+// Alternatively, you can import only the ciphers you need, which allows bundlers like Rollup to optimize the final bundle size.
+import { Cbc } from 'node-ciphers/ciphers/aes';
 
 const data = 'test';
 const jsonData = { value: data };
 
 // 128 bits cbc (16 bytes length key)
-const cbcCipher = new AesCipher.Cbc('0123456789abcdef');
+const cbcCipher = new AesCiphers.Cbc('0123456789abcdef');
 console.log(cbcCipher.algorithm);
 const cbcEncryptResult = cbcCipher.encrypt(data);
 const cbcEncryptJsonResult = cbcCipher.encryptJson(jsonData);
@@ -83,7 +85,7 @@ console.log(cbcCipher.decrypt(cbcEncryptResult.data, cbcEncryptResult.iv));
 console.log(cbcCipher.decryptToJson(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
 
 // 128 bits ecb (16 bytes length key)
-const ecbCipher = new AesCipher.Ecb('0123456789abcdef');
+const ecbCipher = new AesCiphers.Ecb('0123456789abcdef');
 console.log(ecbCipher.algorithm);
 const ecbEncryptResult = ecbCipher.encrypt(data);
 const ecbEncryptJsonResult = ecbCipher.encryptJson(jsonData);
@@ -106,12 +108,12 @@ When the provided key for creating a cipher is a string, it will be internally c
 import { Buffer } from 'node:buffer';
 
 // 192 bits cbc (24 bytes length key)
-const cbcCipher192 = new AesCipher.Cbc('😊😊😊😊😊😊😊😊😊😊😊😊', { key: 'ascii' });
+const cbcCipher192 = new AesCiphers.Cbc('😊😊😊😊😊😊😊😊😊😊😊😊', { key: 'ascii' });
 console.log(cbcCipher192.algorithm); // aes-192-cbc
 
 // 256 bits ecb (32 bytes length key)
 const key = Buffer.from('😊😊😊😊😊😊😊😊', 'utf-8');
-const ecbCipher256 = new AesCipher.Ecb(key);
+const ecbCipher256 = new AesCiphers.Ecb(key);
 console.log(ecbCipher256.algorithm); // aes-256-cbc
 ```
 
@@ -130,13 +132,13 @@ Some AES ciphers, such as CCM and GCM, require additional parameters during encr
 The usage is similar to AES, but the key's byte length corresponds to the following modes: 8 bytes (DES), 16 bytes (DES-EDE), and 24 bytes (DES-EDE3).
 
 ```typescript
-import { DesCipher } from 'node-ciphers';
+import { DesCiphers } from 'node-ciphers';
 
 const data = 'test';
 const jsonData = { value: data };
 
 // des-ede (16 bytes length key)
-const cbcCipher = new DesCipher.Cbc('0123456789abcdef');
+const cbcCipher = new DesCiphers.Cbc('0123456789abcdef');
 console.log(cbcCipher.algorithm);
 const cbcEncryptResult = cbcCipher.encrypt(data);
 const cbcEncryptJsonResult = cbcCipher.encryptJson(jsonData);
@@ -147,7 +149,7 @@ console.log(cbcCipher.decrypt(cbcEncryptResult.data, cbcEncryptResult.iv));
 console.log(cbcCipher.decryptToJson(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
 
 // des-ede3, 3des (24 bytes length key)
-const ecbCipher = new DesCipher.Ecb('0123456789abcdef01234567');
+const ecbCipher = new DesCiphers.Ecb('0123456789abcdef01234567');
 console.log(ecbCipher.algorithm);
 const ecbEncryptResult = ecbCipher.encrypt(data);
 const ecbEncryptJsonResult = ecbCipher.encryptJson(jsonData);
@@ -170,7 +172,7 @@ You can customize the data transformation encoding for encryption and decryption
 
 ```typescript
 // Create a cipher that outputs encryption results in Base64 and accepts encryption input in Base64 format
-const cbcCipher = new AesCipher.Cbc(
+const cbcCipher = new AesCiphers.Cbc(
     '0123456789abcdef',
     {
         decryptInput: 'base64',
