@@ -32,6 +32,16 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
+    },
+    "./ciphers/aes": {
+      "types": "./dist/ciphers/aes/index.d.ts",
+      "import": "./dist/ciphers/aes/index.mjs",
+      "require": "./dist/ciphers/aes/index.cjs"
+    },
+    "./ciphers/des": {
+      "types": "./dist/ciphers/des/index.d.ts",
+      "import": "./dist/ciphers/des/index.mjs",
+      "require": "./dist/ciphers/des/index.cjs"
     }
   },
   "types": "./dist/index.d.ts",
