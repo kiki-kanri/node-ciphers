@@ -1,5 +1,17 @@
 # Changelog
 
+## v3.0.2
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v3.0.1...v3.0.2)
+
+### 🏡 Chore
+
+- Set `sideEffects` to false in package.json ([a717ca6](https://github.com/kiki-kanri/node-ciphers/commit/a717ca6))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v3.0.1
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v3.0.0...v3.0.1)
