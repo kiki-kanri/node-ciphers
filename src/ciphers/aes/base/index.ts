@@ -22,7 +22,7 @@ import type {
     AesCipherMode,
     HasAuthTagAesCipherEncodingOptions,
 } from '../../../types';
-import BaseCipher from '../../base';
+import { BaseCipher } from '../../base';
 
 export const keyLengthToBitsMap = Object.freeze<Record<number, 128 | 192 | 256>>({
     16: 128,
@@ -63,5 +63,3 @@ export abstract class BaseAesCipher<
         return createDecipheriv(this.#algorithm, this.#key, iv, options);
     }
 }
-
-export default BaseAesCipher;

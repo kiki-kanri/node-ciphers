@@ -4,7 +4,7 @@ import type { TransformOptions } from 'node:stream';
 
 import type { DesCipherEncodingOptions } from '../../../types';
 
-import BaseDesCipher from '.';
+import { BaseDesCipher } from '.';
 
 export abstract class BaseDesEncryptAndDecrypt extends BaseDesCipher {
     decrypt(
@@ -46,5 +46,3 @@ export abstract class BaseDesEncryptAndDecrypt extends BaseDesCipher {
         return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
     }
 }
-
-export default BaseDesEncryptAndDecrypt;

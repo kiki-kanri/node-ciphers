@@ -4,7 +4,7 @@ import type { TransformOptions } from 'node:stream';
 
 import type { HasAuthTagAesCipherEncodingOptions } from '../../types';
 
-import BaseAesCipher from './base';
+import { BaseAesCipher } from './base';
 
 export class Gcm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
     readonly #ivLength: number;
@@ -86,5 +86,3 @@ export class Gcm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
     }
 }
-
-export default Gcm;

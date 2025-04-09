@@ -5,7 +5,7 @@ import type {
     Ccm,
     Gcm,
 } from '../src/ciphers/aes';
-import type BaseAesEncryptAndDecrypt from '../src/ciphers/aes/base/encrypt-and-decrypt';
+import type { BaseAesEncryptAndDecrypt } from '../src/ciphers/aes/base/encrypt-and-decrypt';
 
 const cipherClassesAndTestFunctions = [
     [AesCiphers.Cbc],

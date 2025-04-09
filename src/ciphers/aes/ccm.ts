@@ -4,7 +4,7 @@ import type { TransformOptions } from 'node:stream';
 
 import type { HasAuthTagAesCipherEncodingOptions } from '../../types';
 
-import BaseAesCipher from './base';
+import { BaseAesCipher } from './base';
 
 type AvailableIvLength = 7 | 8 | 9 | 10 | 11 | 12 | 13;
 
@@ -95,5 +95,3 @@ export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
     }
 }
-
-export default Ccm;

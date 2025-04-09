@@ -3,7 +3,7 @@ import type { TransformOptions } from 'node:stream';
 
 import type { AesCipherEncodingOptions } from '../../types';
 
-import BaseAesCipher from './base';
+import { BaseAesCipher } from './base';
 
 export class Ecb extends BaseAesCipher {
     constructor(key: BinaryLike, encodingOptions?: AesCipherEncodingOptions) {
@@ -44,5 +44,3 @@ export class Ecb extends BaseAesCipher {
         return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
     }
 }
-
-export default Ecb;

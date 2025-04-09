@@ -3,7 +3,7 @@ import type { TransformOptions } from 'node:stream';
 
 import type { DesCipherEncodingOptions } from '../../types';
 
-import BaseDesCipher from './base';
+import { BaseDesCipher } from './base';
 
 export class Ecb extends BaseDesCipher {
     constructor(key: BinaryLike, encodingOptions?: DesCipherEncodingOptions) {
@@ -44,5 +44,3 @@ export class Ecb extends BaseDesCipher {
         return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
     }
 }
-
-export default Ecb;

@@ -1,7 +1,7 @@
 import { Buffer } from 'node:buffer';
 
 import { DesCiphers } from '../src';
-import type BaseDesEncryptAndDecrypt from '../src/ciphers/des/base/encrypt-and-decrypt';
+import type { BaseDesEncryptAndDecrypt } from '../src/ciphers/des/base/encrypt-and-decrypt';
 
 const cipherClasses = [
     DesCiphers.Cbc,

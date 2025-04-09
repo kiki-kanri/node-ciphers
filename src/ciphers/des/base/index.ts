@@ -11,7 +11,7 @@ import type {
     DesCipherEncodingOptions,
     DesCipherMode,
 } from '../../../types';
-import BaseCipher from '../../base';
+import { BaseCipher } from '../../base';
 
 const keyLengthToModePrefixMap = Object.freeze<Record<number, '' | '-ede3' | '-ede'>>({
     8: '',
@@ -44,5 +44,3 @@ export abstract class BaseDesCipher extends BaseCipher {
         return createDecipheriv(this.#algorithm, this.#key, iv, options);
     }
 }
-
-export default BaseDesCipher;

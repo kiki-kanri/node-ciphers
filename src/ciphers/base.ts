@@ -56,5 +56,3 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
         } catch {}
     }
 }
-
-export default BaseCipher;
