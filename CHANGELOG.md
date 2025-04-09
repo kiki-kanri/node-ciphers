@@ -1,5 +1,38 @@
 # Changelog
 
+## v3.0.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v2.0.2...v3.0.0)
+
+### 💅 Refactors
+
+- ⚠️ Update imports and exports ([221fcbc](https://github.com/kiki-kanri/node-ciphers/commit/221fcbc))
+
+### 📖 Documentation
+
+- Update README ([4f7db6f](https://github.com/kiki-kanri/node-ciphers/commit/4f7db6f))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([d7ec80c](https://github.com/kiki-kanri/node-ciphers/commit/d7ec80c))
+- Change `utf8` to `utf-8` ([d851092](https://github.com/kiki-kanri/node-ciphers/commit/d851092))
+- Format code ([6fb2e19](https://github.com/kiki-kanri/node-ciphers/commit/6fb2e19))
+- Upgrade dependencies ([1ab04a3](https://github.com/kiki-kanri/node-ciphers/commit/1ab04a3))
+- Upgrade dependencies ([0eb4917](https://github.com/kiki-kanri/node-ciphers/commit/0eb4917))
+
+### ✅ Tests
+
+- Add unit test for custom auth tag length in AES encryption/decryption methods ([7872f0b](https://github.com/kiki-kanri/node-ciphers/commit/7872f0b))
+- Update test units ([593429b](https://github.com/kiki-kanri/node-ciphers/commit/593429b))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️ Update imports and exports ([221fcbc](https://github.com/kiki-kanri/node-ciphers/commit/221fcbc))
+
+### ❤️ Contributors
+
+- kiki-kanri <a470666@gmail.com>
+
 ## v2.0.2
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v2.0.1...v2.0.2)
