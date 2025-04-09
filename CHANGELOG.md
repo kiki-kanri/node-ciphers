@@ -1,5 +1,23 @@
 # Changelog
 
+## v3.0.1
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v3.0.0...v3.0.1)
+
+### 💅 Refactors
+
+- Remove all internal default export ([32ad7e5](https://github.com/kiki-kanri/node-ciphers/commit/32ad7e5))
+
+### 🏡 Chore
+
+- Update CHANGELOG ([cb9de4e](https://github.com/kiki-kanri/node-ciphers/commit/cb9de4e))
+- Set `hideAuthorEmail` arg in changelogen command ([155db59](https://github.com/kiki-kanri/node-ciphers/commit/155db59))
+- Upgrade dependencies ([cf5ed01](https://github.com/kiki-kanri/node-ciphers/commit/cf5ed01))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v3.0.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v2.0.2...v3.0.0)
