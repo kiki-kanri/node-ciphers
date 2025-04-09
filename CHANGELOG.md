@@ -31,7 +31,7 @@
 
 ### ❤️ Contributors
 
-- kiki-kanri <a470666@gmail.com>
+- kiki-kanri
 
 ## v2.0.2
 
@@ -44,7 +44,7 @@
 
 ### ❤️ Contributors
 
-- kiki-kanri <a470666@gmail.com>
+- kiki-kanri
 
 ## v2.0.1
 
@@ -60,7 +60,7 @@
 
 ### ❤️ Contributors
 
-- kiki-kanri <a470666@gmail.com>
+- kiki-kanri
 
 ## v2.0.0
 
