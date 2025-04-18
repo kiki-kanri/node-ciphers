@@ -65,7 +65,7 @@
   "devDependencies": {
     "@kikiutils/changelogen": "^0.8.0",
     "@kikiutils/eslint-config": "^0.12.2",
-    "@kikiutils/tsconfigs": "^4.1.1",
+    "@kikiutils/tsconfigs": "^5.0.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.14.1",
     "cross-env": "^7.0.3",
