@@ -1,6 +1,7 @@
 import { Buffer } from 'node:buffer';
 
 import { DesCiphers } from '../src';
+import { BaseDesCipher } from '../src/ciphers/des/base';
 import type { BaseDesEncryptAndDecrypt } from '../src/ciphers/des/base/encrypt-and-decrypt';
 
 import {
@@ -11,6 +12,8 @@ import {
     testEncryptCircularReferenceJson,
     testEncryptInvalidData,
 } from './helpers';
+
+class TestCipher extends BaseDesCipher {}
 
 const cipherClasses = [
     DesCiphers.Cbc,
@@ -30,6 +33,20 @@ const keys = {
 };
 
 describe('des cipher', () => {
+    it('should throw error when creating cipher with invalid key length', () => {
+        expect(() => {
+            // eslint-disable-next-line no-new
+            new TestCipher('', 'cbc');
+        }).toThrow();
+    });
+
+    it('should throw error when creating cipher with invalid mode', () => {
+        expect(() => {
+            // eslint-disable-next-line no-new
+            new TestCipher(keys['64'], '' as any);
+        }).toThrow();
+    });
+
     cipherClasses.forEach((CipherClass) => {
         // eslint-disable-next-line style/array-bracket-newline, style/array-element-newline
         Object.entries(keys).forEach(([bits, key]) => {

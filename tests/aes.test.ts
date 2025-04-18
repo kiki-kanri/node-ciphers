@@ -5,6 +5,7 @@ import type {
     Ccm,
     Gcm,
 } from '../src/ciphers/aes';
+import { BaseAesCipher } from '../src/ciphers/aes/base';
 import type { BaseAesEncryptAndDecrypt } from '../src/ciphers/aes/base/encrypt-and-decrypt';
 
 import {
@@ -16,6 +17,8 @@ import {
     testEncryptCircularReferenceJson,
     testEncryptInvalidData,
 } from './helpers';
+
+class TestCipher extends BaseAesCipher {}
 
 const cipherClassesAndTestFunctions = [
     [AesCiphers.Cbc],
@@ -195,6 +198,20 @@ function hasAuthTagCipherTest(
 }
 
 describe('aes cipher', () => {
+    it('should throw error when creating cipher with invalid key length', () => {
+        expect(() => {
+            // eslint-disable-next-line no-new
+            new TestCipher('', 'cbc');
+        }).toThrow();
+    });
+
+    it('should throw error when creating cipher with invalid mode', () => {
+        expect(() => {
+            // eslint-disable-next-line no-new
+            new TestCipher(keys['128'], '' as any);
+        }).toThrow();
+    });
+
     // eslint-disable-next-line style/array-bracket-newline, style/array-element-newline
     cipherClassesAndTestFunctions.forEach(([cipherClass, testFunction]) => {
         // eslint-disable-next-line style/array-bracket-newline, style/array-element-newline
