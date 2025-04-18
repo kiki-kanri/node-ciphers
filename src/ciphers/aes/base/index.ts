@@ -45,7 +45,7 @@ export abstract class BaseAesCipher<
         if (!availableCiphers.includes(this.#algorithm)) throw new Error('Invalid algorithm');
     }
 
-    get algorithm() {
+    get algorithm(): AesCipherAlgorithm {
         return this.#algorithm;
     }
 

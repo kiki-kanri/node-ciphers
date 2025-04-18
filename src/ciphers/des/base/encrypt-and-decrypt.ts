@@ -3,6 +3,7 @@ import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
 import type {
+    BaseEncryptResult,
     DesCipherEncodingOptions,
     Result,
 } from '../../../types';
@@ -43,7 +44,7 @@ export abstract class BaseDesEncryptAndDecrypt extends BaseDesCipher {
         data: BinaryLike,
         encodingOptions?: DesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
-    ): Result<{ data: string; iv: string }> {
+    ): BaseEncryptResult {
         const iv = randomBytes(8);
         try {
             return this.createOkResult({
@@ -55,7 +56,11 @@ export abstract class BaseDesEncryptAndDecrypt extends BaseDesCipher {
         }
     }
 
-    encryptJson(data: any, encodingOptions?: DesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encryptJson(
+        data: any,
+        encodingOptions?: DesCipherEncodingOptions.Encrypt,
+        cipherOptions?: TransformOptions,
+    ): BaseEncryptResult {
         try {
             return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
         } catch (error) {

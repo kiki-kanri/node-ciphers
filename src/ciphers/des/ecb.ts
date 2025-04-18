@@ -3,6 +3,7 @@ import type { TransformOptions } from 'node:stream';
 
 import type {
     DesCipherEncodingOptions,
+    EcbEncryptResult,
     Result,
 } from '../../types';
 
@@ -34,7 +35,7 @@ export class Ecb extends BaseDesCipher {
         iv?: null,
         encodingOptions?: DesCipherEncodingOptions.Decrypt,
         decipherOptions?: TransformOptions,
-    ) {
+    ): Result<T> {
         const result = this.decrypt(encryptedData, iv, encodingOptions, decipherOptions);
         if (!result.ok) return result;
         return this.parseJson<T>(result.value);
@@ -44,7 +45,7 @@ export class Ecb extends BaseDesCipher {
         data: BinaryLike,
         encodingOptions?: DesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
-    ): Result<{ data: string; iv: null }> {
+    ): EcbEncryptResult {
         try {
             return this.createOkResult({
                 data: this.getCipherResult(this.createCipher(null, cipherOptions), data, encodingOptions),
@@ -55,7 +56,11 @@ export class Ecb extends BaseDesCipher {
         }
     }
 
-    encryptJson(data: any, encodingOptions?: DesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encryptJson(
+        data: any,
+        encodingOptions?: DesCipherEncodingOptions.Encrypt,
+        cipherOptions?: TransformOptions,
+    ): EcbEncryptResult {
         try {
             return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
         } catch (error) {

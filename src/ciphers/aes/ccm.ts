@@ -98,7 +98,7 @@ export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         ivLength: AvailableIvLength = this.#ivLength,
         encodingOptions?: HasAuthTagAesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
-    ) {
+    ): Result<{ authTag: string; authTagLength: number; data: string; iv: string }> {
         try {
             return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
         } catch (error) {

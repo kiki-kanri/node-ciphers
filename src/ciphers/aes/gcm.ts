@@ -48,7 +48,7 @@ export class Gcm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         authTagLength?: number,
         encodingOptions?: HasAuthTagAesCipherEncodingOptions.Decrypt,
         decipherOptions?: TransformOptions,
-    ) {
+    ): Result<T> {
         const result = this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions);
         if (!result.ok) return result;
         return this.parseJson<T>(result.value);
@@ -89,7 +89,7 @@ export class Gcm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         ivLength: number = this.#ivLength,
         encodingOptions?: HasAuthTagAesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
-    ) {
+    ): Result<{ authTag: string; authTagLength?: number; data: string; iv: string }> {
         try {
             return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
         } catch (error) {

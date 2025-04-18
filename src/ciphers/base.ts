@@ -24,13 +24,13 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
         };
     }
 
-    get encodingOptions() {
+    get encodingOptions(): Readonly<RequiredDeep<EncodingOptions>> {
         return this.#encodingOptions;
     }
 
     protected createErrorResult(error: unknown) {
         return {
-            error,
+            error: error as unknown,
             ok: false as const,
         };
     }
@@ -42,11 +42,14 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
         };
     }
 
-    protected dataToBuffer(data: BinaryLike, encoding: BufferEncoding) {
+    protected dataToBuffer(
+        data: BinaryLike,
+        encoding: BufferEncoding,
+    ): Buffer<ArrayBuffer> | NodeJS.ArrayBufferView<ArrayBufferLike> {
         return typeof data === 'string' ? Buffer.from(data, encoding) : data;
     }
 
-    protected getCipherResult(cipher: Cipher, data: BinaryLike, encodingOptions?: EncodingOptions) {
+    protected getCipherResult(cipher: Cipher, data: BinaryLike, encodingOptions?: EncodingOptions): string {
         const outputEncoding = encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput;
         return cipher.update(
             this.dataToBuffer(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput),
@@ -55,7 +58,11 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
         ) + cipher.final(outputEncoding);
     }
 
-    protected getDecipherResult(decipher: Decipher, encryptedData: BinaryLike, encodingOptions?: EncodingOptions) {
+    protected getDecipherResult(
+        decipher: Decipher,
+        encryptedData: BinaryLike,
+        encodingOptions?: EncodingOptions,
+    ): string {
         const outputEncoding = encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput;
         return decipher.update(
             this.dataToBuffer(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput),

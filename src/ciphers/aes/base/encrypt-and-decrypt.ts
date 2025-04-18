@@ -4,6 +4,7 @@ import type { TransformOptions } from 'node:stream';
 
 import type {
     AesCipherEncodingOptions,
+    BaseEncryptResult,
     Result,
 } from '../../../types';
 
@@ -43,7 +44,7 @@ export abstract class BaseAesEncryptAndDecrypt extends BaseAesCipher {
         data: BinaryLike,
         encodingOptions?: AesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
-    ): Result<{ data: string; iv: string }> {
+    ): BaseEncryptResult {
         const iv = randomBytes(16);
         try {
             return this.createOkResult({
@@ -55,7 +56,11 @@ export abstract class BaseAesEncryptAndDecrypt extends BaseAesCipher {
         }
     }
 
-    encryptJson(data: any, encodingOptions?: AesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encryptJson(
+        data: any,
+        encodingOptions?: AesCipherEncodingOptions.Encrypt,
+        cipherOptions?: TransformOptions,
+    ): BaseEncryptResult {
         try {
             return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
         } catch (error) {
