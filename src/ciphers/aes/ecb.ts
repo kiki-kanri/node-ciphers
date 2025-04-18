@@ -1,7 +1,10 @@
 import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
-import type { AesCipherEncodingOptions } from '../../types';
+import type {
+    AesCipherEncodingOptions,
+    Result,
+} from '../../types';
 
 import { BaseAesCipher } from './base';
 
@@ -16,10 +19,14 @@ export class Ecb extends BaseAesCipher {
         iv?: null,
         encodingOptions?: AesCipherEncodingOptions.Decrypt,
         decipherOptions?: TransformOptions,
-    ) {
+    ): Result<string> {
         try {
-            return this.getDecipherResult(this.createDecipher(null, decipherOptions), encryptedData, encodingOptions);
-        } catch {}
+            return this.createOkResult(
+                this.getDecipherResult(this.createDecipher(null, decipherOptions), encryptedData, encodingOptions),
+            );
+        } catch (error) {
+            return this.createErrorResult(error);
+        }
     }
 
     decryptToJson<T = any>(
@@ -28,19 +35,35 @@ export class Ecb extends BaseAesCipher {
         encodingOptions?: AesCipherEncodingOptions.Decrypt,
         decipherOptions?: TransformOptions,
     ) {
-        return this.parseJson<T>(this.decrypt(encryptedData, iv, encodingOptions, decipherOptions));
+        const result = this.decrypt(encryptedData, iv, encodingOptions, decipherOptions);
+        if (!result.ok) return result;
+        return this.parseJson<T>(result.value);
     }
 
-    encrypt(data: BinaryLike, encodingOptions?: AesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
+    encrypt(
+        data: BinaryLike,
+        encodingOptions?: AesCipherEncodingOptions.Encrypt,
+        cipherOptions?: TransformOptions,
+    ): Result<{ data: string; iv: null }> {
         try {
-            return {
+            return this.createOkResult({
                 data: this.getCipherResult(this.createCipher(null, cipherOptions), data, encodingOptions),
                 iv: null,
-            };
-        } catch {}
+            });
+        } catch (error) {
+            return this.createErrorResult(error);
+        }
     }
 
-    encryptJson(data: any, encodingOptions?: AesCipherEncodingOptions.Encrypt, cipherOptions?: TransformOptions) {
-        return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
+    encryptJson(
+        data: any,
+        encodingOptions?: AesCipherEncodingOptions.Encrypt,
+        cipherOptions?: TransformOptions,
+    ) {
+        try {
+            return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
+        } catch (error) {
+            return this.createErrorResult(error);
+        }
     }
 }

@@ -11,6 +11,7 @@ import { defaultEncodingOptions } from '../constants';
 import type {
     BaseCipherEncodingOptions,
     HasAuthTagAesCipherEncodingOptions,
+    Result,
 } from '../types';
 
 export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptions = BaseCipherEncodingOptions> {
@@ -25,6 +26,20 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
 
     get encodingOptions() {
         return this.#encodingOptions;
+    }
+
+    protected createErrorResult(error: unknown) {
+        return {
+            error,
+            ok: false as const,
+        };
+    }
+
+    protected createOkResult<T>(value: T) {
+        return {
+            ok: true as const,
+            value: value as T,
+        };
     }
 
     protected dataToBuffer(data: BinaryLike, encoding: BufferEncoding) {
@@ -49,10 +64,11 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
         ) + decipher.final(outputEncoding);
     }
 
-    protected parseJson<T>(data?: string) {
-        if (data === undefined) return;
+    protected parseJson<T>(data: string): Result<T> {
         try {
-            return JSON.parse(data) as T;
-        } catch {}
+            return this.createOkResult(JSON.parse(data) as T);
+        } catch (error) {
+            return this.createErrorResult(error);
+        }
     }
 }

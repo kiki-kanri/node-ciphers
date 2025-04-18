@@ -7,6 +7,16 @@ import type {
 } from '../src/ciphers/aes';
 import type { BaseAesEncryptAndDecrypt } from '../src/ciphers/aes/base/encrypt-and-decrypt';
 
+import {
+    expectErrorName,
+    testCommonDecryptInvalidDataAndIv,
+    testCommonDecryptNonJsonData,
+    testCommonEncryptDecrypt,
+    testCommonEncryptDecryptJson,
+    testEncryptCircularReferenceJson,
+    testEncryptInvalidData,
+} from './helpers';
+
 const cipherClassesAndTestFunctions = [
     [AesCiphers.Cbc],
     [
@@ -41,28 +51,32 @@ function commonCipherTest(
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data', () => {
             const cipher = new CipherClass(key);
-            const encryptResult = cipher.encrypt(data);
-            expect(encryptResult).toHaveProperty('data');
-            expect(encryptResult).toHaveProperty('iv');
-            const decryptedData = cipher.decrypt(encryptResult!.data, encryptResult!.iv);
-            expect(decryptedData).toBe(data);
+            testCommonEncryptDecrypt(cipher, data);
         });
 
         it('should correctly encrypt and decrypt JSON data', () => {
             const cipher = new CipherClass(key);
-            const encryptResult = cipher.encryptJson(jsonData);
-            expect(encryptResult).toHaveProperty('data');
-            expect(encryptResult).toHaveProperty('iv');
-            const decryptedData = cipher.decryptToJson(encryptResult!.data, encryptResult!.iv);
-            expect(decryptedData).toEqual(jsonData);
+            testCommonEncryptDecryptJson(cipher, jsonData);
         });
 
-        it('should return undefined when decrypting invalid data and iv', () => {
+        it('should return error when encrypting invalid data', () => {
             const cipher = new CipherClass(key);
-            const decryptedData = cipher.decrypt('test test', 'test test');
-            expect(decryptedData).toBeUndefined();
-            const decryptedJsonData = cipher.decryptToJson('test test', 'test test');
-            expect(decryptedJsonData).toBeUndefined();
+            testEncryptInvalidData(cipher);
+        });
+
+        it('should return error when encrypting JSON with circular reference', () => {
+            const cipher = new CipherClass(key);
+            testEncryptCircularReferenceJson(cipher);
+        });
+
+        it('should return error when decrypting invalid data and iv', () => {
+            const cipher = new CipherClass(key);
+            testCommonDecryptInvalidDataAndIv(cipher);
+        });
+
+        it('should return error when decrypting non-JSON data with decryptToJson', () => {
+            const cipher = new CipherClass(key);
+            testCommonDecryptNonJsonData(cipher);
         });
     });
 }
@@ -75,46 +89,107 @@ function hasAuthTagCipherTest(
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data with default authTagLength', () => {
             const cipher = new CipherClass(key);
+
             const encryptResult = cipher.encrypt(data);
-            expect(encryptResult).toHaveProperty('authTag');
-            expect(encryptResult).toHaveProperty('data');
-            expect(encryptResult).toHaveProperty('iv');
-            const decryptedData = cipher.decrypt(encryptResult!.data, encryptResult!.iv, encryptResult!.authTag);
-            expect(decryptedData).toBe(data);
+            expect(encryptResult.ok).toBe(true);
+            if (encryptResult.ok) {
+                expect(typeof encryptResult.value.authTag).toBe('string');
+                if (cipher.algorithm.endsWith('ccm')) expect(encryptResult.value.authTagLength).toBe(16);
+                else expect(encryptResult.value.authTagLength).toBeUndefined();
+                expect(typeof encryptResult.value.data).toBe('string');
+                expect(typeof encryptResult.value.iv).toBe('string');
+
+                const decryptedResult = cipher.decrypt(
+                    encryptResult.value.data,
+                    encryptResult.value.iv,
+                    encryptResult.value.authTag,
+                );
+
+                expect(decryptedResult.ok).toBe(true);
+                if (decryptedResult.ok) expect(decryptedResult.value).toBe(data);
+            }
         });
 
         it('should correctly encrypt and decrypt data with custom authTagLength', () => {
             const cipher = new CipherClass(key);
             const authTagLength = 12;
-            const encryptResult = cipher.encrypt(data, authTagLength);
-            expect(encryptResult).toHaveProperty('authTag');
-            expect(encryptResult).toHaveProperty('data');
-            expect(encryptResult).toHaveProperty('iv');
-            const decryptedData = cipher.decrypt(
-                encryptResult!.data,
-                encryptResult!.iv,
-                encryptResult!.authTag,
-                authTagLength,
-            );
 
-            expect(decryptedData).toBe(data);
+            const encryptResult = cipher.encrypt(data, authTagLength);
+            if (encryptResult.ok) {
+                expect(typeof encryptResult.value.authTag).toBe('string');
+                expect(encryptResult.value.authTagLength).toBe(authTagLength);
+                expect(typeof encryptResult.value.data).toBe('string');
+                expect(typeof encryptResult.value.iv).toBe('string');
+
+                const decryptedResult = cipher.decrypt(
+                    encryptResult.value.data,
+                    encryptResult.value.iv,
+                    encryptResult.value.authTag,
+                    authTagLength,
+                );
+
+                expect(decryptedResult.ok).toBe(true);
+                if (decryptedResult.ok) expect(decryptedResult.value).toBe(data);
+            }
         });
 
         it('should correctly encrypt and decrypt JSON data', () => {
             const cipher = new CipherClass(key);
+
             const encryptResult = cipher.encryptJson(jsonData);
-            expect(encryptResult).toHaveProperty('data');
-            expect(encryptResult).toHaveProperty('iv');
-            const decryptedData = cipher.decryptToJson(encryptResult!.data, encryptResult!.iv, encryptResult!.authTag);
-            expect(decryptedData).toEqual(jsonData);
+            expect(encryptResult.ok).toBe(true);
+            if (encryptResult.ok) {
+                expect(typeof encryptResult.value.data).toBe('string');
+                expect(typeof encryptResult.value.iv).toBe('string');
+
+                const decryptedResult = cipher.decryptToJson(
+                    encryptResult.value.data,
+                    encryptResult.value.iv,
+                    encryptResult.value.authTag,
+                );
+
+                expect(decryptedResult.ok).toBe(true);
+                if (decryptedResult.ok) expect(decryptedResult.value).toEqual(jsonData);
+            }
         });
 
-        it('should return undefined when decrypting invalid data and iv', () => {
+        it('should return error when encrypting invalid data', () => {
             const cipher = new CipherClass(key);
-            const decryptedData = cipher.decrypt('test test', 'test test', 'test test');
-            expect(decryptedData).toBeUndefined();
-            const decryptedJsonData = cipher.decryptToJson('test test', 'test test', 'test test');
-            expect(decryptedJsonData).toBeUndefined();
+            testEncryptInvalidData(cipher);
+        });
+
+        it('should return error when encrypting JSON with circular reference', () => {
+            const cipher = new CipherClass(key);
+            testEncryptCircularReferenceJson(cipher);
+        });
+
+        it('should return error when decrypting invalid data and iv', () => {
+            const cipher = new CipherClass(key);
+
+            const decryptedResult = cipher.decrypt('test test', 'test test', 'test test');
+            expect(decryptedResult.ok).toBe(false);
+            if (!decryptedResult.ok) expectErrorName(decryptedResult.error);
+
+            const decryptedJsonResult = cipher.decryptToJson('test test', 'test test', 'test test');
+            expect(decryptedJsonResult.ok).toBe(false);
+            if (!decryptedJsonResult.ok) expectErrorName(decryptedJsonResult.error);
+        });
+
+        it('should return error when decrypting non-JSON data with decryptToJson', () => {
+            const cipher = new CipherClass(key);
+
+            const encryptResult = cipher.encrypt(data);
+            expect(encryptResult.ok).toBe(true);
+            if (encryptResult.ok) {
+                const decryptResult = cipher.decryptToJson(
+                    encryptResult.value.data,
+                    encryptResult.value.iv,
+                    encryptResult.value.authTag,
+                );
+
+                expect(decryptResult.ok).toBe(false);
+                if (!decryptResult.ok) expectErrorName(decryptResult.error);
+            }
         });
     });
 }

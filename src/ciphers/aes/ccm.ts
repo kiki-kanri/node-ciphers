@@ -2,7 +2,10 @@ import { randomBytes } from 'node:crypto';
 import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
-import type { HasAuthTagAesCipherEncodingOptions } from '../../types';
+import type {
+    HasAuthTagAesCipherEncodingOptions,
+    Result,
+} from '../../types';
 
 import { BaseAesCipher } from './base';
 
@@ -30,7 +33,7 @@ export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         authTagLength: number = this.#authTagLength,
         encodingOptions?: HasAuthTagAesCipherEncodingOptions.Decrypt,
         decipherOptions?: TransformOptions,
-    ) {
+    ): Result<string> {
         try {
             const decipher = this.createDecipher(
                 this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv),
@@ -41,8 +44,10 @@ export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
             );
 
             decipher.setAuthTag(this.dataToBuffer(authTag, encodingOptions?.authTag || this.encodingOptions.authTag));
-            return this.getDecipherResult(decipher, encryptedData, encodingOptions);
-        } catch {}
+            return this.createOkResult(this.getDecipherResult(decipher, encryptedData, encodingOptions));
+        } catch (error) {
+            return this.createErrorResult(error);
+        }
     }
 
     decryptToJson<T = any>(
@@ -52,10 +57,10 @@ export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         authTagLength: number = this.#authTagLength,
         encodingOptions?: HasAuthTagAesCipherEncodingOptions.Decrypt,
         decipherOptions?: TransformOptions,
-    ) {
-        return this.parseJson<T>(
-            this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions),
-        );
+    ): Result<T> {
+        const result = this.decrypt(encryptedData, iv, authTag, authTagLength, encodingOptions, decipherOptions);
+        if (!result.ok) return result;
+        return this.parseJson<T>(result.value);
     }
 
     encrypt(
@@ -64,7 +69,7 @@ export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         ivLength: AvailableIvLength = this.#ivLength,
         encodingOptions?: HasAuthTagAesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
-    ) {
+    ): Result<{ authTag: string; authTagLength: number; data: string; iv: string }> {
         const iv = randomBytes(ivLength);
         try {
             const cipher = this.createCipher(
@@ -76,13 +81,15 @@ export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
             );
 
             const encryptedData = this.getCipherResult(cipher, data, encodingOptions);
-            return {
+            return this.createOkResult({
                 authTag: cipher.getAuthTag().toString(encodingOptions?.authTag || this.encodingOptions.authTag),
                 authTagLength,
                 data: encryptedData,
                 iv: iv.toString(encodingOptions?.iv || this.encodingOptions.iv),
-            };
-        } catch {}
+            });
+        } catch (error) {
+            return this.createErrorResult(error);
+        }
     }
 
     encryptJson(
@@ -92,6 +99,10 @@ export class Ccm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
         encodingOptions?: HasAuthTagAesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
     ) {
-        return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
+        try {
+            return this.encrypt(JSON.stringify(data), authTagLength, ivLength, encodingOptions, cipherOptions);
+        } catch (error) {
+            return this.createErrorResult(error);
+        }
     }
 }
