@@ -13,11 +13,11 @@ import type {
 } from '../../../types';
 import { BaseCipher } from '../../base';
 
-const keyLengthToModePrefixMap = Object.freeze<Record<number, '' | '-ede3' | '-ede'>>({
+const keyLengthToModePrefixMap: Readonly<Record<number, '' | '-ede3' | '-ede'>> = {
     8: '',
     16: '-ede',
     24: '-ede3',
-});
+};
 
 export abstract class BaseDesCipher extends BaseCipher {
     readonly #algorithm: DesCipherAlgorithm;

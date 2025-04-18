@@ -1,7 +1,7 @@
 import { getCiphers } from 'node:crypto';
 
-export const availableCiphers = Object.freeze<string[]>(getCiphers());
-export const defaultEncodingOptions = Object.freeze({
+export const availableCiphers: readonly string[] = getCiphers();
+export const defaultEncodingOptions = {
     authTag: 'hex',
     decryptInput: 'hex',
     decryptOutput: 'utf-8',
@@ -9,4 +9,4 @@ export const defaultEncodingOptions = Object.freeze({
     encryptOutput: 'hex',
     iv: 'hex',
     key: 'utf-8',
-} as const);
+} as const;

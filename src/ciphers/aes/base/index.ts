@@ -24,11 +24,11 @@ import type {
 } from '../../../types';
 import { BaseCipher } from '../../base';
 
-export const keyLengthToBitsMap = Object.freeze<Record<number, 128 | 192 | 256>>({
+export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
     16: 128,
     24: 192,
     32: 256,
-});
+};
 
 export abstract class BaseAesCipher<
     EncodingOptions extends HasAuthTagAesCipherEncodingOptions = AesCipherEncodingOptions,

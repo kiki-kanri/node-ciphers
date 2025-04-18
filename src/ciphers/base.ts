@@ -17,10 +17,10 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
     readonly #encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;
 
     constructor(encodingOptions?: EncodingOptions) {
-        this.#encodingOptions = Object.freeze({
+        this.#encodingOptions = <Readonly<RequiredDeep<EncodingOptions>>>{
             ...defaultEncodingOptions,
             ...encodingOptions,
-        } as RequiredDeep<EncodingOptions>);
+        };
     }
 
     get encodingOptions() {
