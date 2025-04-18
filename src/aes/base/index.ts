@@ -15,13 +15,13 @@ import type {
 } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
-import { availableCiphers } from '../../../constants';
+import { availableCiphers } from '../../constants';
 import type {
     AesCipherAlgorithm,
     AesCipherEncodingOptions,
     AesCipherMode,
     HasAuthTagAesCipherEncodingOptions,
-} from '../../../types';
+} from '../../types';
 import { BaseCipher } from '../../base';
 
 export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {

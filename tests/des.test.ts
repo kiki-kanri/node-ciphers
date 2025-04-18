@@ -1,8 +1,8 @@
 import { Buffer } from 'node:buffer';
 
-import { DesCiphers } from '../src';
-import { BaseDesCipher } from '../src/ciphers/des/base';
-import type { BaseDesEncryptAndDecrypt } from '../src/ciphers/des/base/encrypt-and-decrypt';
+import * as DesCiphers from '../src/des';
+import { BaseDesCipher } from '../src/des/base';
+import type { BaseDesEncryptAndDecrypt } from '../src/des/base/encrypt-and-decrypt';
 
 import {
     testCommonDecryptInvalidDataAndIv,

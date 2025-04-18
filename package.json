@@ -29,23 +29,20 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+    "./aes": {
+      "types": "./dist/aes/index.d.ts",
+      "import": "./dist/aes/index.mjs",
+      "require": "./dist/aes/index.cjs"
     },
-    "./ciphers/aes": {
-      "types": "./dist/ciphers/aes/index.d.ts",
-      "import": "./dist/ciphers/aes/index.mjs",
-      "require": "./dist/ciphers/aes/index.cjs"
+    "./des": {
+      "types": "./dist/des/index.d.ts",
+      "import": "./dist/des/index.mjs",
+      "require": "./dist/des/index.cjs"
     },
-    "./ciphers/des": {
-      "types": "./dist/ciphers/des/index.d.ts",
-      "import": "./dist/ciphers/des/index.mjs",
-      "require": "./dist/ciphers/des/index.cjs"
+    "./types": {
+      "types": "./dist/types/index.d.ts"
     }
   },
-  "types": "./dist/index.d.ts",
   "files": [
     "./dist",
     "./src"
@@ -54,7 +51,7 @@
     "node": ">=18.12.1"
   },
   "scripts": {
-    "build": "ts-project-builder ./src/index.ts --clean --preserve-modules --sourcemaps",
+    "build": "ts-project-builder ./src/aes/index.ts ./src/des/index.ts --clean --preserve-modules --sourcemaps",
     "bumplog": "changelogen --bump",
     "lint": "eslint",
     "lint:fix": "eslint --fix",

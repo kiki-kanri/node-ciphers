@@ -1,11 +1,11 @@
 import type { BinaryLike } from 'node:crypto';
 
-import type { DesCipherEncodingOptions } from '../../types';
+import type { DesCipherEncodingOptions } from '../types';
 
 import { BaseDesEncryptAndDecrypt } from './base/encrypt-and-decrypt';
 
-export class Cbc extends BaseDesEncryptAndDecrypt {
+export class Ofb extends BaseDesEncryptAndDecrypt {
     constructor(key: BinaryLike, encodingOptions?: DesCipherEncodingOptions) {
-        super(key, 'cbc', encodingOptions);
+        super(key, 'ofb', encodingOptions);
     }
 }

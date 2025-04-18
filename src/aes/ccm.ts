@@ -5,7 +5,7 @@ import type { TransformOptions } from 'node:stream';
 import type {
     HasAuthTagAesCipherEncodingOptions,
     Result,
-} from '../../types';
+} from '../types';
 
 import { BaseAesCipher } from './base';
 

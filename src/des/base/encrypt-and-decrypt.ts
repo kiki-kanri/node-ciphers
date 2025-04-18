@@ -1,30 +1,29 @@
+import { randomBytes } from 'node:crypto';
 import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
 import type {
-    AesCipherEncodingOptions,
-    EcbEncryptResult,
+    BaseEncryptResult,
+    DesCipherEncodingOptions,
     Result,
 } from '../../types';
 
-import { BaseAesCipher } from './base';
+import { BaseDesCipher } from './';
 
-export class Ecb extends BaseAesCipher {
-    constructor(key: BinaryLike, encodingOptions?: AesCipherEncodingOptions) {
-        super(key, 'ecb', encodingOptions);
-    }
-
+export abstract class BaseDesEncryptAndDecrypt extends BaseDesCipher {
     decrypt(
         encryptedData: BinaryLike,
-        // @ts-expect-error Allow iv to be null.
-        iv?: null,
-        encodingOptions?: AesCipherEncodingOptions.Decrypt,
+        iv: BinaryLike,
+        encodingOptions?: DesCipherEncodingOptions.Decrypt,
         decipherOptions?: TransformOptions,
     ): Result<string> {
         try {
-            return this.createOkResult(
-                this.getDecipherResult(this.createDecipher(null, decipherOptions), encryptedData, encodingOptions),
+            const decipher = this.createDecipher(
+                this.dataToBuffer(iv, encodingOptions?.iv || this.encodingOptions.iv),
+                decipherOptions,
             );
+
+            return this.createOkResult(this.getDecipherResult(decipher, encryptedData, encodingOptions));
         } catch (error) {
             return this.createErrorResult(error);
         }
@@ -32,8 +31,8 @@ export class Ecb extends BaseAesCipher {
 
     decryptToJson<T = any>(
         encryptedData: BinaryLike,
-        iv?: null,
-        encodingOptions?: AesCipherEncodingOptions.Decrypt,
+        iv: BinaryLike,
+        encodingOptions?: DesCipherEncodingOptions.Decrypt,
         decipherOptions?: TransformOptions,
     ): Result<T> {
         const result = this.decrypt(encryptedData, iv, encodingOptions, decipherOptions);
@@ -43,13 +42,14 @@ export class Ecb extends BaseAesCipher {
 
     encrypt(
         data: BinaryLike,
-        encodingOptions?: AesCipherEncodingOptions.Encrypt,
+        encodingOptions?: DesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
-    ): EcbEncryptResult {
+    ): BaseEncryptResult {
+        const iv = randomBytes(8);
         try {
             return this.createOkResult({
-                data: this.getCipherResult(this.createCipher(null, cipherOptions), data, encodingOptions),
-                iv: null,
+                data: this.getCipherResult(this.createCipher(iv, cipherOptions), data, encodingOptions),
+                iv: iv.toString(encodingOptions?.iv || this.encodingOptions.iv),
             });
         } catch (error) {
             return this.createErrorResult(error);
@@ -58,9 +58,9 @@ export class Ecb extends BaseAesCipher {
 
     encryptJson(
         data: any,
-        encodingOptions?: AesCipherEncodingOptions.Encrypt,
+        encodingOptions?: DesCipherEncodingOptions.Encrypt,
         cipherOptions?: TransformOptions,
-    ): EcbEncryptResult {
+    ): BaseEncryptResult {
         try {
             return this.encrypt(JSON.stringify(data), encodingOptions, cipherOptions);
         } catch (error) {

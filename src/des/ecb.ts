@@ -5,7 +5,7 @@ import type {
     DesCipherEncodingOptions,
     EcbEncryptResult,
     Result,
-} from '../../types';
+} from '../types';
 
 import { BaseDesCipher } from './base';
 

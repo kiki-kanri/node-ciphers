@@ -1,12 +1,12 @@
 import { Buffer } from 'node:buffer';
 
-import { AesCiphers } from '../src';
+import * as AesCiphers from '../src/aes';
 import type {
     Ccm,
     Gcm,
-} from '../src/ciphers/aes';
-import { BaseAesCipher } from '../src/ciphers/aes/base';
-import type { BaseAesEncryptAndDecrypt } from '../src/ciphers/aes/base/encrypt-and-decrypt';
+} from '../src/aes';
+import { BaseAesCipher } from '../src/aes/base';
+import type { BaseAesEncryptAndDecrypt } from '../src/aes/base/encrypt-and-decrypt';
 
 import {
     expectErrorName,

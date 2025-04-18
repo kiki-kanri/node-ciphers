@@ -1,6 +1,6 @@
 import type { BinaryLike } from 'node:crypto';
 
-import type { AesCipherEncodingOptions } from '../../types';
+import type { AesCipherEncodingOptions } from '../types';
 
 import { BaseAesEncryptAndDecrypt } from './base/encrypt-and-decrypt';
 

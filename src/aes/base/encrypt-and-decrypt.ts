@@ -6,9 +6,9 @@ import type {
     AesCipherEncodingOptions,
     BaseEncryptResult,
     Result,
-} from '../../../types';
+} from '../../types';
 
-import { BaseAesCipher } from '.';
+import { BaseAesCipher } from './';
 
 export abstract class BaseAesEncryptAndDecrypt extends BaseAesCipher {
     decrypt(
