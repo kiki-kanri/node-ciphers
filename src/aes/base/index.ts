@@ -24,7 +24,7 @@ import type {
     HasAuthTagAesCipherEncodingOptions,
 } from '../../types';
 
-export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
+const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
     16: 128,
     24: 192,
     32: 256,
