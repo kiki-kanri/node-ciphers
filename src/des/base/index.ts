@@ -2,11 +2,7 @@ import {
     createCipheriv,
     createDecipheriv,
 } from 'node:crypto';
-import type {
-    BinaryLike,
-    Cipher,
-    Decipher,
-} from 'node:crypto';
+import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
 import { BaseCipher } from '../../base';
@@ -36,15 +32,15 @@ export abstract class BaseDesCipher extends BaseCipher {
         if (!availableCiphers.includes(this.#algorithm)) throw new Error('Invalid algorithm');
     }
 
-    get algorithm(): DesCipherAlgorithm {
+    get algorithm() {
         return this.#algorithm;
     }
 
-    protected createCipher(iv: BinaryLike | null, options?: TransformOptions): Cipher {
+    protected createCipher(iv: BinaryLike | null, options?: TransformOptions) {
         return createCipheriv(this.#algorithm, this.#key, iv, options);
     }
 
-    protected createDecipher(iv: BinaryLike | null, options?: TransformOptions): Decipher {
+    protected createDecipher(iv: BinaryLike | null, options?: TransformOptions) {
         return createDecipheriv(this.#algorithm, this.#key, iv, options);
     }
 }
