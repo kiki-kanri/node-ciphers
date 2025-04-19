@@ -6,35 +6,182 @@
 [![License][license-src]][license-href]
 [![FOSSA Status][fossa-src]][fossa-href]
 
-A lightweight Node.js library for AES and DES encryption, offering flexible encoding options, support for various cipher modes, and seamless integration with streams.
+Lightweight AES and DES encryption library for Node.js, featuring flexible encoding, multiple cipher modes, and TypeScript support.
 
 - [✨ Release Notes](./CHANGELOG.md)
 
-### Features
+## Features
 
-- 🔒 **AES and DES Encryption**: Provides robust implementations for both AES and DES encryption algorithms, with support for various modes like CBC, CCM, and more
-- 🧰 **Flexible Encoding Options**: Customize encoding settings for encryption and decryption to suit your needs
-- 🔄 **Encrypt and Decrypt JSON**: Easily encrypt and decrypt JSON data directly, simplifying the handling of structured data
-- 📜 **Mode Support**: Includes CBC, CCM, CFB, CTR, ECB, GCM, and OFB modes
-- ⚙️ **Stream Transformations**: Seamlessly integrate with Node.js streams, allowing for encrypted data processing on-the-fly with transformation options
-- 🔑 **Dynamic Key Handling**: Automatically handles key lengths and their corresponding mode prefixes for both AES and DES, ensuring secure and correct key usage
-- 📂 **Modular Architecture**: Well-structured codebase with modular components, making it easy to extend and maintain
+- 🔒 AES and DES encryption/decryption with support for most cipher modes (CBC, CFB, CTR, ECB, GCM, OFB, CCM, etc.)
+- 🧠 Automatic key size detection and mode selection (AES-128, AES-192, AES-256 based on key bytes length)
+- 📦 Built-in JSON encryption/decryption methods for structured data
+- 🛡️ Robust error handling: methods return a Rust-like `Result` object with `ok`, `value`, and `error` fields instead of throwing exceptions
+- ⚙️ Customizable encoding settings for keys, IVs, and data, with per-call overrides supported
+- 🧩 Fully type-safe, written in TypeScript
+- 🧪 Comprehensive test coverage
+- 🎲 Automatic IV generation: a new IV is randomly generated for every encryption operation
 
-## Environment Requirements
+## Requirements
 
-- Node.js version 18 or higher
+- **Node.js** `>= 18.12.1`
 
 ## Installation
 
-Add dependency (example using pnpm).
+Using [pnpm](https://pnpm.io):
 
 ```bash
 pnpm add node-ciphers
 ```
 
-You can also use yarn, npm, or bun to add the dependency.
+You can also use `yarn`, `npm`, or `bun`.
 
-That's it! You're ready to use this package in your project. Check out the [available ciphers](#available-ciphers) and [usage](#usage) instructions below ✨.
+## Usage
+
+There is no `try-catch` in the example code. For convenience, all encryption and decryption methods internally handle errors and return a value with the following type:
+
+```typescript
+type Result<T> = { error: unknown; ok: false; value: undefined } | { ok: true; value: T };
+```
+
+This allows you to easily check `.ok` or `value === undefined` for early returns or error handling.
+
+Cipher instances can be reused; you do not need to create a new cipher for each encryption or decryption.
+
+The encryption method returns a `Result.value` object containing `data` and `iv`, both of type `string`. The `iv` is automatically generated during encryption.
+
+### AES
+
+Below are examples of AES CBC encryption and decryption:
+
+```typescript
+import * as AesCiphers from 'node-ciphers/aes';
+
+const data = 'test';
+const jsonData = { value: data };
+
+// 128 bits CBC (16 bytes key)
+const cipher = new AesCiphers.Cbc('0123456789abcdef');
+console.log(cipher.algorithm);
+
+// Encrypt text
+const encryptResult = cipher.encrypt(data);
+console.log(encryptResult);
+if (!encryptResult.ok) throw encryptResult.error;
+
+// Decrypt text
+const decryptedResult = cipher.decrypt(encryptResult.value.data, encryptResult.value.iv);
+console.log(decryptedResult);
+if (!decryptedResult.ok) throw decryptedResult.error;
+
+// Encrypt JSON
+const encryptJsonResult = cipher.encryptJson(jsonData);
+console.log(encryptJsonResult);
+if (!encryptJsonResult.ok) throw encryptJsonResult.error;
+
+// Decrypt JSON
+const decryptedJsonResult = cipher.decryptToJson(encryptJsonResult.value.data, encryptJsonResult.value.iv);
+console.log(decryptedJsonResult);
+if (!decryptedJsonResult.ok) throw decryptedJsonResult.error;
+```
+
+AES encryption supports three key lengths: 128-bit, 192-bit, and 256-bit, corresponding to 16, 24, and 32 bytes.
+
+When creating a cipher instance, the `key` is automatically converted into a buffer. Its length is validated, and the appropriate mode is selected based on the length. It also checks whether the mode is supported in the current runtime environment.
+
+For details about the automatic conversion of keys to buffers, please refer to [this section](#encoding-and-decoding).
+
+For AES-CCM and AES-GCM modes, encryption and decryption methods require additional parameters related to the authentication tag.
+
+> [!IMPORTANT]
+> In Node.js, the results of CFB, CFB1, and CFB8 encryption modes may differ from those in other programming languages due to differences in how the **block size** and **feedback unit size** are handled internally during encryption and decryption.
+>
+> - **CFB Mode**: Typically operates on a full block (commonly 128 bits) but allows different feedback unit sizes (e.g., 1 bit, 8 bits, or full block size). The feedback size directly impacts the encryption process.
+> - **CFB1**, **CFB8**, and **CFB**: These modes use 1-bit, 8-bit, and full-block feedback sizes, respectively. The internal handling of these feedback sizes can vary across different programming languages or cryptographic libraries, potentially leading to different results even with the same key and IV.
+>
+> The key difference arises from how the **feedback block** is processed internally, causing inconsistencies in encryption outputs across implementations.
+
+### DES
+
+The usage is similar to AES, but the supported key lengths and modes differ:
+
+- 8 bytes (DES)
+- 16 bytes (DES-EDE)
+- 24 bytes (DES-EDE3)
+
+```typescript
+import * as DesCiphers from 'node-ciphers/des';
+
+const data = 'test';
+const jsonData = { value: data };
+
+// DES-EDE3 (3DES) (24 bytes key)
+const cipher = new DesCiphers.Cbc('0123456789abcdef01234567');
+console.log(cipher.algorithm);
+
+// Encrypt text
+const encryptResult = cipher.encrypt(data);
+console.log(encryptResult);
+if (!encryptResult.ok) throw encryptResult.error;
+
+// Decrypt text
+const decryptedResult = cipher.decrypt(encryptResult.value.data, encryptResult.value.iv);
+console.log(decryptedResult);
+if (!decryptedResult.ok) throw decryptedResult.error;
+
+// Encrypt JSON
+const encryptJsonResult = cipher.encryptJson(jsonData);
+console.log(encryptJsonResult);
+if (!encryptJsonResult.ok) throw encryptJsonResult.error;
+
+// Decrypt JSON
+const decryptedJsonResult = cipher.decryptToJson(encryptJsonResult.value.data, encryptJsonResult.value.iv);
+console.log(decryptedJsonResult);
+if (!decryptedJsonResult.ok) throw decryptedJsonResult.error;
+```
+
+> [!IMPORTANT]
+> Standard DES mode (8-byte key length) has been disabled. Attempting to use it will result in an `Invalid algorithm` error. To enable it, you must set the environment variable `NODE_OPTIONS=--openssl-legacy-provider`.
+
+### Encoding and Decoding
+
+You can customize how the key, IV, and data are encoded and decoded during encryption and decryption.
+
+```typescript
+// Create a cipher that loads the key using ASCII encoding
+const cbc192Cipher = new AesCiphers.Cbc('😊😊😊😊😊😊😊😊😊😊😊😊', { key: 'ascii' });
+console.log(cbc192Cipher.algorithm); // aes-192-cbc
+
+// Create a cipher that defaults to base64 for encrypting output and expects base64 input for decryption
+const cipher = new AesCiphers.Cbc(
+    '0123456789abcdef',
+    {
+        decryptInput: 'base64',
+        encryptOutput: 'base64'
+    }
+);
+
+// Override the output encoding to hex for this encryption call only
+cipher.encrypt('test', { encryptOutput: 'hex' });
+
+// Override the IV encoding to base64 for this encryption call only
+cipher.encrypt('test', { iv: 'base64' });
+```
+
+Default encoding options:
+
+```typescript
+const defaultEncodingOptions = {
+    authTag: 'hex',
+    decryptInput: 'hex',
+    decryptOutput: 'utf-8',
+    encryptInput: 'utf-8',
+    encryptOutput: 'hex',
+    iv: 'hex',
+    key: 'utf-8',
+};
+```
+
+If decryption fails, it may be because the encoding settings do not match the format of the provided data.
 
 ## Available Ciphers
 
@@ -59,136 +206,6 @@ That's it! You're ready to use this package in your project. Check out the [avai
 - ECB
 - OFB
 
-## Usage
-
-### AES
-
-Below are examples of AES CBC and ECB encryption and decryption:
-
-```typescript
-import { AesCiphers } from 'node-ciphers';
-// Alternatively, you can import only the ciphers you need, which allows bundlers like Rollup to optimize the final bundle size.
-import { Cbc } from 'node-ciphers/ciphers/aes';
-
-const data = 'test';
-const jsonData = { value: data };
-
-// 128 bits cbc (16 bytes length key)
-const cbcCipher = new AesCiphers.Cbc('0123456789abcdef');
-console.log(cbcCipher.algorithm);
-const cbcEncryptResult = cbcCipher.encrypt(data);
-const cbcEncryptJsonResult = cbcCipher.encryptJson(jsonData);
-console.log(cbcEncryptResult);
-console.log(cbcEncryptJsonResult);
-if (!cbcEncryptResult || !cbcEncryptJsonResult) throw new Error('Encrypt failed');
-console.log(cbcCipher.decrypt(cbcEncryptResult.data, cbcEncryptResult.iv));
-console.log(cbcCipher.decryptToJson(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
-
-// 128 bits ecb (16 bytes length key)
-const ecbCipher = new AesCiphers.Ecb('0123456789abcdef');
-console.log(ecbCipher.algorithm);
-const ecbEncryptResult = ecbCipher.encrypt(data);
-const ecbEncryptJsonResult = ecbCipher.encryptJson(jsonData);
-console.log(ecbEncryptResult);
-console.log(ecbEncryptJsonResult);
-if (!ecbEncryptResult || !ecbEncryptJsonResult) throw new Error('Encrypt failed');
-console.log(ecbCipher.decrypt(ecbEncryptResult.data));
-console.log(ecbCipher.decryptToJson(ecbEncryptJsonResult.data));
-```
-
-The cipher's encryption and decryption methods can be reused; there's no need to create a new one each time.
-
-The encryption result is consistently an object with a data property containing the encrypted output and an iv property representing the randomly generated initialization vector (IV) for that encryption. To maintain a uniform structure, the iv property will still be included and return null in ECB mode, even though ECB does not use an IV.
-
-AES encryption supports three key lengths: 128-bit, 192-bit, and 256-bit. These correspond to 16, 24, and 32 bytes, respectively.
-
-When the provided key for creating a cipher is a string, it will be internally converted into a buffer and its byte length will be checked. The default encoding used for converting to a buffer is UTF-8, which may cause a difference between the character length and the byte length. To avoid errors, you can directly provide a key of the `Buffer` type when creating the cipher, or set the `key` option in the options parameter.
-
-```typescript
-import { Buffer } from 'node:buffer';
-
-// 192 bits cbc (24 bytes length key)
-const cbcCipher192 = new AesCiphers.Cbc('😊😊😊😊😊😊😊😊😊😊😊😊', { key: 'ascii' });
-console.log(cbcCipher192.algorithm); // aes-192-cbc
-
-// 256 bits ecb (32 bytes length key)
-const key = Buffer.from('😊😊😊😊😊😊😊😊', 'utf-8');
-const ecbCipher256 = new AesCiphers.Ecb(key);
-console.log(ecbCipher256.algorithm); // aes-256-cbc
-```
-
-Some AES ciphers, such as CCM and GCM, require additional parameters during encryption and decryption.
-
-> [!IMPORTANT]
-> In Node.js, the results of CFB, CFB1, and CFB8 encryption modes may differ from those in other programming languages due to differences in how the **block size** and **feedback unit size** are handled during encryption and decryption.
->
-> - **CFB Mode**: Typically operates on a full block (often 128 bits) but allows for different feedback unit sizes (e.g., 1 bit, 8 bits, or 128 bits). This feedback size directly affects how the encryption and decryption processes are carried out.
-> - **CFB1, CFB8, and CFB**: These modes use 1-bit, 8-bit, and full-block feedback sizes, respectively. The way these feedback sizes are implemented can vary across different programming languages or libraries, which may lead to different results even under the same conditions (e.g., same IV and key).
->
-> The key difference arises because of how the **feedback block size** is processed internally by different libraries, leading to potential inconsistencies in the encryption output.
-
-### DES
-
-The usage is similar to AES, but the key's byte length corresponds to the following modes: 8 bytes (DES), 16 bytes (DES-EDE), and 24 bytes (DES-EDE3).
-
-```typescript
-import { DesCiphers } from 'node-ciphers';
-
-const data = 'test';
-const jsonData = { value: data };
-
-// des-ede (16 bytes length key)
-const cbcCipher = new DesCiphers.Cbc('0123456789abcdef');
-console.log(cbcCipher.algorithm);
-const cbcEncryptResult = cbcCipher.encrypt(data);
-const cbcEncryptJsonResult = cbcCipher.encryptJson(jsonData);
-console.log(cbcEncryptResult);
-console.log(cbcEncryptJsonResult);
-if (!cbcEncryptResult || !cbcEncryptJsonResult) throw new Error('Encrypt failed');
-console.log(cbcCipher.decrypt(cbcEncryptResult.data, cbcEncryptResult.iv));
-console.log(cbcCipher.decryptToJson(cbcEncryptJsonResult.data, cbcEncryptJsonResult.iv));
-
-// des-ede3, 3des (24 bytes length key)
-const ecbCipher = new DesCiphers.Ecb('0123456789abcdef01234567');
-console.log(ecbCipher.algorithm);
-const ecbEncryptResult = ecbCipher.encrypt(data);
-const ecbEncryptJsonResult = ecbCipher.encryptJson(jsonData);
-console.log(ecbEncryptResult);
-console.log(ecbEncryptJsonResult);
-if (!ecbEncryptResult || !ecbEncryptJsonResult) throw new Error('Encrypt failed');
-console.log(ecbCipher.decrypt(ecbEncryptResult.data));
-console.log(ecbCipher.decryptToJson(ecbEncryptJsonResult.data));
-```
-
-> [!IMPORTANT]
-> Standard DES mode (8-byte key length) has been disabled. Attempting to use it will result in an `Invalid algorithm` error. To enable it, you need to set the `NODE_OPTIONS=--openssl-legacy-provider` environment variable.
-
-> [!IMPORTANT]
-> In the Bun, some ciphers or specific key lengths are currently unavailable.
-
-## Encoding
-
-You can customize the data transformation encoding for encryption and decryption inputs and outputs.
-
-```typescript
-// Create a cipher that outputs encryption results in Base64 and accepts encryption input in Base64 format
-const cbcCipher = new AesCiphers.Cbc(
-    '0123456789abcdef',
-    {
-        decryptInput: 'base64',
-        encryptOutput: 'base64'
-    }
-);
-
-// Use hex output for this encryption only
-cbcCipher.encrypt('test', { encryptOutput: 'hex' });
-
-// Output the IV in Base64 format
-cbcCipher.encrypt('test', { iv: 'base64' });
-```
-
-If the encrypted data cannot be decrypted, it may be due to not specifying the corresponding encoding. Please pay attention to encoding settings when using it. For default encoding values, refer to the `BaseCipherEncodingOptions` interface in [this file](./src/types/options.ts).
-
 ## License
 
 [MIT License](./LICENSE)
@@ -196,9 +213,6 @@ If the encrypted data cannot be decrypted, it may be due to not specifying the c
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers?ref=badge_large)
 
 <!-- Badges -->
-[fossa-href]: https://app.fossa.com/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers?ref=badge_shield
-[fossa-src]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers.svg?type=shield
-
 [npm-version-href]: https://npmjs.com/package/node-ciphers
 [npm-version-src]: https://img.shields.io/npm/v/node-ciphers/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
 
@@ -210,3 +224,6 @@ If the encrypted data cannot be decrypted, it may be due to not specifying the c
 
 [license-href]: https://github.com/kiki-kanri/node-ciphers/blob/main/LICENSE
 [license-src]: https://img.shields.io/npm/l/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
+
+[fossa-href]: https://app.fossa.com/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers?ref=badge_shield
+[fossa-src]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers.svg?type=shield

@@ -1,7 +1,7 @@
 {
   "name": "node-ciphers",
   "version": "3.0.2",
-  "description": "A lightweight Node.js library for AES and DES encryption, offering flexible encoding options, support for various cipher modes, and seamless integration with streams.",
+  "description": "Lightweight AES and DES encryption library for Node.js, featuring flexible encoding, multiple cipher modes, and TypeScript support.",
   "author": "kiki-kanri",
   "license": "MIT",
   "repository": {
@@ -19,13 +19,20 @@
     "cfb1",
     "cfb8",
     "cipher",
-    "decrypt",
+    "cipher modes",
+    "crypto",
+    "decryption",
     "des",
     "ecb",
-    "encrypt",
-    "json decrypt",
-    "json encrypt",
-    "ofb"
+    "encryption",
+    "iv generation",
+    "json encryption",
+    "lightweight",
+    "nodejs",
+    "ofb",
+    "result",
+    "secure",
+    "stream"
   ],
   "sideEffects": false,
   "exports": {
