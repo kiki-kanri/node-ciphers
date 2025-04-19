@@ -17,6 +17,7 @@ import {
     testEncryptCircularReferenceJson,
     testEncryptInvalidData,
 } from './helpers';
+import type { Cipher } from './helpers';
 
 class TestCipher extends BaseAesCipher {}
 
@@ -54,32 +55,32 @@ function commonCipherTest(
     describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
         it('should correctly encrypt and decrypt data', () => {
             const cipher = new CipherClass(key);
-            testCommonEncryptDecrypt(cipher, data);
+            testCommonEncryptDecrypt(cipher as Cipher, data);
         });
 
         it('should correctly encrypt and decrypt JSON data', () => {
             const cipher = new CipherClass(key);
-            testCommonEncryptDecryptJson(cipher, jsonData);
+            testCommonEncryptDecryptJson(cipher as Cipher, jsonData);
         });
 
         it('should return error when encrypting invalid data', () => {
             const cipher = new CipherClass(key);
-            testEncryptInvalidData(cipher);
+            testEncryptInvalidData(cipher as Cipher);
         });
 
         it('should return error when encrypting JSON with circular reference', () => {
             const cipher = new CipherClass(key);
-            testEncryptCircularReferenceJson(cipher);
+            testEncryptCircularReferenceJson(cipher as Cipher);
         });
 
         it('should return error when decrypting invalid data and iv', () => {
             const cipher = new CipherClass(key);
-            testCommonDecryptInvalidDataAndIv(cipher);
+            testCommonDecryptInvalidDataAndIv(cipher as Cipher);
         });
 
         it('should return error when decrypting non-JSON data with decryptToJson', () => {
             const cipher = new CipherClass(key);
-            testCommonDecryptNonJsonData(cipher);
+            testCommonDecryptNonJsonData(cipher as Cipher);
         });
     });
 }
@@ -159,12 +160,12 @@ function hasAuthTagCipherTest(
 
         it('should return error when encrypting invalid data', () => {
             const cipher = new CipherClass(key);
-            testEncryptInvalidData(cipher);
+            testEncryptInvalidData(cipher as unknown as Cipher);
         });
 
         it('should return error when encrypting JSON with circular reference', () => {
             const cipher = new CipherClass(key);
-            testEncryptCircularReferenceJson(cipher);
+            testEncryptCircularReferenceJson(cipher as unknown as Cipher);
         });
 
         it('should return error when decrypting invalid data and iv', () => {

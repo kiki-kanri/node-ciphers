@@ -4,7 +4,7 @@ import type {
     Result,
 } from '../src/types';
 
-interface Cipher {
+export interface Cipher {
     algorithm: string;
     decrypt: (data: string, iv: null | string) => Result<string>;
     decryptToJson: <T = any>(data: string, iv: null | string) => Result<T>;

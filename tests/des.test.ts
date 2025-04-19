@@ -12,6 +12,7 @@ import {
     testEncryptCircularReferenceJson,
     testEncryptInvalidData,
 } from './helpers';
+import type { Cipher } from './helpers';
 
 class TestCipher extends BaseDesCipher {}
 
@@ -54,22 +55,25 @@ describe('des cipher', () => {
             describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
                 let cipher: BaseDesEncryptAndDecrypt;
                 beforeEach(() => cipher = new CipherClass(key) as BaseDesEncryptAndDecrypt);
-                it('should correctly encrypt and decrypt data', () => testCommonEncryptDecrypt(cipher, data));
-                it('should correctly encrypt and decrypt JSON data', () => {
-                    testCommonEncryptDecryptJson(cipher, jsonData);
+                it('should correctly encrypt and decrypt data', () => {
+                    testCommonEncryptDecrypt(cipher as Cipher, data);
                 });
 
-                it('should return error when encrypting invalid data', () => testEncryptInvalidData(cipher));
+                it('should correctly encrypt and decrypt JSON data', () => {
+                    testCommonEncryptDecryptJson(cipher as Cipher, jsonData);
+                });
+
+                it('should return error when encrypting invalid data', () => testEncryptInvalidData(cipher as Cipher));
                 it('should return error when encrypting JSON with circular reference', () => {
-                    testEncryptCircularReferenceJson(cipher);
+                    testEncryptCircularReferenceJson(cipher as Cipher);
                 });
 
                 it('should return error when decrypting invalid data and iv', () => {
-                    testCommonDecryptInvalidDataAndIv(cipher);
+                    testCommonDecryptInvalidDataAndIv(cipher as Cipher);
                 });
 
                 it('should return error when decrypting non-JSON data with decryptToJson', () => {
-                    testCommonDecryptNonJsonData(cipher);
+                    testCommonDecryptNonJsonData(cipher as Cipher);
                 });
             });
         });

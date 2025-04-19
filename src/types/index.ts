@@ -4,4 +4,4 @@ export type * from './options';
 
 export type BaseEncryptResult = Result<{ data: string; iv: string }>;
 export type EcbEncryptResult = Result<{ data: string; iv: null }>;
-export type Result<T> = { error: unknown; ok: false; value: undefined } | { ok: true; value: T };
+export type Result<T> = { error: unknown; ok: false; value?: never } | { ok: true; value: T };
