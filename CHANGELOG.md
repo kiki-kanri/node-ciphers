@@ -1,5 +1,51 @@
 # Changelog
 
+## v4.0.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v3.0.2...v4.0.0)
+
+### 🚀 Enhancements
+
+- Update `Result` type to always include value field as undefined when ok is false ([a47ac8e](https://github.com/kiki-kanri/node-ciphers/commit/a47ac8e))
+
+### 🩹 Fixes
+
+- Correct type errors ([71948bd](https://github.com/kiki-kanri/node-ciphers/commit/71948bd))
+
+### 💅 Refactors
+
+- Replace `Object.freeze` with readonly type definitions for constants and variables ([a9554f2](https://github.com/kiki-kanri/node-ciphers/commit/a9554f2))
+- ⚠️ Update encryption and decryption return formats ([2afad36](https://github.com/kiki-kanri/node-ciphers/commit/2afad36))
+- ⚠️ Restructure project files ([1ab3aaf](https://github.com/kiki-kanri/node-ciphers/commit/1ab3aaf))
+
+### 📖 Documentation
+
+- Update README, package description and keywords ([d9fa4b7](https://github.com/kiki-kanri/node-ciphers/commit/d9fa4b7))
+- Update CHANGELOG ([7ecd21d](https://github.com/kiki-kanri/node-ciphers/commit/7ecd21d))
+
+### 🏡 Chore
+
+- Upgrade dependencies ([1c9245c](https://github.com/kiki-kanri/node-ciphers/commit/1c9245c))
+- Enable `isolatedDeclarations` in tsconfig and update code ([7c8842e](https://github.com/kiki-kanri/node-ciphers/commit/7c8842e))
+- Upgrade dependencies ([57bd00f](https://github.com/kiki-kanri/node-ciphers/commit/57bd00f))
+- Lint code ([95cfafb](https://github.com/kiki-kanri/node-ciphers/commit/95cfafb))
+- Run tsc for type checking before executing tests ([1caa387](https://github.com/kiki-kanri/node-ciphers/commit/1caa387))
+
+### ✅ Tests
+
+- Add tests for invalid key length and invalid mode cases ([56c4b2b](https://github.com/kiki-kanri/node-ciphers/commit/56c4b2b))
+- Update jest and tsconfig.jest configs ([96002dd](https://github.com/kiki-kanri/node-ciphers/commit/96002dd))
+- Improve tests for custom Cipher interface ([63a00dd](https://github.com/kiki-kanri/node-ciphers/commit/63a00dd))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️ Update encryption and decryption return formats ([2afad36](https://github.com/kiki-kanri/node-ciphers/commit/2afad36))
+- ⚠️ Restructure project files ([1ab3aaf](https://github.com/kiki-kanri/node-ciphers/commit/1ab3aaf))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v3.0.2
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v3.0.1...v3.0.2)
