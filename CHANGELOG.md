@@ -592,6 +592,8 @@
 
 ## v0.1.0
 
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/7b3027e...v0.1.0)
+
 ### 📖 Documentation
 
 - Add readme ([d119e9f](https://github.com/kiki-kanri/node-ciphers/commit/d119e9f))
