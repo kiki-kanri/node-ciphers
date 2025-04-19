@@ -59,12 +59,13 @@
   },
   "scripts": {
     "build": "ts-project-builder ./src/aes/index.ts ./src/des/index.ts --clean --preserve-modules --sourcemaps",
-    "bumplog": "changelogen --bump",
+    "bumplog": "changelogen --bump --hideAuthorEmail",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "prepack": "pnpm run build",
     "release": "pnpm run lint && pnpm run build && pnpm run test && changelogen --hideAuthorEmail --push --release && npm publish",
-    "test": "tsc -p ./tsconfig.test-check.json && cross-env NODE_OPTIONS=--openssl-legacy-provider jest --coverage"
+    "test": "tsc -p ./tsconfig.test-check.json && cross-env NODE_OPTIONS=--openssl-legacy-provider jest --coverage",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "type-fest": "^4.40.0"
