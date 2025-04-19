@@ -1,5 +1,30 @@
 # Changelog
 
+## v4.0.1
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.0...v4.0.1)
+
+### 🩹 Fixes
+
+- Correct test script command ([8d69362](https://github.com/kiki-kanri/node-ciphers/commit/8d69362))
+- Add missing `typescript` devDependencies ([da950be](https://github.com/kiki-kanri/node-ciphers/commit/da950be))
+
+### 💅 Refactors
+
+- Remove unused constant exports ([0de2908](https://github.com/kiki-kanri/node-ciphers/commit/0de2908))
+
+### 🏡 Chore
+
+- Update test script in package.json ([c823ea0](https://github.com/kiki-kanri/node-ciphers/commit/c823ea0))
+- Format script ([16ca049](https://github.com/kiki-kanri/node-ciphers/commit/16ca049))
+- Update file permissions after installing or updating dependencies ([d141f76](https://github.com/kiki-kanri/node-ciphers/commit/d141f76))
+- Add `--hideAuthorEmail` flag to bumplog command ([382091b](https://github.com/kiki-kanri/node-ciphers/commit/382091b))
+- Add typecheck command to package.json scripts ([2a1f7e0](https://github.com/kiki-kanri/node-ciphers/commit/2a1f7e0))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v4.0.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v3.0.2...v4.0.0)
