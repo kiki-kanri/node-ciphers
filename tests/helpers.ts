@@ -27,39 +27,33 @@ export function testCommonDecryptInvalidDataAndIv(
 export function testCommonDecryptNonJsonData(cipher: Cipher) {
     const encryptResult = cipher.encrypt('!114514!');
     expect(encryptResult.ok).toBe(true);
-    if (encryptResult.ok) {
-        const decryptResult = cipher.decryptToJson(encryptResult.value.data, encryptResult.value.iv);
-        expect(decryptResult.ok).toBe(false);
-        if (!decryptResult.ok) expectErrorName(decryptResult.error);
-    }
+    const decryptResult = cipher.decryptToJson(encryptResult.value.data, encryptResult.value.iv);
+    expect(decryptResult.ok).toBe(false);
+    if (!decryptResult.ok) expectErrorName(decryptResult.error);
 }
 
 export function testCommonEncryptDecrypt(cipher: Cipher, data: string) {
     const encryptResult = cipher.encrypt(data);
     expect(encryptResult.ok).toBe(true);
-    if (encryptResult.ok) {
-        expect(typeof encryptResult.value.data).toBe('string');
-        if (cipher.algorithm.endsWith('ecb')) expect(encryptResult.value.iv).toBeNull();
-        else expect(typeof encryptResult.value.iv).toBe('string');
+    expect(typeof encryptResult.value.data).toBe('string');
+    if (cipher.algorithm.endsWith('ecb')) expect(encryptResult.value.iv).toBeNull();
+    else expect(typeof encryptResult.value.iv).toBe('string');
 
-        const decryptedResult = cipher.decrypt(encryptResult.value.data, encryptResult.value.iv);
-        expect(decryptedResult.ok).toBe(true);
-        if (decryptedResult.ok) expect(decryptedResult.value).toBe(data);
-    }
+    const decryptedResult = cipher.decrypt(encryptResult.value.data, encryptResult.value.iv);
+    expect(decryptedResult.ok).toBe(true);
+    if (decryptedResult.ok) expect(decryptedResult.value).toBe(data);
 }
 
 export function testCommonEncryptDecryptJson(cipher: Cipher, jsonData: object) {
     const encryptResult = cipher.encryptJson(jsonData);
     expect(encryptResult.ok).toBe(true);
-    if (encryptResult.ok) {
-        expect(typeof encryptResult.value.data).toBe('string');
-        if (cipher.algorithm.endsWith('ecb')) expect(encryptResult.value.iv).toBeNull();
-        else expect(typeof encryptResult.value.iv).toBe('string');
+    expect(typeof encryptResult.value.data).toBe('string');
+    if (cipher.algorithm.endsWith('ecb')) expect(encryptResult.value.iv).toBeNull();
+    else expect(typeof encryptResult.value.iv).toBe('string');
 
-        const decryptedResult = cipher.decryptToJson(encryptResult.value.data, encryptResult.value.iv);
-        expect(decryptedResult.ok).toBe(true);
-        if (decryptedResult.ok) expect(decryptedResult.value).toEqual(jsonData);
-    }
+    const decryptedResult = cipher.decryptToJson(encryptResult.value.data, encryptResult.value.iv);
+    expect(decryptedResult.ok).toBe(true);
+    if (decryptedResult.ok) expect(decryptedResult.value).toEqual(jsonData);
 }
 
 export function testEncryptCircularReferenceJson(cipher: Cipher) {

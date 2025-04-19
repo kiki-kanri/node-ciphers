@@ -93,67 +93,68 @@ function hasAuthTagCipherTest(
         it('should correctly encrypt and decrypt data with default authTagLength', () => {
             const cipher = new CipherClass(key);
 
+            // Encrypt
             const encryptResult = cipher.encrypt(data);
             expect(encryptResult.ok).toBe(true);
-            if (encryptResult.ok) {
-                expect(typeof encryptResult.value.authTag).toBe('string');
-                if (cipher.algorithm.endsWith('ccm')) expect(encryptResult.value.authTagLength).toBe(16);
-                else expect(encryptResult.value.authTagLength).toBeUndefined();
-                expect(typeof encryptResult.value.data).toBe('string');
-                expect(typeof encryptResult.value.iv).toBe('string');
+            expect(typeof encryptResult.value!.authTag).toBe('string');
+            if (cipher.algorithm.endsWith('ccm')) expect(encryptResult.value!.authTagLength).toBe(16);
+            else expect(encryptResult.value!.authTagLength).toBeUndefined();
+            expect(typeof encryptResult.value!.data).toBe('string');
+            expect(typeof encryptResult.value!.iv).toBe('string');
 
-                const decryptedResult = cipher.decrypt(
-                    encryptResult.value.data,
-                    encryptResult.value.iv,
-                    encryptResult.value.authTag,
-                );
+            // Decrypt
+            const decryptedResult = cipher.decrypt(
+                encryptResult.value!.data,
+                encryptResult.value!.iv,
+                encryptResult.value!.authTag,
+            );
 
-                expect(decryptedResult.ok).toBe(true);
-                if (decryptedResult.ok) expect(decryptedResult.value).toBe(data);
-            }
+            expect(decryptedResult.ok).toBe(true);
+            expect(decryptedResult.value).toBe(data);
         });
 
         it('should correctly encrypt and decrypt data with custom authTagLength', () => {
             const cipher = new CipherClass(key);
             const authTagLength = 12;
 
+            // Encrypt
             const encryptResult = cipher.encrypt(data, authTagLength);
-            if (encryptResult.ok) {
-                expect(typeof encryptResult.value.authTag).toBe('string');
-                expect(encryptResult.value.authTagLength).toBe(authTagLength);
-                expect(typeof encryptResult.value.data).toBe('string');
-                expect(typeof encryptResult.value.iv).toBe('string');
+            expect(encryptResult.ok).toBe(true);
+            expect(typeof encryptResult.value!.authTag).toBe('string');
+            expect(encryptResult.value!.authTagLength).toBe(authTagLength);
+            expect(typeof encryptResult.value!.data).toBe('string');
+            expect(typeof encryptResult.value!.iv).toBe('string');
 
-                const decryptedResult = cipher.decrypt(
-                    encryptResult.value.data,
-                    encryptResult.value.iv,
-                    encryptResult.value.authTag,
-                    authTagLength,
-                );
+            // Decrypt
+            const decryptedResult = cipher.decrypt(
+                encryptResult.value!.data,
+                encryptResult.value!.iv,
+                encryptResult.value!.authTag,
+                authTagLength,
+            );
 
-                expect(decryptedResult.ok).toBe(true);
-                if (decryptedResult.ok) expect(decryptedResult.value).toBe(data);
-            }
+            expect(decryptedResult.ok).toBe(true);
+            expect(decryptedResult.value).toBe(data);
         });
 
         it('should correctly encrypt and decrypt JSON data', () => {
             const cipher = new CipherClass(key);
 
+            // Encrypt
             const encryptResult = cipher.encryptJson(jsonData);
             expect(encryptResult.ok).toBe(true);
-            if (encryptResult.ok) {
-                expect(typeof encryptResult.value.data).toBe('string');
-                expect(typeof encryptResult.value.iv).toBe('string');
+            expect(typeof encryptResult.value!.data).toBe('string');
+            expect(typeof encryptResult.value!.iv).toBe('string');
 
-                const decryptedResult = cipher.decryptToJson(
-                    encryptResult.value.data,
-                    encryptResult.value.iv,
-                    encryptResult.value.authTag,
-                );
+            // Decrypt
+            const decryptedResult = cipher.decryptToJson<typeof jsonData>(
+                encryptResult.value!.data,
+                encryptResult.value!.iv,
+                encryptResult.value!.authTag,
+            );
 
-                expect(decryptedResult.ok).toBe(true);
-                if (decryptedResult.ok) expect(decryptedResult.value).toEqual(jsonData);
-            }
+            expect(decryptedResult.ok).toBe(true);
+            expect(decryptedResult.value).toEqual(jsonData);
         });
 
         it('should return error when encrypting invalid data', () => {
@@ -181,18 +182,19 @@ function hasAuthTagCipherTest(
         it('should return error when decrypting non-JSON data with decryptToJson', () => {
             const cipher = new CipherClass(key);
 
+            // Encrypt
             const encryptResult = cipher.encrypt(data);
             expect(encryptResult.ok).toBe(true);
-            if (encryptResult.ok) {
-                const decryptResult = cipher.decryptToJson(
-                    encryptResult.value.data,
-                    encryptResult.value.iv,
-                    encryptResult.value.authTag,
-                );
 
-                expect(decryptResult.ok).toBe(false);
-                if (!decryptResult.ok) expectErrorName(decryptResult.error);
-            }
+            // Decrypt
+            const decryptResult = cipher.decryptToJson(
+                encryptResult.value!.data,
+                encryptResult.value!.iv,
+                encryptResult.value!.authTag,
+            );
+
+            expect(decryptResult.ok).toBe(false);
+            if (!decryptResult.ok) expectErrorName(decryptResult.error);
         });
     });
 }

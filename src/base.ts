@@ -32,6 +32,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
         return {
             error: error as unknown,
             ok: false as const,
+            value: undefined,
         };
     }
 
