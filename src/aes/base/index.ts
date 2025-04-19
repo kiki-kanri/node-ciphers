@@ -15,6 +15,7 @@ import type {
 } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
+import { BaseCipher } from '../../base';
 import { availableCiphers } from '../../constants';
 import type {
     AesCipherAlgorithm,
@@ -22,7 +23,6 @@ import type {
     AesCipherMode,
     HasAuthTagAesCipherEncodingOptions,
 } from '../../types';
-import { BaseCipher } from '../../base';
 
 export const keyLengthToBitsMap: Readonly<Record<number, 128 | 192 | 256>> = {
     16: 128,

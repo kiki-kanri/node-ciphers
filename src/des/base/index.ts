@@ -9,13 +9,13 @@ import type {
 } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
+import { BaseCipher } from '../../base';
 import { availableCiphers } from '../../constants';
 import type {
     DesCipherAlgorithm,
     DesCipherEncodingOptions,
     DesCipherMode,
 } from '../../types';
-import { BaseCipher } from '../../base';
 
 const keyLengthToModePrefixMap: Readonly<Record<number, '' | '-ede3' | '-ede'>> = {
     8: '',
