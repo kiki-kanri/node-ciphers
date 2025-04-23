@@ -215,9 +215,7 @@ describe('aes cipher', () => {
         }).toThrow();
     });
 
-    // eslint-disable-next-line style/array-bracket-newline, style/array-element-newline
     cipherClassesAndTestFunctions.forEach(([cipherClass, testFunction]) => {
-        // eslint-disable-next-line style/array-bracket-newline, style/array-element-newline
         Object.entries(keys).forEach(([bits, key]) => {
             (testFunction || commonCipherTest)(cipherClass as any, key, bits);
         });

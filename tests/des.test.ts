@@ -49,7 +49,6 @@ describe('des cipher', () => {
     });
 
     cipherClasses.forEach((CipherClass) => {
-        // eslint-disable-next-line style/array-bracket-newline, style/array-element-newline
         Object.entries(keys).forEach(([bits, key]) => {
             if (bits === '128' && CipherClass.name.match(/cfb(1|8)/i)) return;
             describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
