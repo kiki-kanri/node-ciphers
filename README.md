@@ -214,16 +214,16 @@ If decryption fails, it may be because the encoding settings do not match the fo
 
 <!-- Badges -->
 [npm-version-href]: https://npmjs.com/package/node-ciphers
-[npm-version-src]: https://img.shields.io/npm/v/node-ciphers/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-src]: https://img.shields.io/npm/v/node-ciphers/latest.svg?colorA=18181b&colorB=28cf8d&style=flat
 
 [npm-downloads-href]: https://npmjs.com/package/node-ciphers
-[npm-downloads-src]: https://img.shields.io/npm/dm/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-src]: https://img.shields.io/npm/dm/node-ciphers.svg?colorA=18181b&colorB=28cf8d&style=flat
 
 [codecov-href]: https://codecov.io/gh/kiki-kanri/node-ciphers
 [codecov-src]: https://codecov.io/gh/kiki-kanri/node-ciphers/graph/badge.svg?token=RNU7FNG8HD
 
 [license-href]: https://github.com/kiki-kanri/node-ciphers/blob/main/LICENSE
-[license-src]: https://img.shields.io/npm/l/node-ciphers.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-src]: https://img.shields.io/github/license/kiki-kanri/node-ciphers?colorA=18181b&colorB=28cf8d&style=flat
 
 [fossa-href]: https://app.fossa.com/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers?ref=badge_shield
 [fossa-src]: https://app.fossa.com/api/projects/git%2Bgithub.com%2Fkiki-kanri%2Fnode-ciphers.svg?type=shield
