@@ -1,5 +1,44 @@
 # Changelog
 
+## v4.0.2
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.1...v4.0.2)
+
+### 💅 Refactors
+
+- Simplify code after disabling `isolatedDeclarations` in tsconfig ([884b9fd](https://github.com/kiki-kanri/node-ciphers/commit/884b9fd))
+
+### 📖 Documentation
+
+- Update README badges urls ([499bc71](https://github.com/kiki-kanri/node-ciphers/commit/499bc71))
+- Replace `%2F` with `/` in badge URLs in README ([4aaf916](https://github.com/kiki-kanri/node-ciphers/commit/4aaf916))
+
+### 🏡 Chore
+
+- Rename `jest.config.js` to `jest.config.mjs` ([76371a1](https://github.com/kiki-kanri/node-ciphers/commit/76371a1))
+- Reorder lint, test, and build steps in release command ([b63dcb4](https://github.com/kiki-kanri/node-ciphers/commit/b63dcb4))
+- Disable `isolatedDeclarations` in tsconfig ([ed1636f](https://github.com/kiki-kanri/node-ciphers/commit/ed1636f))
+- Update `modify-files-permissions.sh` ([89f72e3](https://github.com/kiki-kanri/node-ciphers/commit/89f72e3))
+- Upgrade dependencies and format code ([d5a68d6](https://github.com/kiki-kanri/node-ciphers/commit/d5a68d6))
+- Add option to `upgrade-dependencies.sh` to clean `node_modules` and `pnpm-lock.yaml` before upgrading ([e542b14](https://github.com/kiki-kanri/node-ciphers/commit/e542b14))
+- Upgrade dependencies ([d3ee5a7](https://github.com/kiki-kanri/node-ciphers/commit/d3ee5a7))
+- Ensure all scripts change to their own directory before execution ([9be5fbf](https://github.com/kiki-kanri/node-ciphers/commit/9be5fbf))
+- Update ignore files ([c81c294](https://github.com/kiki-kanri/node-ciphers/commit/c81c294))
+- Upgrade dependencies ([019c6c5](https://github.com/kiki-kanri/node-ciphers/commit/019c6c5))
+
+### ✅ Tests
+
+- Add pass test unit ([d7b98bd](https://github.com/kiki-kanri/node-ciphers/commit/d7b98bd))
+
+### 🤖 CI
+
+- Add test github workflow config file ([dd421d1](https://github.com/kiki-kanri/node-ciphers/commit/dd421d1))
+- Update test workflow ([1519e46](https://github.com/kiki-kanri/node-ciphers/commit/1519e46))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v4.0.1
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.0...v4.0.1)
