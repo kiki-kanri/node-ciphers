@@ -15,9 +15,9 @@ export interface Cipher {
 }
 
 export function testCommonDecryptInvalidDataAndIv(expect: ExpectStatic, cipher: Cipher) {
-    const decryptedResult = cipher.decrypt('test test', 'test test');
-    expect(decryptedResult.ok).toBe(false);
-    if (!decryptedResult.ok) expect(decryptedResult.error).toBeInstanceOf(Error);
+    const decryptResult = cipher.decrypt('test test', 'test test');
+    expect(decryptResult.ok).toBe(false);
+    if (!decryptResult.ok) expect(decryptResult.error).toBeInstanceOf(Error);
 
     const decryptedJsonResult = cipher.decryptToJson('test test', 'test test');
     expect(decryptedJsonResult.ok).toBe(false);
@@ -30,9 +30,9 @@ export function testCommonDecryptNonJsonData(expect: ExpectStatic, cipher: Ciphe
     expect(encryptResult.ok).toBe(true);
 
     // Decrypt
-    const decryptedResult = cipher.decryptToJson(encryptResult.value!.data, encryptResult.value!.iv);
-    expect(decryptedResult.ok).toBe(false);
-    if (!decryptedResult.ok) expect(decryptedResult.error).toBeInstanceOf(SyntaxError);
+    const decryptResult = cipher.decryptToJson(encryptResult.value!.data, encryptResult.value!.iv);
+    expect(decryptResult.ok).toBe(false);
+    if (!decryptResult.ok) expect(decryptResult.error).toBeInstanceOf(SyntaxError);
 }
 
 export function testCommonEncryptDecrypt(expect: ExpectStatic, cipher: Cipher, data: string) {
@@ -44,9 +44,9 @@ export function testCommonEncryptDecrypt(expect: ExpectStatic, cipher: Cipher, d
     else expect(typeof encryptResult.value!.iv).toBe('string');
 
     // Decrypt
-    const decryptedResult = cipher.decrypt(encryptResult.value!.data, encryptResult.value!.iv);
-    expect(decryptedResult.ok).toBe(true);
-    expect(decryptedResult.value).toBe(data);
+    const decryptResult = cipher.decrypt(encryptResult.value!.data, encryptResult.value!.iv);
+    expect(decryptResult.ok).toBe(true);
+    expect(decryptResult.value).toBe(data);
 }
 
 export function testCommonEncryptDecryptJson<T>(expect: ExpectStatic, cipher: Cipher, jsonData: T) {
@@ -58,9 +58,9 @@ export function testCommonEncryptDecryptJson<T>(expect: ExpectStatic, cipher: Ci
     else expect(typeof encryptResult.value!.iv).toBe('string');
 
     // Decrypt
-    const decryptedResult = cipher.decryptToJson<T>(encryptResult.value!.data, encryptResult.value!.iv);
-    expect(decryptedResult.ok).toBe(true);
-    expect(decryptedResult.value).toEqual(jsonData);
+    const decryptResult = cipher.decryptToJson<T>(encryptResult.value!.data, encryptResult.value!.iv);
+    expect(decryptResult.ok).toBe(true);
+    expect(decryptResult.value).toEqual(jsonData);
 }
 
 export function testEncryptCircularReferenceJson(expect: ExpectStatic, cipher: Cipher) {

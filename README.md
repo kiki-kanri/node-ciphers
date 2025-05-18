@@ -69,9 +69,9 @@ console.log(encryptResult);
 if (!encryptResult.ok) throw encryptResult.error;
 
 // Decrypt text
-const decryptedResult = cipher.decrypt(encryptResult.value.data, encryptResult.value.iv);
-console.log(decryptedResult);
-if (!decryptedResult.ok) throw decryptedResult.error;
+const decryptResult = cipher.decrypt(encryptResult.value.data, encryptResult.value.iv);
+console.log(decryptResult);
+if (!decryptResult.ok) throw decryptResult.error;
 
 // Encrypt JSON
 const encryptJsonResult = cipher.encryptJson(jsonData);
@@ -124,9 +124,9 @@ console.log(encryptResult);
 if (!encryptResult.ok) throw encryptResult.error;
 
 // Decrypt text
-const decryptedResult = cipher.decrypt(encryptResult.value.data, encryptResult.value.iv);
-console.log(decryptedResult);
-if (!decryptedResult.ok) throw decryptedResult.error;
+const decryptResult = cipher.decrypt(encryptResult.value.data, encryptResult.value.iv);
+console.log(decryptResult);
+if (!decryptResult.ok) throw decryptResult.error;
 
 // Encrypt JSON
 const encryptJsonResult = cipher.encryptJson(jsonData);

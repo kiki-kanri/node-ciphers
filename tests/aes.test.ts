@@ -108,14 +108,14 @@ function hasAuthTagCipherTest(
             expect(typeof encryptResult.value!.iv).toBe('string');
 
             // Decrypt
-            const decryptedResult = cipher.decrypt(
+            const decryptResult = cipher.decrypt(
                 encryptResult.value!.data,
                 encryptResult.value!.iv,
                 encryptResult.value!.authTag,
             );
 
-            expect(decryptedResult.ok).toBe(true);
-            expect(decryptedResult.value).toBe(data);
+            expect(decryptResult.ok).toBe(true);
+            expect(decryptResult.value).toBe(data);
         });
 
         it('should correctly encrypt and decrypt data with custom authTagLength', ({ expect }) => {
@@ -131,15 +131,15 @@ function hasAuthTagCipherTest(
             expect(typeof encryptResult.value!.iv).toBe('string');
 
             // Decrypt
-            const decryptedResult = cipher.decrypt(
+            const decryptResult = cipher.decrypt(
                 encryptResult.value!.data,
                 encryptResult.value!.iv,
                 encryptResult.value!.authTag,
                 authTagLength,
             );
 
-            expect(decryptedResult.ok).toBe(true);
-            expect(decryptedResult.value).toBe(data);
+            expect(decryptResult.ok).toBe(true);
+            expect(decryptResult.value).toBe(data);
         });
 
         it('should correctly encrypt and decrypt JSON data', ({ expect }) => {
@@ -152,14 +152,14 @@ function hasAuthTagCipherTest(
             expect(typeof encryptResult.value!.iv).toBe('string');
 
             // Decrypt
-            const decryptedResult = cipher.decryptToJson<typeof jsonData>(
+            const decryptResult = cipher.decryptToJson<typeof jsonData>(
                 encryptResult.value!.data,
                 encryptResult.value!.iv,
                 encryptResult.value!.authTag,
             );
 
-            expect(decryptedResult.ok).toBe(true);
-            expect(decryptedResult.value).toEqual(jsonData);
+            expect(decryptResult.ok).toBe(true);
+            expect(decryptResult.value).toEqual(jsonData);
         });
 
         it('should return error when encrypting invalid data', ({ expect }) => {
@@ -175,9 +175,9 @@ function hasAuthTagCipherTest(
         it('should return error when decrypting invalid data and iv', ({ expect }) => {
             const cipher = new CipherClass(key);
 
-            const decryptedResult = cipher.decrypt('test test', 'test test', 'test test');
-            expect(decryptedResult.ok).toBe(false);
-            if (!decryptedResult.ok) expect(decryptedResult.error).toBeInstanceOf(TypeError);
+            const decryptResult = cipher.decrypt('test test', 'test test', 'test test');
+            expect(decryptResult.ok).toBe(false);
+            if (!decryptResult.ok) expect(decryptResult.error).toBeInstanceOf(TypeError);
 
             const decryptedJsonResult = cipher.decryptToJson('test test', 'test test', 'test test');
             expect(decryptedJsonResult.ok).toBe(false);
@@ -192,14 +192,14 @@ function hasAuthTagCipherTest(
             expect(encryptResult.ok).toBe(true);
 
             // Decrypt
-            const decryptedResult = cipher.decryptToJson(
+            const decryptResult = cipher.decryptToJson(
                 encryptResult.value!.data,
                 encryptResult.value!.iv,
                 encryptResult.value!.authTag,
             );
 
-            expect(decryptedResult.ok).toBe(false);
-            if (!decryptedResult.ok) expect(decryptedResult.error).toBeInstanceOf(SyntaxError);
+            expect(decryptResult.ok).toBe(false);
+            if (!decryptResult.ok) expect(decryptResult.error).toBeInstanceOf(SyntaxError);
         });
     });
 }
