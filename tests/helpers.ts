@@ -1,3 +1,5 @@
+import type { ExpectStatic } from 'vitest';
+
 import type {
     BaseEncryptResult,
     EcbEncryptResult,
@@ -12,23 +14,23 @@ export interface Cipher {
     encryptJson: (data: any) => BaseEncryptResult | EcbEncryptResult;
 }
 
-export function expectErrorName(error: unknown) {
+export function expectErrorName(expect: ExpectStatic, error: unknown) {
     expect(error).toBeDefined();
     expect(typeof error).toBe('object');
     expect((error as Error).name).toMatch(/^(Error|SyntaxError|TypeError)$/);
 }
 
-export function testCommonDecryptInvalidDataAndIv(cipher: Cipher) {
+export function testCommonDecryptInvalidDataAndIv(expect: ExpectStatic, cipher: Cipher) {
     const decryptedResult = cipher.decrypt('test test', 'test test');
     expect(decryptedResult.ok).toBe(false);
-    if (!decryptedResult.ok) expectErrorName(decryptedResult.error);
+    if (!decryptedResult.ok) expectErrorName(expect, decryptedResult.error);
 
     const decryptedJsonResult = cipher.decryptToJson('test test', 'test test');
     expect(decryptedJsonResult.ok).toBe(false);
-    if (!decryptedJsonResult.ok) expectErrorName(decryptedJsonResult.error);
+    if (!decryptedJsonResult.ok) expectErrorName(expect, decryptedJsonResult.error);
 }
 
-export function testCommonDecryptNonJsonData(cipher: Cipher) {
+export function testCommonDecryptNonJsonData(expect: ExpectStatic, cipher: Cipher) {
     // Encrypt
     const encryptResult = cipher.encrypt('!114514!');
     expect(encryptResult.ok).toBe(true);
@@ -36,10 +38,10 @@ export function testCommonDecryptNonJsonData(cipher: Cipher) {
     // Decrypt
     const decryptResult = cipher.decryptToJson(encryptResult.value!.data, encryptResult.value!.iv);
     expect(decryptResult.ok).toBe(false);
-    if (!decryptResult.ok) expectErrorName(decryptResult.error);
+    if (!decryptResult.ok) expectErrorName(expect, decryptResult.error);
 }
 
-export function testCommonEncryptDecrypt(cipher: Cipher, data: string) {
+export function testCommonEncryptDecrypt(expect: ExpectStatic, cipher: Cipher, data: string) {
     // Encrypt
     const encryptResult = cipher.encrypt(data);
     expect(encryptResult.ok).toBe(true);
@@ -53,7 +55,7 @@ export function testCommonEncryptDecrypt(cipher: Cipher, data: string) {
     expect(decryptedResult.value).toBe(data);
 }
 
-export function testCommonEncryptDecryptJson<T>(cipher: Cipher, jsonData: T) {
+export function testCommonEncryptDecryptJson<T>(expect: ExpectStatic, cipher: Cipher, jsonData: T) {
     // Encrypt
     const encryptResult = cipher.encryptJson(jsonData);
     expect(encryptResult.ok).toBe(true);
@@ -67,17 +69,17 @@ export function testCommonEncryptDecryptJson<T>(cipher: Cipher, jsonData: T) {
     expect(decryptedResult.value).toEqual(jsonData);
 }
 
-export function testEncryptCircularReferenceJson(cipher: Cipher) {
+export function testEncryptCircularReferenceJson(expect: ExpectStatic, cipher: Cipher) {
     const circularData: any = {};
     circularData.self = circularData;
 
     const encryptResult = cipher.encryptJson(circularData);
     expect(encryptResult.ok).toBe(false);
-    if (!encryptResult.ok) expectErrorName(encryptResult.error);
+    if (!encryptResult.ok) expectErrorName(expect, encryptResult.error);
 }
 
-export function testEncryptInvalidData(cipher: Cipher) {
+export function testEncryptInvalidData(expect: ExpectStatic, cipher: Cipher) {
     const encryptResult = cipher.encrypt(undefined as any);
     expect(encryptResult.ok).toBe(false);
-    if (!encryptResult.ok) expectErrorName(encryptResult.error);
+    if (!encryptResult.ok) expectErrorName(expect, encryptResult.error);
 }

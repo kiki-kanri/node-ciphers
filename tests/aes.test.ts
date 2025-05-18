@@ -1,5 +1,10 @@
 import { Buffer } from 'node:buffer';
 
+import {
+    describe,
+    it,
+} from 'vitest';
+
 import * as AesCiphers from '../src/aes';
 import type {
     Ccm,
@@ -52,35 +57,35 @@ function commonCipherTest(
     key: Buffer | string,
     bits: string,
 ) {
-    describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
-        it('should correctly encrypt and decrypt data', () => {
+    describe.concurrent(`${CipherClass.name} Mode with ${bits} bits key`, () => {
+        it('should correctly encrypt and decrypt data', ({ expect }) => {
             const cipher = new CipherClass(key);
-            testCommonEncryptDecrypt(cipher as Cipher, data);
+            testCommonEncryptDecrypt(expect, cipher as Cipher, data);
         });
 
-        it('should correctly encrypt and decrypt JSON data', () => {
+        it('should correctly encrypt and decrypt JSON data', ({ expect }) => {
             const cipher = new CipherClass(key);
-            testCommonEncryptDecryptJson(cipher as Cipher, jsonData);
+            testCommonEncryptDecryptJson(expect, cipher as Cipher, jsonData);
         });
 
-        it('should return error when encrypting invalid data', () => {
+        it('should return error when encrypting invalid data', ({ expect }) => {
             const cipher = new CipherClass(key);
-            testEncryptInvalidData(cipher as Cipher);
+            testEncryptInvalidData(expect, cipher as Cipher);
         });
 
-        it('should return error when encrypting JSON with circular reference', () => {
+        it('should return error when encrypting JSON with circular reference', ({ expect }) => {
             const cipher = new CipherClass(key);
-            testEncryptCircularReferenceJson(cipher as Cipher);
+            testEncryptCircularReferenceJson(expect, cipher as Cipher);
         });
 
-        it('should return error when decrypting invalid data and iv', () => {
+        it('should return error when decrypting invalid data and iv', ({ expect }) => {
             const cipher = new CipherClass(key);
-            testCommonDecryptInvalidDataAndIv(cipher as Cipher);
+            testCommonDecryptInvalidDataAndIv(expect, cipher as Cipher);
         });
 
-        it('should return error when decrypting non-JSON data with decryptToJson', () => {
+        it('should return error when decrypting non-JSON data with decryptToJson', ({ expect }) => {
             const cipher = new CipherClass(key);
-            testCommonDecryptNonJsonData(cipher as Cipher);
+            testCommonDecryptNonJsonData(expect, cipher as Cipher);
         });
     });
 }
@@ -90,8 +95,8 @@ function hasAuthTagCipherTest(
     key: Buffer | string,
     bits: string,
 ) {
-    describe(`${CipherClass.name} Mode with ${bits} bits key`, () => {
-        it('should correctly encrypt and decrypt data with default authTagLength', () => {
+    describe.concurrent(`${CipherClass.name} Mode with ${bits} bits key`, () => {
+        it('should correctly encrypt and decrypt data with default authTagLength', ({ expect }) => {
             const cipher = new CipherClass(key);
 
             // Encrypt
@@ -114,7 +119,7 @@ function hasAuthTagCipherTest(
             expect(decryptedResult.value).toBe(data);
         });
 
-        it('should correctly encrypt and decrypt data with custom authTagLength', () => {
+        it('should correctly encrypt and decrypt data with custom authTagLength', ({ expect }) => {
             const cipher = new CipherClass(key);
             const authTagLength = 12;
 
@@ -138,7 +143,7 @@ function hasAuthTagCipherTest(
             expect(decryptedResult.value).toBe(data);
         });
 
-        it('should correctly encrypt and decrypt JSON data', () => {
+        it('should correctly encrypt and decrypt JSON data', ({ expect }) => {
             const cipher = new CipherClass(key);
 
             // Encrypt
@@ -158,29 +163,29 @@ function hasAuthTagCipherTest(
             expect(decryptedResult.value).toEqual(jsonData);
         });
 
-        it('should return error when encrypting invalid data', () => {
+        it('should return error when encrypting invalid data', ({ expect }) => {
             const cipher = new CipherClass(key);
-            testEncryptInvalidData(cipher as unknown as Cipher);
+            testEncryptInvalidData(expect, cipher as unknown as Cipher);
         });
 
-        it('should return error when encrypting JSON with circular reference', () => {
+        it('should return error when encrypting JSON with circular reference', ({ expect }) => {
             const cipher = new CipherClass(key);
-            testEncryptCircularReferenceJson(cipher as unknown as Cipher);
+            testEncryptCircularReferenceJson(expect, cipher as unknown as Cipher);
         });
 
-        it('should return error when decrypting invalid data and iv', () => {
+        it('should return error when decrypting invalid data and iv', ({ expect }) => {
             const cipher = new CipherClass(key);
 
             const decryptedResult = cipher.decrypt('test test', 'test test', 'test test');
             expect(decryptedResult.ok).toBe(false);
-            if (!decryptedResult.ok) expectErrorName(decryptedResult.error);
+            if (!decryptedResult.ok) expectErrorName(expect, decryptedResult.error);
 
             const decryptedJsonResult = cipher.decryptToJson('test test', 'test test', 'test test');
             expect(decryptedJsonResult.ok).toBe(false);
-            if (!decryptedJsonResult.ok) expectErrorName(decryptedJsonResult.error);
+            if (!decryptedJsonResult.ok) expectErrorName(expect, decryptedJsonResult.error);
         });
 
-        it('should return error when decrypting non-JSON data with decryptToJson', () => {
+        it('should return error when decrypting non-JSON data with decryptToJson', ({ expect }) => {
             const cipher = new CipherClass(key);
 
             // Encrypt
@@ -195,20 +200,20 @@ function hasAuthTagCipherTest(
             );
 
             expect(decryptResult.ok).toBe(false);
-            if (!decryptResult.ok) expectErrorName(decryptResult.error);
+            if (!decryptResult.ok) expectErrorName(expect, decryptResult.error);
         });
     });
 }
 
-describe('aes cipher', () => {
-    it('should throw error when creating cipher with invalid key length', () => {
+describe.concurrent('aes cipher', () => {
+    it('should throw error when creating cipher with invalid key length', ({ expect }) => {
         expect(() => {
             // eslint-disable-next-line no-new
             new TestCipher('', 'cbc');
         }).toThrow();
     });
 
-    it('should throw error when creating cipher with invalid mode', () => {
+    it('should throw error when creating cipher with invalid mode', ({ expect }) => {
         expect(() => {
             // eslint-disable-next-line no-new
             new TestCipher(keys['128'], '' as any);
