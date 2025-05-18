@@ -1,5 +1,35 @@
 # Changelog
 
+## v4.0.3
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.2...v4.0.3)
+
+### 💅 Refactors
+
+- **test:** Remove `expectErrorName`, use `toBeInstanceOf` for error assertions ([95b2fa5](https://github.com/kiki-kanri/node-ciphers/commit/95b2fa5))
+- Rename `decryptedResult` to `decryptResult` ([451afaf](https://github.com/kiki-kanri/node-ciphers/commit/451afaf))
+
+### 🏡 Chore
+
+- **scripts:** Ensure all scripts `cd` to their current directory correctly ([5362c3b](https://github.com/kiki-kanri/node-ciphers/commit/5362c3b))
+- Set `--max-warnings=0` for `lint` and `lint:fix` ([bffe476](https://github.com/kiki-kanri/node-ciphers/commit/bffe476))
+- Set eslint config to enable `lib` mode ([59e03e4](https://github.com/kiki-kanri/node-ciphers/commit/59e03e4))
+- Disable `ts/explicit-function-return-type` eslint rule ([5190f6b](https://github.com/kiki-kanri/node-ciphers/commit/5190f6b))
+- Lint code ([f8f0974](https://github.com/kiki-kanri/node-ciphers/commit/f8f0974))
+- **test:** Migrate from `jest` to `vitest` ([9a9d869](https://github.com/kiki-kanri/node-ciphers/commit/9a9d869))
+
+### ✅ Tests
+
+- Migrate to vitest ([619adab](https://github.com/kiki-kanri/node-ciphers/commit/619adab))
+
+### 🤖 CI
+
+- Update condition for uploading to Codecov in workflow job ([39851ac](https://github.com/kiki-kanri/node-ciphers/commit/39851ac))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v4.0.2
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.1...v4.0.2)
