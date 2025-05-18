@@ -14,20 +14,14 @@ export interface Cipher {
     encryptJson: (data: any) => BaseEncryptResult | EcbEncryptResult;
 }
 
-export function expectErrorName(expect: ExpectStatic, error: unknown) {
-    expect(error).toBeDefined();
-    expect(typeof error).toBe('object');
-    expect((error as Error).name).toMatch(/^(Error|SyntaxError|TypeError)$/);
-}
-
 export function testCommonDecryptInvalidDataAndIv(expect: ExpectStatic, cipher: Cipher) {
     const decryptedResult = cipher.decrypt('test test', 'test test');
     expect(decryptedResult.ok).toBe(false);
-    if (!decryptedResult.ok) expectErrorName(expect, decryptedResult.error);
+    if (!decryptedResult.ok) expect(decryptedResult.error).toBeInstanceOf(Error);
 
     const decryptedJsonResult = cipher.decryptToJson('test test', 'test test');
     expect(decryptedJsonResult.ok).toBe(false);
-    if (!decryptedJsonResult.ok) expectErrorName(expect, decryptedJsonResult.error);
+    if (!decryptedJsonResult.ok) expect(decryptedJsonResult.error).toBeInstanceOf(Error);
 }
 
 export function testCommonDecryptNonJsonData(expect: ExpectStatic, cipher: Cipher) {
@@ -36,9 +30,9 @@ export function testCommonDecryptNonJsonData(expect: ExpectStatic, cipher: Ciphe
     expect(encryptResult.ok).toBe(true);
 
     // Decrypt
-    const decryptResult = cipher.decryptToJson(encryptResult.value!.data, encryptResult.value!.iv);
-    expect(decryptResult.ok).toBe(false);
-    if (!decryptResult.ok) expectErrorName(expect, decryptResult.error);
+    const decryptedResult = cipher.decryptToJson(encryptResult.value!.data, encryptResult.value!.iv);
+    expect(decryptedResult.ok).toBe(false);
+    if (!decryptedResult.ok) expect(decryptedResult.error).toBeInstanceOf(SyntaxError);
 }
 
 export function testCommonEncryptDecrypt(expect: ExpectStatic, cipher: Cipher, data: string) {
@@ -75,11 +69,11 @@ export function testEncryptCircularReferenceJson(expect: ExpectStatic, cipher: C
 
     const encryptResult = cipher.encryptJson(circularData);
     expect(encryptResult.ok).toBe(false);
-    if (!encryptResult.ok) expectErrorName(expect, encryptResult.error);
+    if (!encryptResult.ok) expect(encryptResult.error).toBeInstanceOf(TypeError);
 }
 
 export function testEncryptInvalidData(expect: ExpectStatic, cipher: Cipher) {
     const encryptResult = cipher.encrypt(undefined as any);
     expect(encryptResult.ok).toBe(false);
-    if (!encryptResult.ok) expectErrorName(expect, encryptResult.error);
+    if (!encryptResult.ok) expect(encryptResult.error).toBeInstanceOf(TypeError);
 }

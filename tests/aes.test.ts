@@ -14,7 +14,6 @@ import { BaseAesCipher } from '../src/aes/base';
 import type { BaseAesEncryptAndDecrypt } from '../src/aes/base/encrypt-and-decrypt';
 
 import {
-    expectErrorName,
     testCommonDecryptInvalidDataAndIv,
     testCommonDecryptNonJsonData,
     testCommonEncryptDecrypt,
@@ -178,11 +177,11 @@ function hasAuthTagCipherTest(
 
             const decryptedResult = cipher.decrypt('test test', 'test test', 'test test');
             expect(decryptedResult.ok).toBe(false);
-            if (!decryptedResult.ok) expectErrorName(expect, decryptedResult.error);
+            if (!decryptedResult.ok) expect(decryptedResult.error).toBeInstanceOf(TypeError);
 
             const decryptedJsonResult = cipher.decryptToJson('test test', 'test test', 'test test');
             expect(decryptedJsonResult.ok).toBe(false);
-            if (!decryptedJsonResult.ok) expectErrorName(expect, decryptedJsonResult.error);
+            if (!decryptedJsonResult.ok) expect(decryptedJsonResult.error).toBeInstanceOf(TypeError);
         });
 
         it('should return error when decrypting non-JSON data with decryptToJson', ({ expect }) => {
@@ -193,14 +192,14 @@ function hasAuthTagCipherTest(
             expect(encryptResult.ok).toBe(true);
 
             // Decrypt
-            const decryptResult = cipher.decryptToJson(
+            const decryptedResult = cipher.decryptToJson(
                 encryptResult.value!.data,
                 encryptResult.value!.iv,
                 encryptResult.value!.authTag,
             );
 
-            expect(decryptResult.ok).toBe(false);
-            if (!decryptResult.ok) expectErrorName(expect, decryptResult.error);
+            expect(decryptedResult.ok).toBe(false);
+            if (!decryptedResult.ok) expect(decryptedResult.error).toBeInstanceOf(SyntaxError);
         });
     });
 }
