@@ -1,5 +1,18 @@
 # Changelog
 
+## v4.0.4
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.3...v4.0.4)
+
+### 🏡 Chore
+
+- Split `tsconfig` and create build-specific config for production builds ([564b6d2](https://github.com/kiki-kanri/node-ciphers/commit/564b6d2))
+- **vitest:** Configure coverage to collect files only under `src/` ([e2c7f65](https://github.com/kiki-kanri/node-ciphers/commit/e2c7f65))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v4.0.3
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.2...v4.0.3)
