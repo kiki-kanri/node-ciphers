@@ -1,5 +1,41 @@
 # Changelog
 
+## v5.0.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.4...v5.0.0)
+
+### 🩹 Fixes
+
+- Resolve type errors caused by `@types/node` update ([e7be5b3](https://github.com/kiki-kanri/node-ciphers/commit/e7be5b3))
+- Add missing `tslib` devDependencies ([84aee92](https://github.com/kiki-kanri/node-ciphers/commit/84aee92))
+
+### 🏡 Chore
+
+- Upgrade dependencies and remove `@types/node` ([32aaf31](https://github.com/kiki-kanri/node-ciphers/commit/32aaf31))
+- Wrap all variable expansions in scripts with `${}` ([82c47c9](https://github.com/kiki-kanri/node-ciphers/commit/82c47c9))
+- Upgrade dependencies ([a0f7a94](https://github.com/kiki-kanri/node-ciphers/commit/a0f7a94))
+- Update dependencies and modify scripts ([374cc56](https://github.com/kiki-kanri/node-ciphers/commit/374cc56))
+- ⚠️ Drop support for Node.js 18.12.1, set minimum supported version to 20 ([32c6ad3](https://github.com/kiki-kanri/node-ciphers/commit/32c6ad3))
+- Bump tsconfig target to es2023 ([b9185b7](https://github.com/kiki-kanri/node-ciphers/commit/b9185b7))
+- Lint code ([009f2c9](https://github.com/kiki-kanri/node-ciphers/commit/009f2c9))
+
+### ✅ Tests
+
+- Change vitest config file to mjs ([5c3bc1f](https://github.com/kiki-kanri/node-ciphers/commit/5c3bc1f))
+
+### 🤖 CI
+
+- Set `--prod=false` when install dependencies ([93d7945](https://github.com/kiki-kanri/node-ciphers/commit/93d7945))
+- Remove `--prod=false` flag when install dependencies ([249def0](https://github.com/kiki-kanri/node-ciphers/commit/249def0))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️ Drop support for Node.js 18.12.1, set minimum supported version to 20 ([32c6ad3](https://github.com/kiki-kanri/node-ciphers/commit/32c6ad3))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v4.0.4
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.3...v4.0.4)
