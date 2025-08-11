@@ -4,12 +4,12 @@ import {
 } from 'node:crypto';
 import type {
     BinaryLike,
-    Cipher,
+    Cipheriv,
     CipherCCM,
     CipherCCMOptions,
     CipherGCM,
     CipherGCMOptions,
-    Decipher,
+    Decipheriv,
     DecipherCCM,
     DecipherGCM,
 } from 'node:crypto';
@@ -51,14 +51,14 @@ export abstract class BaseAesCipher<
 
     protected createCipher(iv: BinaryLike, options: CipherCCMOptions): CipherCCM;
     protected createCipher(iv: BinaryLike, options: CipherGCMOptions): CipherGCM;
-    protected createCipher(iv: BinaryLike | null, options?: TransformOptions): Cipher;
+    protected createCipher(iv: BinaryLike | null, options?: TransformOptions): Cipheriv;
     protected createCipher(iv: BinaryLike | null, options?: CipherCCMOptions | CipherGCMOptions | TransformOptions) {
         return createCipheriv(this.#algorithm, this.#key, iv, options);
     }
 
     protected createDecipher(iv: BinaryLike, options: CipherCCMOptions): DecipherCCM;
     protected createDecipher(iv: BinaryLike, options: CipherGCMOptions): DecipherGCM;
-    protected createDecipher(iv: BinaryLike | null, options?: TransformOptions): Decipher;
+    protected createDecipher(iv: BinaryLike | null, options?: TransformOptions): Decipheriv;
     protected createDecipher(iv: BinaryLike | null, options?: CipherCCMOptions | CipherGCMOptions | TransformOptions) {
         return createDecipheriv(this.#algorithm, this.#key, iv, options);
     }

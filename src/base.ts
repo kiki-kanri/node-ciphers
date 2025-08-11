@@ -1,8 +1,8 @@
 import { Buffer } from 'node:buffer';
 import type {
     BinaryLike,
-    Cipher,
-    Decipher,
+    Cipheriv,
+    Decipheriv,
 } from 'node:crypto';
 
 import type { RequiredDeep } from 'type-fest';
@@ -46,7 +46,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
         return typeof data === 'string' ? Buffer.from(data, encoding) : data;
     }
 
-    protected getCipherResult(cipher: Cipher, data: BinaryLike, encodingOptions?: EncodingOptions) {
+    protected getCipherResult(cipher: Cipheriv, data: BinaryLike, encodingOptions?: EncodingOptions) {
         const outputEncoding = encodingOptions?.encryptOutput || this.#encodingOptions.encryptOutput;
         return cipher.update(
             this.dataToBuffer(data, encodingOptions?.encryptInput || this.#encodingOptions.encryptInput),
@@ -55,7 +55,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
         ) + cipher.final(outputEncoding);
     }
 
-    protected getDecipherResult(decipher: Decipher, encryptedData: BinaryLike, encodingOptions?: EncodingOptions) {
+    protected getDecipherResult(decipher: Decipheriv, encryptedData: BinaryLike, encodingOptions?: EncodingOptions) {
         const outputEncoding = encodingOptions?.decryptOutput || this.#encodingOptions.decryptOutput;
         return decipher.update(
             this.dataToBuffer(encryptedData, encodingOptions?.decryptInput || this.#encodingOptions.decryptInput),
