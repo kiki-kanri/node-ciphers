@@ -20,14 +20,14 @@ export interface BaseCipherEncodingOptions {
     encryptOutput?: BufferEncoding;
 
     /**
-     * @default 'utf-8'
-     */
-    key?: BufferEncoding;
-
-    /**
      * @default 'hex'
      */
     iv?: BufferEncoding;
+
+    /**
+     * @default 'utf-8'
+     */
+    key?: BufferEncoding;
 }
 
 // eslint-disable-next-line ts/no-namespace
