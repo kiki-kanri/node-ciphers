@@ -5,9 +5,9 @@ import type { TransformOptions } from 'node:stream';
 import type {
     HasAuthTagAesCipherEncodingOptions,
     Result,
-} from '../types';
+} from '@/types';
 
-import { BaseAesCipher } from './base';
+import { BaseAesCipher } from './_internals/base';
 
 export class Gcm extends BaseAesCipher<HasAuthTagAesCipherEncodingOptions> {
     readonly #ivLength: number;

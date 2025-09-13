@@ -5,9 +5,9 @@ import type {
     DesCipherEncodingOptions,
     EcbEncryptResult,
     Result,
-} from '../types';
+} from '@/types';
 
-import { BaseDesCipher } from './base';
+import { BaseDesCipher } from './_internals/base';
 
 export class Ecb extends BaseDesCipher {
     constructor(key: BinaryLike, encodingOptions?: DesCipherEncodingOptions) {

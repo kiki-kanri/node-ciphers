@@ -6,7 +6,7 @@ import type {
     AesCipherEncodingOptions,
     BaseEncryptResult,
     Result,
-} from '../../types';
+} from '@/types';
 
 import { BaseAesCipher } from './';
 

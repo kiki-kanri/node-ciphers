@@ -4,7 +4,7 @@ import type {
     BaseEncryptResult,
     EcbEncryptResult,
     Result,
-} from '../src/types';
+} from '@/types';
 
 export interface Cipher {
     algorithm: string;

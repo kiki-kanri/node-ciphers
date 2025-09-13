@@ -5,9 +5,9 @@ import type {
     AesCipherEncodingOptions,
     EcbEncryptResult,
     Result,
-} from '../types';
+} from '@/types';
 
-import { BaseAesCipher } from './base';
+import { BaseAesCipher } from './_internals/base';
 
 export class Ecb extends BaseAesCipher {
     constructor(key: BinaryLike, encodingOptions?: AesCipherEncodingOptions) {
