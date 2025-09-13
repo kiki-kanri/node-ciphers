@@ -1,5 +1,6 @@
 {
   "name": "node-ciphers",
+  "type": "module",
   "version": "5.0.0",
   "description": "Lightweight AES and DES encryption library for Node.js, featuring flexible encoding, multiple cipher modes, and TypeScript support.",
   "author": "kiki-kanri",
@@ -36,29 +37,19 @@
   ],
   "sideEffects": false,
   "exports": {
-    "./aes": {
-      "types": "./dist/aes/index.d.ts",
-      "import": "./dist/aes/index.mjs",
-      "require": "./dist/aes/index.cjs"
-    },
-    "./des": {
-      "types": "./dist/des/index.d.ts",
-      "import": "./dist/des/index.mjs",
-      "require": "./dist/des/index.cjs"
-    },
-    "./types": {
-      "types": "./dist/types/index.d.ts"
-    }
+    "./aes": "./dist/aes/index.js",
+    "./des": "./dist/des/index.js",
+    "./package.json": "./package.json"
   },
   "files": [
     "./dist",
     "./src"
   ],
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
-    "build": "ts-project-builder ./src/aes/index.ts ./src/des/index.ts --clean --preserve-modules --sourcemaps",
+    "build": "tsdown",
     "bumplog": "changelogen --bump --hideAuthorEmail",
     "depcheck": "depcheck",
     "lint": "eslint --max-warnings 0",
@@ -71,20 +62,22 @@
     "unused-exports": "ts-unused-exports ./tsconfig.json"
   },
   "dependencies": {
-    "type-fest": "^4.41.0"
+    "type-fest": "^5.0.0"
   },
   "devDependencies": {
     "@kikiutils/changelogen": "^0.9.0",
-    "@kikiutils/eslint-config": "^2.0.0",
-    "@kikiutils/tsconfigs": "^5.0.4",
-    "@types/node": "^24.2.1",
+    "@kikiutils/eslint-config": "^3.0.0",
+    "@kikiutils/tsconfigs": "^5.0.5",
+    "@types/node": "^24.3.3",
     "@vitest/coverage-v8": "^3.2.4",
     "cross-env": "^10.0.0",
     "depcheck": "^1.4.7",
-    "ts-project-builder": "^5.0.2",
+    "publint": "^0.3.12",
     "ts-unused-exports": "^11.0.1",
-    "tslib": "^2.8.1",
+    "tsconfck": "^3.1.6",
+    "tsdown": "^0.15.1",
     "typescript": "^5.9.2",
+    "unplugin-unused": "^0.5.3",
     "vitest": "^3.2.4"
   },
   "pnpm": {
