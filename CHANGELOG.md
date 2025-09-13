@@ -1,5 +1,51 @@
 # Changelog
 
+## v6.0.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v5.0.0...v6.0.0)
+
+### 🩹 Fixes
+
+- Resolve alias configuration error in tsdown setup ([656e2e0](https://github.com/kiki-kanri/node-ciphers/commit/656e2e0))
+
+### 💅 Refactors
+
+- **tsconfig:** Separate references so src and tests use different settings ([df472e2](https://github.com/kiki-kanri/node-ciphers/commit/df472e2))
+- Restructure internal files and folders and update some import paths to use `@/` alias (paths) ([c340f40](https://github.com/kiki-kanri/node-ciphers/commit/c340f40))
+
+### 📦 Build
+
+- ⚠️ Switch builder to tsdown and convert package to pure ESM ([d307be4](https://github.com/kiki-kanri/node-ciphers/commit/d307be4))
+
+### 🏡 Chore
+
+- Update `.gitignore` ([1465997](https://github.com/kiki-kanri/node-ciphers/commit/1465997))
+- **ci:** Configure pnpm cache in workflow ([79e2264](https://github.com/kiki-kanri/node-ciphers/commit/79e2264))
+- **ci:** Remove pnpm cache configure in workflow ([abc0801](https://github.com/kiki-kanri/node-ciphers/commit/abc0801))
+- ⚠️ Drop support for Node.js 20, set minimum supported version to 22 ([3319820](https://github.com/kiki-kanri/node-ciphers/commit/3319820))
+- Upgrade devDependencies ([57244a0](https://github.com/kiki-kanri/node-ciphers/commit/57244a0))
+- Set tsdown alias and tsconfig paths ([be49779](https://github.com/kiki-kanri/node-ciphers/commit/be49779))
+- Update tsdown config ([fc9e7cb](https://github.com/kiki-kanri/node-ciphers/commit/fc9e7cb))
+- Add `tsconfig.base.json` ([f6ba6dd](https://github.com/kiki-kanri/node-ciphers/commit/f6ba6dd))
+- Update eslint config ([99cd82e](https://github.com/kiki-kanri/node-ciphers/commit/99cd82e))
+- Update tsdown entry ([9cbb6bb](https://github.com/kiki-kanri/node-ciphers/commit/9cbb6bb))
+- Disable `isolatedDeclarations` ([85f066e](https://github.com/kiki-kanri/node-ciphers/commit/85f066e))
+- Update eslint config ([09d584b](https://github.com/kiki-kanri/node-ciphers/commit/09d584b))
+- Update tsdown entry config ([638745a](https://github.com/kiki-kanri/node-ciphers/commit/638745a))
+
+### ✅ Tests
+
+- Fix vitest config to correctly load tsconfig and aliases ([0522f79](https://github.com/kiki-kanri/node-ciphers/commit/0522f79))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️ Switch builder to tsdown and convert package to pure ESM ([d307be4](https://github.com/kiki-kanri/node-ciphers/commit/d307be4))
+- ⚠️ Drop support for Node.js 20, set minimum supported version to 22 ([3319820](https://github.com/kiki-kanri/node-ciphers/commit/3319820))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v5.0.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v4.0.4...v5.0.0)
