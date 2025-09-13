@@ -39,6 +39,7 @@
   "exports": {
     "./aes": "./dist/aes/index.js",
     "./des": "./dist/des/index.js",
+    "./types": "./dist/types/index.js",
     "./package.json": "./package.json"
   },
   "files": [

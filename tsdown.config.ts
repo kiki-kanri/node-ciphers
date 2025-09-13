@@ -9,6 +9,7 @@ export default defineConfig({
     entry: [
         './src/aes/index.ts',
         './src/des/index.ts',
+        './src/types/index.ts',
         '!./src/**/_internals.ts',
         '!./src/**/_internals/**',
         '!./src/**/internals/**',
