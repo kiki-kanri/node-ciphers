@@ -1,5 +1,18 @@
 # Changelog
 
+## v6.1.1
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.0...v6.1.1)
+
+### 🩹 Fixes
+
+- Remove custom exports configuration from tsdown ([efb18bc](https://github.com/kiki-kanri/node-ciphers/commit/efb18bc))
+- Remove tsdown `remove-types-js` plugin ([6922c2f](https://github.com/kiki-kanri/node-ciphers/commit/6922c2f))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v6.1.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.0.0...v6.1.0)
