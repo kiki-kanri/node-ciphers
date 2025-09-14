@@ -1,5 +1,30 @@
 # Changelog
 
+## v6.1.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.0.0...v6.1.0)
+
+### 🚀 Enhancements
+
+- Add `update-peer-dependencies-meta.ts` ([643c006](https://github.com/kiki-kanri/node-ciphers/commit/643c006))
+
+### 🩹 Fixes
+
+- Add missing -b flag to typecheck command ([cf0c795](https://github.com/kiki-kanri/node-ciphers/commit/cf0c795))
+
+### 📦 Build
+
+- Clean up js files under `dist/types` after tsdown build and update exports config ([2affd31](https://github.com/kiki-kanri/node-ciphers/commit/2affd31))
+
+### 🏡 Chore
+
+- Update all scripts ([fa5e797](https://github.com/kiki-kanri/node-ciphers/commit/fa5e797))
+- Upgrade dependencies ([9ba09cb](https://github.com/kiki-kanri/node-ciphers/commit/9ba09cb))
+
+### ❤️ Contributors
+
+- kiki-kanri
+
 ## v6.0.0
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v5.0.0...v6.0.0)
