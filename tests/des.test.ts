@@ -5,9 +5,9 @@ import {
     it,
 } from 'vitest';
 
-import * as DesCiphers from '@/des';
-import { BaseDesCipher } from '@/des/_internals/base';
-import type { BaseDesEncryptAndDecrypt } from '@/des/_internals/base/encrypt-and-decrypt';
+import * as DesCiphers from '../src/des';
+import { BaseDesCipher } from '../src/des/_internals/base';
+import type { BaseDesEncryptAndDecrypt } from '../src/des/_internals/base/encrypt-and-decrypt';
 
 import {
     testCommonDecryptInvalidDataAndIv,

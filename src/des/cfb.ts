@@ -1,6 +1,6 @@
 import type { BinaryLike } from 'node:crypto';
 
-import type { DesCipherEncodingOptions } from '@/types';
+import type { DesCipherEncodingOptions } from '../types';
 
 import { BaseDesEncryptAndDecrypt } from './_internals/base/encrypt-and-decrypt';
 

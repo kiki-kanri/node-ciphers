@@ -7,12 +7,12 @@ import type {
 
 import type { RequiredDeep } from 'type-fest';
 
-import { defaultEncodingOptions } from '@/_internals/constants';
+import { defaultEncodingOptions } from '../_internals/constants';
 import type {
     BaseCipherEncodingOptions,
     HasAuthTagAesCipherEncodingOptions,
     Result,
-} from '@/types';
+} from '../types';
 
 export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptions = BaseCipherEncodingOptions> {
     readonly #encodingOptions: Readonly<RequiredDeep<EncodingOptions>>;

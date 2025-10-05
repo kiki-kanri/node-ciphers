@@ -5,13 +5,13 @@ import {
     it,
 } from 'vitest';
 
-import * as AesCiphers from '@/aes';
 import type {
     Ccm,
     Gcm,
-} from '@/aes';
-import { BaseAesCipher } from '@/aes/_internals/base';
-import type { BaseAesEncryptAndDecrypt } from '@/aes/_internals/base/encrypt-and-decrypt';
+} from '../src/aes';
+import * as AesCiphers from '../src/aes';
+import { BaseAesCipher } from '../src/aes/_internals/base';
+import type { BaseAesEncryptAndDecrypt } from '../src/aes/_internals/base/encrypt-and-decrypt';
 
 import {
     testCommonDecryptInvalidDataAndIv,

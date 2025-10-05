@@ -5,13 +5,13 @@ import {
 import type { BinaryLike } from 'node:crypto';
 import type { TransformOptions } from 'node:stream';
 
-import { BaseCipher } from '@/_internals/base-cipher';
-import { availableCiphers } from '@/_internals/constants';
+import { BaseCipher } from '../../../_internals/base-cipher';
+import { availableCiphers } from '../../../_internals/constants';
 import type {
     DesCipherAlgorithm,
     DesCipherEncodingOptions,
     DesCipherMode,
-} from '@/types';
+} from '../../../types';
 
 const keyLengthToModePrefixMap: Readonly<Record<number, '' | '-ede3' | '-ede'>> = {
     8: '',

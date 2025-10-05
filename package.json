@@ -37,12 +37,38 @@
   ],
   "sideEffects": false,
   "exports": {
-    "./aes": "./dist/aes/index.js",
-    "./des": "./dist/des/index.js",
-    "./types": {
-      "types": "./dist/types/index.d.ts"
+    "./*": "./dist/*.js",
+    "./aes": {
+      "types": "./dist/aes/index.d.ts",
+      "import": "./dist/aes/index.js",
+      "require": null
     },
-    "./package.json": "./package.json"
+    "./aes/index": {
+      "types": null,
+      "import": null,
+      "require": null
+    },
+    "./des": {
+      "types": "./dist/des/index.d.ts",
+      "import": "./dist/des/index.js",
+      "require": null
+    },
+    "./des/index": {
+      "types": null,
+      "import": null,
+      "require": null
+    },
+    "./package.json": "./package.json",
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": null,
+      "require": null
+    },
+    "./types/index": {
+      "types": null,
+      "import": null,
+      "require": null
+    }
   },
   "files": [
     "./dist",

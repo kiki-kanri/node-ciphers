@@ -5,7 +5,7 @@ import type {
     AesCipherEncodingOptions,
     EcbEncryptResult,
     Result,
-} from '@/types';
+} from '../types';
 
 import { BaseAesCipher } from './_internals/base';
 
