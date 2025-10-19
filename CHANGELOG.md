@@ -1,5 +1,52 @@
 # Changelog
 
+## v6.1.3
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.2...v6.1.3)
+
+### 🩹 Fixes
+
+- Ensure tsdown `customExports` returns after deleting keys containing internals ([7324bab](https://github.com/kiki-kanri/node-ciphers/commit/7324bab))
+
+### 💅 Refactors
+
+- Rename func parameters in `arr.map` and similar methods to `item` for consistency ([c5768ac](https://github.com/kiki-kanri/node-ciphers/commit/c5768ac))
+- Update all import paths to use relative paths instead of `@` alias ([fa7c47c](https://github.com/kiki-kanri/node-ciphers/commit/fa7c47c))
+- Tidy up code ([1a92f2c](https://github.com/kiki-kanri/node-ciphers/commit/1a92f2c))
+
+### 📖 Documentation
+
+- Update README ([63ba464](https://github.com/kiki-kanri/node-ciphers/commit/63ba464))
+
+### 📦 Build
+
+- Update tsdown config to treat all dependencies as external ([f5e4f7a](https://github.com/kiki-kanri/node-ciphers/commit/f5e4f7a))
+- Update tsdown customExports to remove entries with keys containing "internals" ([59b1622](https://github.com/kiki-kanri/node-ciphers/commit/59b1622))
+- Update tsdown entry ([2e67d6b](https://github.com/kiki-kanri/node-ciphers/commit/2e67d6b))
+- Set tsdown external from package.json instead of using wildcard * ([7dc5f28](https://github.com/kiki-kanri/node-ciphers/commit/7dc5f28))
+- Update `customExports` rules to enable IDE import hints for package usage ([e4111c0](https://github.com/kiki-kanri/node-ciphers/commit/e4111c0))
+- Update `customExports` rules to enable IDE import hints for package usage ([fa88888](https://github.com/kiki-kanri/node-ciphers/commit/fa88888))
+
+### 🏡 Chore
+
+- Set minimum supported version to 22.12.0 ([76e8cc1](https://github.com/kiki-kanri/node-ciphers/commit/76e8cc1))
+- Remove alias config ([e353604](https://github.com/kiki-kanri/node-ciphers/commit/e353604))
+- Change `update-peer-dependencies-meta.ts` to non-executable permission file ([62a7690](https://github.com/kiki-kanri/node-ciphers/commit/62a7690))
+- Update base tsconfig ([26f4158](https://github.com/kiki-kanri/node-ciphers/commit/26f4158))
+- Add `.editorconfig` ([11056ce](https://github.com/kiki-kanri/node-ciphers/commit/11056ce))
+- Upgrade devDependencies ([aca04e8](https://github.com/kiki-kanri/node-ciphers/commit/aca04e8))
+- Replace `@kikiutils/changelogen` with `changelogen` ([8d1d648](https://github.com/kiki-kanri/node-ciphers/commit/8d1d648))
+- Update script ([44312fb](https://github.com/kiki-kanri/node-ciphers/commit/44312fb))
+- Update `pnpm.onlyBuiltDependencies` ([9788a78](https://github.com/kiki-kanri/node-ciphers/commit/9788a78))
+
+### 🤖 CI
+
+- Update config file ([cfba23c](https://github.com/kiki-kanri/node-ciphers/commit/cfba23c))
+
+### ❤️ Contributors
+
+- Kiki-kanri
+
 ## v6.1.2
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.1...v6.1.2)

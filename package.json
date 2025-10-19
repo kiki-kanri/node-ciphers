@@ -1,7 +1,7 @@
 {
   "name": "node-ciphers",
   "type": "module",
-  "version": "6.1.2",
+  "version": "6.1.3",
   "description": "Lightweight AES and DES encryption library for Node.js, featuring flexible encoding, multiple cipher modes, and TypeScript support.",
   "author": "kiki-kanri",
   "license": "MIT",
