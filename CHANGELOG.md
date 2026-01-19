@@ -1,5 +1,25 @@
 # Changelog
 
+## v6.1.4
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.3...v6.1.4)
+
+### 🩹 Fixes
+
+- Adjust `customExports` order in `tsdown.config` to move wildcard (`*`) exports to the end ([0b3f357](https://github.com/kiki-kanri/node-ciphers/commit/0b3f357))
+
+### 🏡 Chore
+
+- Update tsdown config ([59407a9](https://github.com/kiki-kanri/node-ciphers/commit/59407a9))
+- Disable tsdown `fixedExtension` config ([9039405](https://github.com/kiki-kanri/node-ciphers/commit/9039405))
+- Update eslint config ([e75c3d7](https://github.com/kiki-kanri/node-ciphers/commit/e75c3d7))
+- Update deps ([55dcdce](https://github.com/kiki-kanri/node-ciphers/commit/55dcdce))
+- Update exports config ([43cf12c](https://github.com/kiki-kanri/node-ciphers/commit/43cf12c))
+
+### ❤️ Contributors
+
+- Kiki-kanri
+
 ## v6.1.3
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.2...v6.1.3)
