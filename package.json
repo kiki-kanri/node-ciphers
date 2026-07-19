@@ -79,15 +79,15 @@
   "scripts": {
     "build": "tsdown",
     "bumplog": "changelogen --bump --hideAuthorEmail",
-    "depcheck": "depcheck",
+    "knip:deps": "knip --dependencies",
+    "knip:exports": "knip --exports",
     "lint": "eslint --max-warnings 0",
     "lint:fix": "eslint --fix --max-warnings 0",
     "prepack": "pnpm run build",
     "release": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build && changelogen --hideAuthorEmail --push --release && npm publish",
     "test": "cross-env NODE_OPTIONS=--openssl-legacy-provider vitest run --coverage",
     "test:watch": "cross-env NODE_OPTIONS=--openssl-legacy-provider vitest watch --coverage",
-    "typecheck": "tsc -b --noEmit",
-    "unused-exports": "ts-unused-exports ./tsconfig.json"
+    "typecheck": "tsc -b --noEmit"
   },
   "dependencies": {
     "type-fest": "^5.8.0"
@@ -100,17 +100,12 @@
     "@vitest/coverage-v8": "^4.1.10",
     "changelogen": "^0.6.2",
     "cross-env": "^10.1.0",
-    "depcheck": "^1.4.7",
+    "eslint": "^10.7.0",
+    "knip": "^6.27.0",
     "publint": "^0.3.21",
-    "ts-unused-exports": "^11.0.1",
     "tsdown": "^0.22.9",
-    "typescript": "^7.0.2",
+    "typescript": "^6.0.3",
     "unplugin-unused": "^0.5.7",
     "vitest": "^4.1.10"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild"
-    ]
   }
 }

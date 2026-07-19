@@ -55,7 +55,7 @@ describe.concurrent('des cipher', () => {
 
     cipherClasses.forEach((CipherClass) => {
         Object.entries(keys).forEach(([bits, key]) => {
-            if (bits === '128' && CipherClass.name.match(/cfb(1|8)/i)) return;
+            if (bits === '128' && /cfb[18]/i.test(CipherClass.name)) return;
             describe.concurrent(`${CipherClass.name} Mode with ${bits} bits key`, () => {
                 it('should correctly encrypt and decrypt data', ({ expect }) => {
                     const cipher = new CipherClass(key) as BaseDesEncryptAndDecrypt;
