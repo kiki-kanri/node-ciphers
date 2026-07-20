@@ -44,8 +44,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
 
     protected dataToBuffer(data: BinaryLike, encoding: BufferEncoding) {
         if (typeof data === 'string') return Buffer.from(data, encoding);
-        if (Buffer.isBuffer(data)) return data;
-        if (ArrayBuffer.isView(data)) return Buffer.from(data.buffer, data.byteOffset, data.byteLength);
+        if (ArrayBuffer.isView(data)) return data;
         return Buffer.from(data);
     }
 
