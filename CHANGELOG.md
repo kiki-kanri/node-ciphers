@@ -1,5 +1,36 @@
 # Changelog
 
+## v6.1.5
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.4...v6.1.5)
+
+### 🔥 Performance
+
+- Avoid wrapping array buffer views ([c8cb54b](https://github.com/kiki-kanri/node-ciphers/commit/c8cb54b))
+
+### 🩹 Fixes
+
+- Normalize binary-like cipher inputs ([452c9a1](https://github.com/kiki-kanri/node-ciphers/commit/452c9a1))
+
+### 🏡 Chore
+
+- Update vscode settings ([7b2f6f9](https://github.com/kiki-kanri/node-ciphers/commit/7b2f6f9))
+- Update eslint config ([77a5f00](https://github.com/kiki-kanri/node-ciphers/commit/77a5f00))
+- Update deps, tsdown config and package scripts ([5ada952](https://github.com/kiki-kanri/node-ciphers/commit/5ada952))
+- Update deps and configs ([6082b0e](https://github.com/kiki-kanri/node-ciphers/commit/6082b0e))
+- Add `.gitattributes` ([4645112](https://github.com/kiki-kanri/node-ciphers/commit/4645112))
+- Add `.omx/` to `.gitignore` ([a9a8cfa](https://github.com/kiki-kanri/node-ciphers/commit/a9a8cfa))
+- Update scripts ([723523c](https://github.com/kiki-kanri/node-ciphers/commit/723523c))
+- Upgrade deps ([2549619](https://github.com/kiki-kanri/node-ciphers/commit/2549619))
+
+### 🤖 CI
+
+- Update node versions ([8f4edfd](https://github.com/kiki-kanri/node-ciphers/commit/8f4edfd))
+
+### ❤️ Contributors
+
+- Kiki-kanri
+
 ## v6.1.4
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.3...v6.1.4)
