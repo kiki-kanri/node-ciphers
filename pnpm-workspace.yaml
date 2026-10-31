@@ -1,0 +1,23 @@
+blockExoticSubdeps: true
+minimumReleaseAge: 1440
+minimumReleaseAgeIgnoreMissingTime: false
+minimumReleaseAgeStrict: true
+
+minimumReleaseAgeExcludePrune: true
+minimumReleaseAgeExclude:
+  - '@kikiutils/eslint-config' # TODO: remove it
+
+resolutionMode: highest
+trustLockfile: false
+trustPolicy: no-downgrade
+strictSsl: true
+strictStorePkgContentCheck: true
+verifyStoreIntegrity: true
+preferFrozenLockfile: true
+shellEmulator: true
+sideEffectsCache: true
+strictDepBuilds: true
+updateNotifier: false
+
+overrides:
+  typescript: ^6.0.3

@@ -37,37 +37,10 @@
   ],
   "sideEffects": false,
   "exports": {
-    "./aes": {
-      "types": "./dist/aes/index.d.ts",
-      "import": "./dist/aes/index.js",
-      "require": null
-    },
-    "./aes/index": {
-      "types": null,
-      "import": null,
-      "require": null
-    },
-    "./des": {
-      "types": "./dist/des/index.d.ts",
-      "import": "./dist/des/index.js",
-      "require": null
-    },
-    "./des/index": {
-      "types": null,
-      "import": null,
-      "require": null
-    },
-    "./package.json": "./package.json",
-    "./types": {
-      "types": "./dist/types/index.d.ts",
-      "import": null,
-      "require": null
-    },
-    "./types/index": {
-      "types": null,
-      "import": null,
-      "require": null
-    }
+    "./aes": "./dist/aes/index.js",
+    "./des": "./dist/des/index.js",
+    "./types": "./dist/types/index.js",
+    "./package.json": "./package.json"
   },
   "files": [
     "./dist",
@@ -85,27 +58,29 @@
     "lint:fix": "eslint --fix --max-warnings 0",
     "prepack": "pnpm run build",
     "release": "pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run build && changelogen --hideAuthorEmail --push --release && npm publish",
-    "test": "cross-env NODE_OPTIONS=--openssl-legacy-provider vitest run --coverage",
-    "test:watch": "cross-env NODE_OPTIONS=--openssl-legacy-provider vitest watch --coverage",
+    "test": "NODE_OPTIONS=--openssl-legacy-provider vitest run --coverage",
+    "test:watch": "NODE_OPTIONS=--openssl-legacy-provider vitest watch --coverage",
     "typecheck": "tsc -b --noEmit"
   },
+  "peerDependencies": {},
+  "peerDependenciesMeta": {},
   "dependencies": {
-    "type-fest": "^5.8.0"
+    "type-fest": "^5.10.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.1.0",
-    "@kikiutils/eslint-config": "^9.2.0",
+    "@antfu/eslint-config": "^10.0.0",
+    "@arethetypeswrong/core": "^0.18.5",
+    "@kikiutils/eslint-config": "^9.3.2",
     "@kikiutils/tsconfigs": "^7.0.0",
-    "@types/node": "^26.1.1",
-    "@vitest/coverage-v8": "^4.1.10",
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.0.5",
     "changelogen": "^0.6.2",
-    "cross-env": "^10.1.0",
-    "eslint": "^10.7.0",
-    "knip": "^6.27.0",
-    "publint": "^0.3.21",
-    "tsdown": "^0.22.9",
+    "eslint": "^10.14.0",
+    "knip": "^6.44.0",
+    "publint": "^0.3.25",
+    "tsdown": "^0.23.4",
     "typescript": "^6.0.3",
-    "unplugin-unused": "^0.5.7",
-    "vitest": "^4.1.10"
+    "unplugin-unused": "^0.6.0",
+    "vitest": "^5.0.5"
   }
 }
