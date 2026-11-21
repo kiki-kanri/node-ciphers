@@ -1,31 +1,31 @@
 export interface BaseCipherEncodingOptions {
     /**
-     * @default 'hex'
+     * @defaultValue 'hex'
      */
     decryptInput?: BufferEncoding;
 
     /**
-     * @default 'utf-8'
+     * @defaultValue 'utf-8'
      */
     decryptOutput?: BufferEncoding;
 
     /**
-     * @default 'utf-8'
+     * @defaultValue 'utf-8'
      */
     encryptInput?: BufferEncoding;
 
     /**
-     * @default 'hex'
+     * @defaultValue 'hex'
      */
     encryptOutput?: BufferEncoding;
 
     /**
-     * @default 'hex'
+     * @defaultValue 'hex'
      */
     iv?: BufferEncoding;
 
     /**
-     * @default 'utf-8'
+     * @defaultValue 'utf-8'
      */
     key?: BufferEncoding;
 }

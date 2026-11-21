@@ -30,7 +30,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
 
     protected createErrorResult(error: unknown) {
         return {
-            error: error as unknown,
+            error,
             ok: false as const,
         };
     }
@@ -38,7 +38,7 @@ export class BaseCipher<EncodingOptions extends HasAuthTagAesCipherEncodingOptio
     protected createOkResult<T>(value: T) {
         return {
             ok: true as const,
-            value: value as T,
+            value,
         };
     }
 

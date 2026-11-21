@@ -1,5 +1,6 @@
 import { Buffer } from 'node:buffer';
 
+import { objectEntries } from 'ts-extras';
 import {
     describe,
     it,
@@ -104,6 +105,7 @@ function hasAuthTagCipherTest(
             expect(typeof encryptResult.value!.authTag).toBe('string');
             if (cipher.algorithm.endsWith('ccm')) expect(encryptResult.value!.authTagLength).toBe(16);
             else expect(encryptResult.value!.authTagLength).toBeUndefined();
+
             expect(typeof encryptResult.value!.data).toBe('string');
             expect(typeof encryptResult.value!.iv).toBe('string');
 
@@ -220,7 +222,7 @@ describe.concurrent('aes cipher', () => {
     });
 
     cipherClassesAndTestFunctions.forEach(([cipherClass, testFunction]) => {
-        Object.entries(keys).forEach(([bits, key]) => {
+        objectEntries(keys).forEach(([bits, key]) => {
             (testFunction || commonCipherTest)(cipherClass as any, key, bits);
         });
     });

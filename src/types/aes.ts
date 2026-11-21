@@ -9,7 +9,7 @@ export type AesCipherMode = 'cbc' | 'ccm' | 'cfb1' | 'cfb8' | 'cfb' | 'ctr' | 'e
 
 export interface HasAuthTagAesCipherEncodingOptions extends BaseCipherEncodingOptions {
     /**
-     * @default 'hex'
+     * @defaultValue 'hex'
      */
     authTag?: BufferEncoding;
 }

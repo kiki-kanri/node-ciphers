@@ -78,6 +78,7 @@
     "eslint": "^10.15.0",
     "knip": "^6.47.0",
     "publint": "^0.3.25",
+    "ts-extras": "^3.0.0",
     "tsdown": "^0.23.7",
     "typescript": "^6.0.3",
     "unplugin-unused": "^0.6.0",

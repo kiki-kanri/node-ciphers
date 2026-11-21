@@ -1,5 +1,6 @@
 import { Buffer } from 'node:buffer';
 
+import { objectEntries } from 'ts-extras';
 import {
     describe,
     it,
@@ -54,7 +55,7 @@ describe.concurrent('des cipher', () => {
     });
 
     cipherClasses.forEach((CipherClass) => {
-        Object.entries(keys).forEach(([bits, key]) => {
+        objectEntries(keys).forEach(([bits, key]) => {
             if (bits === '128' && /cfb[18]/i.test(CipherClass.name)) return;
             describe.concurrent(`${CipherClass.name} Mode with ${bits} bits key`, () => {
                 it('should correctly encrypt and decrypt data', ({ expect }) => {
