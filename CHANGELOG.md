@@ -1,5 +1,34 @@
 # Changelog
 
+## v7.0.0
+
+[compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.6...v7.0.0)
+
+### 📦 Build
+
+- Require Node.js 24.15.0 and target ES2025 ([5563821](https://github.com/kiki-kanri/node-ciphers/commit/5563821))
+
+### 🏡 Chore
+
+- Enable eslint cache and concurrency in lint scripts ([4398cae](https://github.com/kiki-kanri/node-ciphers/commit/4398cae))
+- Upgrade deps ([56f978b](https://github.com/kiki-kanri/node-ciphers/commit/56f978b))
+- Require a clean working tree for release ([3a64221](https://github.com/kiki-kanri/node-ciphers/commit/3a64221))
+- Upgrade deps ([179ec9c](https://github.com/kiki-kanri/node-ciphers/commit/179ec9c))
+- Exclude `@kikiutils/tsconfigs` from the minimum release age ([1c89d62](https://github.com/kiki-kanri/node-ciphers/commit/1c89d62))
+- ⚠️  Upgrade deps ([a912f42](https://github.com/kiki-kanri/node-ciphers/commit/a912f42))
+
+### 🤖 CI
+
+- Rewrite test and coverage workflow ([c74a01e](https://github.com/kiki-kanri/node-ciphers/commit/c74a01e))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Upgrade deps ([a912f42](https://github.com/kiki-kanri/node-ciphers/commit/a912f42))
+
+### ❤️ Contributors
+
+- Kiki-kanri
+
 ## v6.1.6
 
 [compare changes](https://github.com/kiki-kanri/node-ciphers/compare/v6.1.5...v6.1.6)
