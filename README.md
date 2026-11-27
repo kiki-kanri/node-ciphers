@@ -23,7 +23,7 @@ Lightweight AES and DES encryption library for Node.js, featuring flexible encod
 
 ## Requirements
 
-- **Node.js** `>=22.12.0`
+- **Node.js** `>=24.15.0`
 
 ## Installation
 
